@@ -4,7 +4,7 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Point2D.Float;
 import java.util.ArrayList;
 
-import model.paddle.Paddle;
+import model.paddle.AbstractPaddle;
 
 /**
  * Модель игрока, управляющего ракеткой.
@@ -13,13 +13,13 @@ import model.paddle.Paddle;
  */
 public class Player {
 
-    protected ArrayList<Paddle> _paddles = new ArrayList<>();
+    protected ArrayList<AbstractPaddle> _paddles = new ArrayList<>();
     
 	/**
 	 * Инициализировать игрока
 	 * @param paddle Подконтрольная игроку ракетка
 	 */
-	public Player(Paddle paddle) {
+	public Player(AbstractPaddle paddle) {
 		_paddles.add(paddle);
 	}
 	
@@ -31,16 +31,16 @@ public class Player {
 	 * Получить контролируемые ракетки
 	 * @return Список контролируемых ракеток
 	 */
-	public ArrayList<Paddle> getPaddles() {
+	public ArrayList<AbstractPaddle> getPaddles() {
 		
-		return (ArrayList<Paddle>) _paddles.clone();
+		return (ArrayList<AbstractPaddle>) _paddles.clone();
 	}
 	
 	/**
 	 * Добавить ракетку под контроль игрока
 	 * @param paddle Ракетка для добавления
 	 */
-	public void addPaddle(Paddle paddle) {
+	public void addPaddle(AbstractPaddle paddle) {
 		
 	    if (paddle == null) {
 	        throw new NullPointerException();
@@ -53,7 +53,7 @@ public class Player {
 	 * Убрать ракетку из-под контроля игрока
 	 * @param paddle Ракетка
 	 */
-	public void removePaddle(Paddle paddle) {
+	public void removePaddle(AbstractPaddle paddle) {
 		
 	    _paddles.remove(paddle);
 	}
@@ -64,7 +64,7 @@ public class Player {
 	 */
 	public void setPaddlesPositionX(int x) {
 		
-	    for (Paddle p : _paddles) {
+	    for (AbstractPaddle p : _paddles) {
 	        int actualx;
 	        if (x > p.getField().getSize().width - p.getSize().width) {
 	            actualx = p.getField().getSize().width - p.getSize().width;
@@ -84,7 +84,7 @@ public class Player {
 	 */
 	public void movePaddles(Direction dir) {
 		
-	    for (Paddle p : _paddles) {
+	    for (AbstractPaddle p : _paddles) {
 	        long delta = Math.round(p.getSize().width / 3.0 * 2.0);
 	        delta = dir.equals(Direction.west()) ? -delta : delta;
             if (p.getPosition().x + p.getSize().width + delta > p.getField().getSize().width) {
@@ -102,7 +102,7 @@ public class Player {
 	 */
 	public void firePaddles() {
 	    
-	    for (Paddle p : _paddles) {
+	    for (AbstractPaddle p : _paddles) {
 	        p.fireBalls();
 	    }
 	}

@@ -8,7 +8,7 @@ import model.Entity;
 import model.Speed2D;
 import model.collision.BehaviourPaddleRebound;
 import model.collision.BehaviourRebound;
-import model.paddle.Paddle;
+import model.paddle.AbstractPaddle;
 
 /**
  * Модель абстрактного шарика
@@ -30,7 +30,7 @@ public abstract class AbstractBall extends Entity {
         
         super(field, pos, new Dimension(2*radius, 2*radius), speed);
         this.addDefaultCollisionBehaviour(BehaviourRebound.getInstance());
-        this.addSpecificCollisionBehaviour(Paddle.class, BehaviourPaddleRebound.getInstance(), true);
+        this.addSpecificCollisionBehaviour(AbstractPaddle.class, BehaviourPaddleRebound.getInstance(), true);
     }
 
 	/**

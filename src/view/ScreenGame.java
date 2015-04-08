@@ -20,7 +20,7 @@ import model.collision.BehaviourDestroy;
 import model.collision.BehaviourPaddleRebound;
 import model.collision.BehaviourRebound;
 import model.paddle.BasicPaddle;
-import model.paddle.Paddle;
+import model.paddle.AbstractPaddle;
 
 import com.golden.gamedev.GameEngine;
 import com.golden.gamedev.GameObject;

@@ -10,7 +10,7 @@ import model.ball.AbstractBall;
 import model.brick.AbstractBrick;
 import model.collision.CollidedObject;
 import model.interaction.CollisionListener;
-import model.paddle.Paddle;
+import model.paddle.AbstractPaddle;
 
 import com.golden.gamedev.object.CollisionManager;
 import com.golden.gamedev.object.PlayField;
@@ -115,7 +115,7 @@ public class GameFieldView extends PlayField {
 	        getBallsGroup().add(ov.getSprite());
 	    } else if (ov.getIngameObject() instanceof AbstractBrick) {
 	        getBricksGroup().add(ov.getSprite());
-	    } else if (ov.getIngameObject() instanceof Paddle) {
+	    } else if (ov.getIngameObject() instanceof AbstractPaddle) {
 	        getPaddlesGroup().add(ov.getSprite());
 	    }
 	}
@@ -131,7 +131,7 @@ public class GameFieldView extends PlayField {
             getBallsGroup().remove(ov.getSprite());
         } else if (ov.getIngameObject() instanceof AbstractBrick) {
             getBricksGroup().remove(ov.getSprite());
-        } else if (ov.getIngameObject() instanceof Paddle) {
+        } else if (ov.getIngameObject() instanceof AbstractPaddle) {
             getPaddlesGroup().remove(ov.getSprite());
         }
 	}

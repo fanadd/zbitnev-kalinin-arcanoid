@@ -4,7 +4,7 @@ import java.awt.geom.Point2D;
 
 import model.Entity;
 import model.ball.AbstractBall;
-import model.paddle.Paddle;
+import model.paddle.AbstractPaddle;
 
 /**
  * Поведение отскока от ракетки при столкновении.
@@ -36,12 +36,12 @@ public class BehaviourPaddleRebound extends CollisionBehaviour {
 	@Override
 	public void invoke(CollidedObject from, CollidedObject to) {
 		
-		if (from.object() instanceof Paddle && to.object() instanceof AbstractBall) {
+		if (from.object() instanceof AbstractPaddle && to.object() instanceof AbstractBall) {
 		
 			to.object().setPosition(new Point2D.Float(to.object().getPosition().x, 
 									 		          from.object().getPosition().y 
 									 		          - to.object().getSize().height));
-			to.object().setSpeed(((Paddle)(from.object())).getFireSpeed((AbstractBall)to.object()));
+			to.object().setSpeed(((AbstractPaddle)(from.object())).getFireSpeed((AbstractBall)to.object()));
 		}
 	}
 }

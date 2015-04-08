@@ -11,7 +11,7 @@ import model.Speed2D;
  * @author Nikita Kalinin <nixorv@gmail.com>
  *
  */
-public class BasicPaddle extends Paddle {
+public class BasicPaddle extends AbstractPaddle {
 
     public BasicPaddle(GameField field, Float pos, Dimension dim) {
         

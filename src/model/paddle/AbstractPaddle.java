@@ -15,16 +15,16 @@ import model.ball.AbstractBall;
  * @author Nikita Kalinin <nixorv@gmail.com>
  *
  */
-public abstract class Paddle extends Entity {
+public abstract class AbstractPaddle extends Entity {
 
     protected ArrayList<AbstractBall> _balls = new ArrayList<>();
 
-    public Paddle(GameField field, Float pos, Dimension dim) {
+    public AbstractPaddle(GameField field, Float pos, Dimension dim) {
         
         super(field, pos, dim);
     }
 
-    public Paddle(GameField field) {
+    public AbstractPaddle(GameField field) {
 		
         super(field);
 	}
@@ -167,7 +167,7 @@ public abstract class Paddle extends Entity {
     @Override
     public Object clone() throws CloneNotSupportedException {
     	
-    	Paddle clone = (Paddle) super.clone();
+    	AbstractPaddle clone = (AbstractPaddle) super.clone();
     	return clone;
     }
 }
