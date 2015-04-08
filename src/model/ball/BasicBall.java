@@ -11,7 +11,7 @@ import model.swarm.CanBeInSwarm;
  * @author Gregory Zbitnev <zbitnev@hotmail.com>
  *
  */
-public class BasicBall extends Ball implements CanBeInSwarm {
+public class BasicBall extends AbstractBall implements CanBeInSwarm {
 
 	public BasicBall(GameField field) {
 		

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import model.GameField;
 import model.Entity;
 import model.Speed2D;
-import model.ball.Ball;
+import model.ball.AbstractBall;
 
 /**
  * Модель абстрактной ракетки.
@@ -17,7 +17,7 @@ import model.ball.Ball;
  */
 public abstract class Paddle extends Entity {
 
-    protected ArrayList<Ball> _balls = new ArrayList<>();
+    protected ArrayList<AbstractBall> _balls = new ArrayList<>();
 
     public Paddle(GameField field, Float pos, Dimension dim) {
         
@@ -33,7 +33,7 @@ public abstract class Paddle extends Entity {
 	 * Поместить шар на ракетку.
 	 * @param b Шар.
 	 */
-	public void addBall(Ball b) {
+	public void addBall(AbstractBall b) {
         
 	    if (b == null) {
 	        throw new NullPointerException();
@@ -51,7 +51,7 @@ public abstract class Paddle extends Entity {
 	 */
 	protected void fixBallsPosition() {
 	    
-	    for (Ball b : _balls) {
+	    for (AbstractBall b : _balls) {
             b.setPosition(new Point2D.Float(b.getPosition().x, this._position.y - b.getSize().height));
             
             if (b.getPosition().x < this._position.x) {
@@ -67,7 +67,7 @@ public abstract class Paddle extends Entity {
 	 * Убрать шар с ракетки.
 	 * @param b Шар.
 	 */
-    public void removeBall(Ball b) {
+    public void removeBall(AbstractBall b) {
         _balls.remove(b);
     }
     
@@ -75,9 +75,9 @@ public abstract class Paddle extends Entity {
      * Возвращает список шаров на ракетке.
      * @return Список шаров на ракетке.
      */
-    public ArrayList<Ball> getBalls() {
+    public ArrayList<AbstractBall> getBalls() {
         
-        return (ArrayList<Ball>) _balls.clone();
+        return (ArrayList<AbstractBall>) _balls.clone();
     }
     
     /**
@@ -85,7 +85,7 @@ public abstract class Paddle extends Entity {
      * @param b Мяч.
      * @return Вектор скорости.
      */
-    public Speed2D getFireSpeed(Ball ball) {
+    public Speed2D getFireSpeed(AbstractBall ball) {
         
         // Найти два центра расчета вектора.
         Point2D.Float paddleLeftCenter = new Point2D.Float(this._position.x + (this._size.width / 5) * 2, this._position.y);
@@ -140,7 +140,7 @@ public abstract class Paddle extends Entity {
     public void fireBalls() {
         
         while (!_balls.isEmpty()) {
-            Ball b = _balls.get(0);
+            AbstractBall b = _balls.get(0);
             b.setSpeed(getFireSpeed(b));
             _balls.remove(b);
         }
@@ -158,7 +158,7 @@ public abstract class Paddle extends Entity {
             
             super.setPosition(pos);
             
-            for (Ball b : _balls) {
+            for (AbstractBall b : _balls) {
                 b.setPosition(new Point2D.Float(b.getPosition().x + dx, b.getPosition().y + dy));
             }
         }

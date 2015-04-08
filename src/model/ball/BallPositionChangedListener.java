@@ -11,5 +11,5 @@ public interface BallPositionChangedListener {
      * Изменилась позиция мяча.
      * @param ball Мяч, позиция которого изменилась.
      */
-    public void ballPositionChanged(Ball ball);
+    public void ballPositionChanged(AbstractBall ball);
 }

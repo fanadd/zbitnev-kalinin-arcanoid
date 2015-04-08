@@ -15,18 +15,18 @@ import model.paddle.Paddle;
  * @author Gregory Zbitnev <zbitnev@hotmail.com>
  *
  */
-public abstract class Ball extends Entity {
+public abstract class AbstractBall extends Entity {
 
-	public Ball(GameField field) {
+	public AbstractBall(GameField field) {
 		this(field, new Point2D.Float(0, 0), 0);
 	}
 	
-	public Ball(GameField field, Point2D.Float pos, int radius) {
+	public AbstractBall(GameField field, Point2D.Float pos, int radius) {
 	    
 	    this(field, pos, radius, new Speed2D(0, 0));
 	}
 	
-	public Ball(GameField field, Point2D.Float pos, int radius, Speed2D speed) {
+	public AbstractBall(GameField field, Point2D.Float pos, int radius, Speed2D speed) {
         
         super(field, pos, new Dimension(2*radius, 2*radius), speed);
         this.addDefaultCollisionBehaviour(BehaviourRebound.getInstance());
@@ -110,7 +110,7 @@ public abstract class Ball extends Entity {
 	@Override
 	public Object clone() throws CloneNotSupportedException {
 		
-		Ball clone = (Ball) super.clone();
+		AbstractBall clone = (AbstractBall) super.clone();
 		return clone;
 	}
 }

@@ -6,7 +6,7 @@ import java.util.Map;
 
 import view.collision.PublishingCollisionManager;
 import model.Entity;
-import model.ball.Ball;
+import model.ball.AbstractBall;
 import model.brick.Brick;
 import model.collision.CollidedObject;
 import model.interaction.CollisionListener;
@@ -111,7 +111,7 @@ public class GameFieldView extends PlayField {
 	public void addObjectView(IngameObjectView ov) {
 	    
 	    _objectViews.add(ov);
-	    if (ov.getIngameObject() instanceof Ball) {
+	    if (ov.getIngameObject() instanceof AbstractBall) {
 	        getBallsGroup().add(ov.getSprite());
 	    } else if (ov.getIngameObject() instanceof Brick) {
 	        getBricksGroup().add(ov.getSprite());
@@ -127,7 +127,7 @@ public class GameFieldView extends PlayField {
 	public void removeObjectView(IngameObjectView ov) {
 	    
 	    _objectViews.remove(ov);
-	    if (ov.getIngameObject() instanceof Ball) {
+	    if (ov.getIngameObject() instanceof AbstractBall) {
             getBallsGroup().remove(ov.getSprite());
         } else if (ov.getIngameObject() instanceof Brick) {
             getBricksGroup().remove(ov.getSprite());

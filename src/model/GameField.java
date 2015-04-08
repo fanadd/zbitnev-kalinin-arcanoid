@@ -9,7 +9,7 @@ import java.util.Iterator;
 import java.util.Set;
 
 import view.IngameObjectView;
-import model.ball.Ball;
+import model.ball.AbstractBall;
 import model.ball.BallPositionChangedListener;
 import model.collision.CollidedObject;
 
@@ -64,7 +64,7 @@ public class GameField implements BallPositionChangedListener {
 	 * Реализация этого метода отражает мяч от границ поля.
 	 */
     @Override
-    public void ballPositionChanged(Ball ball) {
+    public void ballPositionChanged(AbstractBall ball) {
         
         if (ball.getPosition().y < 0) {
             ball.setPosition(new Point2D.Float(ball.getPosition().x, 0));
