@@ -12,19 +12,19 @@ import model.Speed2D;
  * @author Nikita Kalinin <nixorv@gmail.com>
  *
  */
-public abstract class Brick extends Entity {
+public abstract class AbstractBrick extends Entity {
 
-	public Brick(GameField field) {
+	public AbstractBrick(GameField field) {
 		
 	    super(field);
 	}
 
-    public Brick(GameField field, Float pos, Dimension dim, Speed2D speed) {
+    public AbstractBrick(GameField field, Float pos, Dimension dim, Speed2D speed) {
         
         super(field, pos, dim, speed);
     }
 
-    public Brick(GameField field, Float pos, Dimension dim) {
+    public AbstractBrick(GameField field, Float pos, Dimension dim) {
         
         super(field, pos, dim);
     }
@@ -32,7 +32,7 @@ public abstract class Brick extends Entity {
     @Override
     public Object clone() throws CloneNotSupportedException {
     	
-    	Brick clone = (Brick) super.clone();
+    	AbstractBrick clone = (AbstractBrick) super.clone();
     	return clone;
     }
 }

@@ -11,7 +11,7 @@ import model.Speed2D;
  * @author Nikita Kalinin <nixorv@gmail.com>
  *
  */
-public class UnbreakableBrick extends Brick {
+public class UnbreakableBrick extends AbstractBrick {
 
 	public UnbreakableBrick(GameField field, Float pos, Dimension dim, Speed2D speed) {
         

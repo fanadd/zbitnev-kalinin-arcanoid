@@ -8,7 +8,7 @@ import com.golden.gamedev.object.collision.CollisionGroup;
 import model.Entity;
 import model.Speed2D;
 import model.ball.AbstractBall;
-import model.brick.Brick;
+import model.brick.AbstractBrick;
 import model.paddle.Paddle;
 import math.geom2d.Vector2D;
 
@@ -46,7 +46,7 @@ public class BehaviourRebound extends CollisionBehaviour {
 		// активного объекта и пассивного объекта
 		Entity toobj = to.object();
 		Entity fromobj = from.object();
-		if ((fromobj instanceof Brick || fromobj instanceof Paddle) && toobj instanceof AbstractBall) {
+		if ((fromobj instanceof AbstractBrick || fromobj instanceof Paddle) && toobj instanceof AbstractBall) {
 			
 			Point2D.Float newpos = to.oldPosition();
 			if (to.collisionSide() == CollidedObject.SIDE_TOP) {

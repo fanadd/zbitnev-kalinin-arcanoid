@@ -13,7 +13,7 @@ import model.collision.BehaviourDestroy;
  * @author Nikita Kalinin <nixorv@gmail.com>
  *
  */
-public class BreakableBrick extends Brick {
+public class BreakableBrick extends AbstractBrick {
 
 	public BreakableBrick(GameField field) {
 		
