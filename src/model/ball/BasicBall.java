@@ -4,14 +4,13 @@ import java.awt.geom.Point2D;
 
 import model.GameField;
 import model.Speed2D;
-import model.swarm.CanBeInSwarm;
 
 /**
  * Модель обычного шарика
  * @author Gregory Zbitnev <zbitnev@hotmail.com>
  *
  */
-public class BasicBall extends AbstractBall implements CanBeInSwarm {
+public class BasicBall extends AbstractBall {
 
 	public BasicBall(GameField field) {
 		
