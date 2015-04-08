@@ -6,7 +6,7 @@ import java.awt.geom.Point2D.Float;
 import java.util.ArrayList;
 
 import model.GameField;
-import model.IngameObject;
+import model.Entity;
 import model.Speed2D;
 import model.ball.Ball;
 
@@ -15,7 +15,7 @@ import model.ball.Ball;
  * @author Nikita Kalinin <nixorv@gmail.com>
  *
  */
-public abstract class Paddle extends IngameObject {
+public abstract class Paddle extends Entity {
 
     protected ArrayList<Ball> _balls = new ArrayList<>();
 

@@ -5,7 +5,7 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Point2D.Float;
 import java.util.ArrayList;
 
-import model.IngameObject;
+import model.Entity;
 import model.Speed2D;
 import model.interaction.GenericEventListener;
 import model.interaction.PositionChangeListener;
@@ -19,7 +19,7 @@ import model.interaction.SpeedChangeListener;
 public class IngameObjectView
 		implements PositionChangeListener, SpeedChangeListener, GenericEventListener {
 
-    protected final IngameObject ingameObject;
+    protected final Entity ingameObject;
     
     protected GameFieldView _fieldView = null;
 	protected PublishingSprite _sprite = null;
@@ -34,7 +34,7 @@ public class IngameObjectView
 	 * @param obj Модель игрового объекта.
 	 * @param sprite Спрайт, которым он будет отображен.
 	 */
-	public IngameObjectView(IngameObject obj, PublishingSprite sprite, GameFieldView view) {
+	public IngameObjectView(Entity obj, PublishingSprite sprite, GameFieldView view) {
 	    
 	    if (sprite == null || obj == null) {
 	        throw new NullPointerException();
@@ -99,7 +99,7 @@ public class IngameObjectView
 	 * Возвращает модель игрового объекта.
 	 * @return IngameObject.
 	 */
-	public IngameObject getIngameObject() {
+	public Entity getIngameObject() {
 	    
 	    return ingameObject;
 	}

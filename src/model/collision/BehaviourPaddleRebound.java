@@ -2,7 +2,7 @@ package model.collision;
 
 import java.awt.geom.Point2D;
 
-import model.IngameObject;
+import model.Entity;
 import model.ball.Ball;
 import model.paddle.Paddle;
 

@@ -1,6 +1,6 @@
 package model.interaction;
 
-import model.IngameObject;
+import model.Entity;
 
 /**
  * Интерфейс слушателя событий создания, удаления.

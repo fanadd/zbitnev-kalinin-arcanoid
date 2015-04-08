@@ -1,14 +1,14 @@
 package model.swarm;
 
 import model.GameField;
-import model.IngameObject;
+import model.Entity;
 
 /**
  * Модель роя.
  * @author Nikita Kalinin <nixorv@gmail.com>
  *
  */
-public class Swarm extends IngameObject {
+public class Swarm extends Entity {
 
 	public Swarm(GameField field) {
 		super(field);

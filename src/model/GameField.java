@@ -20,7 +20,7 @@ import model.collision.CollidedObject;
  */
 public class GameField implements BallPositionChangedListener {
 
-	private ArrayList<IngameObject> _objects;
+	private ArrayList<Entity> _objects;
 	private Dimension _dimensions;
 	
     /**
@@ -37,7 +37,7 @@ public class GameField implements BallPositionChangedListener {
 	 * Добавить объект на поле
 	 * @param object Объект для добавления
 	 */
-	public void addObject(IngameObject object) {
+	public void addObject(Entity object) {
 		
 		_objects.add(object);
 	}
@@ -46,7 +46,7 @@ public class GameField implements BallPositionChangedListener {
 	 * Убрать объект с поля
 	 * @param object Объект для удаления
 	 */
-	public void removeObject(IngameObject object) {
+	public void removeObject(Entity object) {
 		
 		_objects.remove(object);
 	}

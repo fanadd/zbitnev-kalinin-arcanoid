@@ -3,7 +3,7 @@ package model.interaction;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import model.IngameObject;
+import model.Entity;
 import model.collision.CollidedObject;
 
 

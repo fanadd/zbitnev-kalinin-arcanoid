@@ -20,7 +20,7 @@ import model.interaction.SpeedChangeListener;
  * @author Nikita Kalinin <nixorv@gmail.com>
  *
  */
-public abstract class IngameObject implements Cloneable, PositionChangeListener, SpeedChangeListener {
+public abstract class Entity implements Cloneable, PositionChangeListener, SpeedChangeListener {
     
     protected Boolean _isDestroyed = false;
     
@@ -39,7 +39,7 @@ public abstract class IngameObject implements Cloneable, PositionChangeListener,
 	 * Создает игровой объект, координаты (0, 0), нулевая скорость, нулевой размер.
 	 * @param field Игровое поле.
 	 */
-	public IngameObject(GameField field) {
+	public Entity(GameField field) {
 		
 	    this(field, new Point2D.Float(0, 0), new Dimension(0, 0));
 	}
@@ -50,7 +50,7 @@ public abstract class IngameObject implements Cloneable, PositionChangeListener,
 	 * @param pos Позиция объекта.
 	 * @param dim Размеры объекта.
 	 */
-	public IngameObject(GameField field, Point2D.Float pos, Dimension dim) {
+	public Entity(GameField field, Point2D.Float pos, Dimension dim) {
 	    
 	    this(field, pos, dim, new Speed2D(0, 0));
 	}
@@ -62,7 +62,7 @@ public abstract class IngameObject implements Cloneable, PositionChangeListener,
 	 * @param dim Размеры объекта.
 	 * @param speed Скорость объекта.
 	 */
-	public IngameObject(GameField field, Point2D.Float pos, Dimension dim, Speed2D speed) {
+	public Entity(GameField field, Point2D.Float pos, Dimension dim, Speed2D speed) {
 	    
 	    if (field == null || pos == null || dim == null || speed == null) {
 	        throw new NullPointerException();
@@ -241,7 +241,7 @@ public abstract class IngameObject implements Cloneable, PositionChangeListener,
 	 */
 	public void addSpecificCollisionBehaviour(Class<?> c, CollisionBehaviour cb, boolean checkDerived) {
 		
-		if (!c.isInstance(IngameObject.class)) {
+		if (!c.isInstance(Entity.class)) {
 			// TODO: Выброс исключения, ибо нечего
 		}
 		
@@ -273,7 +273,7 @@ public abstract class IngameObject implements Cloneable, PositionChangeListener,
 	 */
 	public void removeSpecificCollisionBehaviour(Class<?> c, CollisionBehaviour cb) {
 		
-		if (!c.isInstance(IngameObject.class)) {
+		if (!c.isInstance(Entity.class)) {
 			// TODO: Выброс исключения, ибо нечего
 		}
 		
@@ -307,7 +307,7 @@ public abstract class IngameObject implements Cloneable, PositionChangeListener,
 	 */
 	public void cleanSpecificCollisionBehaviours(Class<?> cl) {
 		
-		if (!cl.isInstance(IngameObject.class)) {
+		if (!cl.isInstance(Entity.class)) {
 			// TODO: Выброс исключения, ибо нечего
 		}
 		
@@ -408,7 +408,7 @@ public abstract class IngameObject implements Cloneable, PositionChangeListener,
 	@Override
 	public Object clone() throws CloneNotSupportedException {
 		
-		IngameObject clone = (IngameObject)super.clone();
+		Entity clone = (Entity)super.clone();
 		clone._isDestroyed = this._isDestroyed;
 		clone._field = this._field;    // ссылка на поле просто копируется, да
 		clone._position = (Point2D.Float) this._position.clone();

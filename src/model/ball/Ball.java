@@ -4,7 +4,7 @@ import java.awt.Dimension;
 import java.awt.geom.Point2D;
 
 import model.GameField;
-import model.IngameObject;
+import model.Entity;
 import model.Speed2D;
 import model.collision.BehaviourPaddleRebound;
 import model.collision.BehaviourRebound;
@@ -15,7 +15,7 @@ import model.paddle.Paddle;
  * @author Gregory Zbitnev <zbitnev@hotmail.com>
  *
  */
-public abstract class Ball extends IngameObject {
+public abstract class Ball extends Entity {
 
 	public Ball(GameField field) {
 		this(field, new Point2D.Float(0, 0), 0);

@@ -4,7 +4,7 @@ import java.awt.Dimension;
 import java.awt.geom.Point2D.Float;
 
 import model.GameField;
-import model.IngameObject;
+import model.Entity;
 import model.Speed2D;
 
 /**
@@ -12,7 +12,7 @@ import model.Speed2D;
  * @author Nikita Kalinin <nixorv@gmail.com>
  *
  */
-public abstract class Brick extends IngameObject {
+public abstract class Brick extends Entity {
 
 	public Brick(GameField field) {
 		

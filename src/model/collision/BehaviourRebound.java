@@ -5,7 +5,7 @@ import java.awt.geom.Point2D;
 
 import com.golden.gamedev.object.collision.CollisionGroup;
 
-import model.IngameObject;
+import model.Entity;
 import model.Speed2D;
 import model.ball.Ball;
 import model.brick.Brick;
@@ -44,8 +44,8 @@ public class BehaviourRebound extends CollisionBehaviour {
 		
 		// Вектор скорости отражается по-разному в зависимости от геометрической формы
 		// активного объекта и пассивного объекта
-		IngameObject toobj = to.object();
-		IngameObject fromobj = from.object();
+		Entity toobj = to.object();
+		Entity fromobj = from.object();
 		if ((fromobj instanceof Brick || fromobj instanceof Paddle) && toobj instanceof Ball) {
 			
 			Point2D.Float newpos = to.oldPosition();

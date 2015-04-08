@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import view.collision.PublishingCollisionManager;
-import model.IngameObject;
+import model.Entity;
 import model.ball.Ball;
 import model.brick.Brick;
 import model.collision.CollidedObject;
