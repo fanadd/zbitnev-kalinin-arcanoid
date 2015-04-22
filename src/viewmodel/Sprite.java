@@ -12,6 +12,10 @@ public class Sprite {
 
 	com.golden.gamedev.object.Sprite _sprite;
 	
+	Sprite(com.golden.gamedev.object.Sprite gtgeSprite) {
+		_sprite = gtgeSprite;
+	}
+	
 	public void update(long timeElapsed) {
 		_sprite.update(timeElapsed);
 	}
