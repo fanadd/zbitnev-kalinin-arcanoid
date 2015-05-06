@@ -35,7 +35,7 @@ import com.golden.gamedev.object.background.ImageBackground;
  * @author Gregory Zbitnev <zbitnev@hotmail.com>
  *
  */
-public class ScreenGame extends Game {
+public class Arkanoid extends Game {
     
 	GameModel _model;
 	GameFieldView _fieldView;

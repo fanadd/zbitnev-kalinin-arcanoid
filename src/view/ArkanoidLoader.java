@@ -13,7 +13,7 @@ public class ArkanoidLoader extends GameLoader {
     public static void main(String[] args) {
         
     	ArkanoidLoader loader = new ArkanoidLoader();
-    	loader.setup(new ScreenGame(), 
+    	loader.setup(new Arkanoid(), 
     			new Dimension(800, 600), 
     			false);
     	loader.start();
