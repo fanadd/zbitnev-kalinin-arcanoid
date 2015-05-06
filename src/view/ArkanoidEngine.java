@@ -16,8 +16,6 @@ public class ArkanoidEngine extends GameEngine {
 		switch (arg0) {
 			case 0: 
 				return new ScreenGame(this);
-			case 1:
-				return new ScreenMenu(this);
 		}
 		
 		return null;
