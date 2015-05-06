@@ -143,4 +143,9 @@ public class GameField implements BallPositionChangedListener {
     	
     	return deepcopy;
     }
+
+	public ArrayList<Entity> getEntities() {
+
+		return new ArrayList<Entity>(_objects);
+	}
 }
