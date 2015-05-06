@@ -2,6 +2,7 @@ package view;
 
 import java.awt.image.BufferedImage;
 
+import arkanoid.EntityView;
 import arkanoid.ball.BasicBall;
 import arkanoid.brick.BreakableBrick;
 import arkanoid.brick.UnbreakableBrick;
@@ -165,7 +166,7 @@ public class DefaultObjectViewFactory {
      * @param ball Модель мяча.
      * @return Представление мяча.
      */
-    public IngameObjectView newBasicBallView(BasicBall ball) {
+    public EntityView newBasicBallView(BasicBall ball) {
         
         ensure_valid();
         
@@ -173,7 +174,7 @@ public class DefaultObjectViewFactory {
         ballSprite.setImage(_basicBallImage);
         
         // Напоминание: этот конструктор сам установит объекты слушателями друг друга.
-        IngameObjectView ballView = new IngameObjectView(ball, ballSprite, _view);
+        EntityView ballView = new EntityView(ball, ballSprite, _view);
         
         return ballView;
     }
@@ -183,7 +184,7 @@ public class DefaultObjectViewFactory {
      * @param brick Разрушаемый кирпич.
      * @return Представление разрушаемого кирпича.
      */
-    public IngameObjectView newBreakableBrickView(BreakableBrick brick) {
+    public EntityView newBreakableBrickView(BreakableBrick brick) {
         
         ensure_valid();
         
@@ -191,7 +192,7 @@ public class DefaultObjectViewFactory {
         brickSprite.setImage(_breakableBrickImage);
         
         // Напоминание: этот конструктор сам установит объекты слушателями друг друга.
-        IngameObjectView brickView = new IngameObjectView(brick, brickSprite, _view);
+        EntityView brickView = new EntityView(brick, brickSprite, _view);
         
         return brickView;
     }
@@ -201,7 +202,7 @@ public class DefaultObjectViewFactory {
      * @param brick Неразрушаемый кирпич.
      * @return Представление неразрушаемого кирпича.
      */
-    public IngameObjectView newUnbreakableBrickView(UnbreakableBrick brick) {
+    public EntityView newUnbreakableBrickView(UnbreakableBrick brick) {
         
         ensure_valid();
         
@@ -209,7 +210,7 @@ public class DefaultObjectViewFactory {
         brickSprite.setImage(_unbreakableBrickImage);
         
         // Напоминание: этот конструктор сам установит объекты слушателями друг друга.
-        IngameObjectView brickView = new IngameObjectView(brick, brickSprite, _view);
+        EntityView brickView = new EntityView(brick, brickSprite, _view);
         
         return brickView;
     }
@@ -219,7 +220,7 @@ public class DefaultObjectViewFactory {
      * @param brick Ракетка.
      * @return Представление простой ракетки.
      */
-    public IngameObjectView newBasicPaddleView(BasicPaddle paddle) {
+    public EntityView newBasicPaddleView(BasicPaddle paddle) {
         
         ensure_valid();
         
@@ -227,7 +228,7 @@ public class DefaultObjectViewFactory {
         paddleSprite.setImage(_basicPaddleImage);
         
         // Напоминание: этот конструктор сам установит объекты слушателями друг друга.
-        IngameObjectView paddleView = new IngameObjectView(paddle, paddleSprite, _view);
+        EntityView paddleView = new EntityView(paddle, paddleSprite, _view);
         
         return paddleView;
     }

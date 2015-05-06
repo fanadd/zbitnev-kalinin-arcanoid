@@ -1,12 +1,13 @@
-﻿package view;
+﻿package arkanoid;
 
 import java.awt.Graphics2D;
 import java.awt.geom.Point2D;
 import java.awt.geom.Point2D.Float;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-import arkanoid.Entity;
-import arkanoid.Speed2D;
+import view.GameFieldView;
+import view.PublishingSprite;
 import arkanoid.interaction.GenericEventListener;
 import arkanoid.interaction.PositionChangeListener;
 import arkanoid.interaction.SpeedChangeListener;
@@ -16,7 +17,7 @@ import arkanoid.interaction.SpeedChangeListener;
  * @author Gregory Zbitnev <zbitnev@hotmail.com>
  *
  */
-public class IngameObjectView
+public class EntityView
 		implements PositionChangeListener, SpeedChangeListener, GenericEventListener {
 
     protected final Entity ingameObject;
@@ -27,6 +28,23 @@ public class IngameObjectView
 	protected Speed2D _speed = null;
 	protected ArrayList<PositionChangeListener> _positionListeners = new ArrayList<>();
 	protected ArrayList<SpeedChangeListener> _speedListeners = new ArrayList<>();
+	com.golden.gamedev.object.Sprite _gtgeSprite = null;
+	
+	private EntityView() {
+		ingameObject = null;
+	}
+	
+	EntityView(com.golden.gamedev.object.Sprite gtgeSprite) {
+		
+		this();
+		if (gtgeSprite == null)
+			throw new NullPointerException();
+		_gtgeSprite = gtgeSprite;
+	}
+	
+	public void setImage(BufferedImage image) {
+		_gtgeSprite.setImage(image);
+	}
 	
 	/**
 	 * Создает представление объекта на основе его модели и спрайта.
@@ -34,7 +52,7 @@ public class IngameObjectView
 	 * @param obj Модель игрового объекта.
 	 * @param sprite Спрайт, которым он будет отображен.
 	 */
-	public IngameObjectView(Entity obj, PublishingSprite sprite, GameFieldView view) {
+	public EntityView(Entity obj, PublishingSprite sprite, GameFieldView view) {
 	    
 	    if (sprite == null || obj == null) {
 	        throw new NullPointerException();
@@ -78,10 +96,14 @@ public class IngameObjectView
     	}
     }
     
-    public void render(Graphics2D g) {
+    public void renderDeprecated(Graphics2D g) {
     	
     	_sprite.render(g);
     }
+    
+	public void render(Graphics2D g) {
+		_gtgeSprite.render(g);
+	}
     
 	@Override
 	public void positionChanged(Point2D.Float newpos) {

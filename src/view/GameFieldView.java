@@ -6,6 +6,7 @@ import java.util.Map;
 
 import view.collision.PublishingCollisionManager;
 import arkanoid.Entity;
+import arkanoid.EntityView;
 import arkanoid.ball.AbstractBall;
 import arkanoid.brick.AbstractBrick;
 import arkanoid.collision.CollidedObject;
@@ -25,7 +26,7 @@ import com.golden.gamedev.object.SpriteGroup;
  */
 public class GameFieldView extends PlayField {
 	
-	private ArrayList<IngameObjectView> _objectViews = new ArrayList<>();
+	private ArrayList<EntityView> _objectViews = new ArrayList<>();
 	private ArrayList<CollisionListener> _collisionListners;
 	
 	public GameFieldView() {
@@ -48,7 +49,7 @@ public class GameFieldView extends PlayField {
 	public void update(long timeElapsed) {
 	    
 	    super.update(timeElapsed);
-	    for (IngameObjectView ov : _objectViews) {
+	    for (EntityView ov : _objectViews) {
 	        ov.update(timeElapsed);
 	    }
 	    
@@ -108,7 +109,7 @@ public class GameFieldView extends PlayField {
 	 * Добавляет представление объекта на это поле. Этот метод добавляет объект в соответствующую группу спрайтов.
 	 * @param ov Представление.
 	 */
-	public void addObjectView(IngameObjectView ov) {
+	public void addObjectView(EntityView ov) {
 	    
 	    _objectViews.add(ov);
 	    if (ov.getIngameObject() instanceof AbstractBall) {
@@ -124,7 +125,7 @@ public class GameFieldView extends PlayField {
 	 * Удаляет представление объекта с этого представления поля и из группы спрайтов.
 	 * @param ov Представление.
 	 */
-	public void removeObjectView(IngameObjectView ov) {
+	public void removeObjectView(EntityView ov) {
 	    
 	    _objectViews.remove(ov);
 	    if (ov.getIngameObject() instanceof AbstractBall) {
@@ -140,9 +141,9 @@ public class GameFieldView extends PlayField {
 	 * Возвращает список представлений объектов на этом поле.
 	 * @return Список.
 	 */
-	public ArrayList<IngameObjectView> getObjectViews() {
+	public ArrayList<EntityView> getObjectViews() {
 	    
-	    return (ArrayList<IngameObjectView>) _objectViews.clone();
+	    return (ArrayList<EntityView>) _objectViews.clone();
 	}
 	
     /**

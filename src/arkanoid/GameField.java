@@ -11,7 +11,6 @@ import java.util.Set;
 import arkanoid.ball.AbstractBall;
 import arkanoid.ball.BallPositionChangedListener;
 import arkanoid.collision.CollidedObject;
-import view.IngameObjectView;
 
 /**
  * Модель игрового поля.

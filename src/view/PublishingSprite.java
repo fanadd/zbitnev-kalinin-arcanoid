@@ -1,5 +1,7 @@
 ﻿package view;
 
+import arkanoid.EntityView;
+
 import com.golden.gamedev.object.Sprite;
 
 /**
@@ -9,13 +11,13 @@ import com.golden.gamedev.object.Sprite;
  */
 public class PublishingSprite extends Sprite {
 	
-    private IngameObjectView _objectView = null;
+    private EntityView _objectView = null;
     
 	/**
 	 * Задать представление игрового объекта, которому принаджелит спрайт
 	 * @param object Игровой объект
 	 */
-	public void setObjectView(IngameObjectView object) {
+	public void setObjectView(EntityView object) {
 	    
 		if (object == null) {
 		    throw new NullPointerException();
@@ -27,7 +29,7 @@ public class PublishingSprite extends Sprite {
 	 * Получить игровой объект, которому принадлежит спрайт.
 	 * @return Игровой объект.
 	 */
-	public IngameObjectView getObjectView() {
+	public EntityView getObjectView() {
 		
 		return _objectView;
 	}
