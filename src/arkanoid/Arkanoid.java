@@ -1,10 +1,12 @@
 package arkanoid;
 
 import java.awt.Graphics2D;
+
 import com.golden.gamedev.Game;
 
 import view.GameFieldView;
 import arkanoid.controller.GameController;
+import arkanoid.interaction.CollisionListener;
 import arkanoid.paddle.BasicPaddle;
 
 /**
@@ -14,7 +16,6 @@ import arkanoid.paddle.BasicPaddle;
  */
 public class Arkanoid extends Game {
     
-	GameModel _model;
 	GameFieldView _fieldView;
 	GameField _field;
 	GameController _controller;
@@ -31,9 +32,7 @@ public class Arkanoid extends Game {
 		_fieldView = fvFactory.instantiateFieldView(_field, bsLoader);
 		
 		// Модель слушает сообщения о коллизиях
-		_model = new GameModel();
-		_model.setField(_field);
-		_fieldView.addCollisionListener(_model);
+		_fieldView.addCollisionListener(_field);
         
         // Контроллер и игрок.
 		BasicPaddle paddle = null;

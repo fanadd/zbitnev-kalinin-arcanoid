@@ -11,13 +11,14 @@ import java.util.Set;
 import arkanoid.ball.AbstractBall;
 import arkanoid.ball.BallPositionChangedListener;
 import arkanoid.collision.CollidedObject;
+import arkanoid.interaction.CollisionListener;
 
 /**
  * Модель игрового поля.
  * @author Nikita Kalinin <nixorv@gmail.com>
  *
  */
-public class GameField implements BallPositionChangedListener {
+public class GameField implements BallPositionChangedListener, CollisionListener {
 
 	private ArrayList<Entity> _objects;
 	private Dimension _dimensions;
@@ -85,6 +86,7 @@ public class GameField implements BallPositionChangedListener {
      * @param storage Словарь столкновений, где ключ - столкнувшийся объект, значение - 
      * список объектов, с которыми он столкнулся
      */
+    @Override
     public void collisionOccured(
 			HashMap<CollidedObject, ArrayList<CollidedObject>> storage) {
 		
