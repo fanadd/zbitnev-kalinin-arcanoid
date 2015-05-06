@@ -23,6 +23,7 @@ import arkanoid.controller.GameController;
 import arkanoid.paddle.AbstractPaddle;
 import arkanoid.paddle.BasicPaddle;
 
+import com.golden.gamedev.Game;
 import com.golden.gamedev.GameEngine;
 import com.golden.gamedev.GameObject;
 import com.golden.gamedev.object.Background;
@@ -34,15 +35,11 @@ import com.golden.gamedev.object.background.ImageBackground;
  * @author Gregory Zbitnev <zbitnev@hotmail.com>
  *
  */
-public class ScreenGame extends GameObject {
+public class ScreenGame extends Game {
     
 	GameModel _model;
 	GameFieldView _fieldView;
 	GameController _controller;
-	
-	public ScreenGame(GameEngine arg0) {
-		super(arg0);
-	}
 
 	@Override
 	public void initResources() {
