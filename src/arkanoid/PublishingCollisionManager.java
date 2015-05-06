@@ -1,11 +1,10 @@
-﻿package view.collision;
+﻿package arkanoid;
 
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import view.PublishingSprite;
 import arkanoid.collision.CollidedObject;
 
 import com.golden.gamedev.object.Sprite;

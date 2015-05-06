@@ -1,11 +1,9 @@
-﻿package view;
+﻿package arkanoid;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import view.collision.PublishingCollisionManager;
-import arkanoid.Entity;
 import arkanoid.ball.AbstractBall;
 import arkanoid.brick.AbstractBrick;
 import arkanoid.collision.CollidedObject;

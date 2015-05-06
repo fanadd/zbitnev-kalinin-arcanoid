@@ -4,7 +4,6 @@ import java.awt.Graphics2D;
 
 import com.golden.gamedev.Game;
 
-import view.GameFieldView;
 import arkanoid.controller.GameController;
 import arkanoid.interaction.CollisionListener;
 import arkanoid.paddle.BasicPaddle;

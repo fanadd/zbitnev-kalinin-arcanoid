@@ -3,6 +3,7 @@ package arkanoid;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+
 import com.golden.gamedev.engine.BaseLoader;
 import com.golden.gamedev.object.background.ImageBackground;
 
@@ -10,8 +11,6 @@ import arkanoid.ball.BasicBall;
 import arkanoid.brick.BreakableBrick;
 import arkanoid.brick.UnbreakableBrick;
 import arkanoid.paddle.BasicPaddle;
-import view.DefaultObjectViewFactory;
-import view.GameFieldView;
 
 /**
  * Фабрика представлений игрового поля.

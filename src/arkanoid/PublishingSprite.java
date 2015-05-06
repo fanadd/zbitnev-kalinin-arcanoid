@@ -1,4 +1,4 @@
-﻿package view;
+﻿package arkanoid;
 
 import arkanoid.entities.EntityView;
 

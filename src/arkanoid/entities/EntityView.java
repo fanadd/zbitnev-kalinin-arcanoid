@@ -6,9 +6,9 @@ import java.awt.geom.Point2D.Float;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-import view.GameFieldView;
-import view.PublishingSprite;
 import arkanoid.Entity;
+import arkanoid.GameFieldView;
+import arkanoid.PublishingSprite;
 import arkanoid.Speed2D;
 import arkanoid.interaction.GenericEventListener;
 import arkanoid.interaction.PositionChangeListener;
