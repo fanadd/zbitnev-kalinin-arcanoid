@@ -1,6 +1,6 @@
 ﻿package view;
 
-import arkanoid.EntityView;
+import arkanoid.entities.EntityView;
 
 import com.golden.gamedev.object.Sprite;
 

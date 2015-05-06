@@ -1,4 +1,4 @@
-﻿package arkanoid;
+﻿package arkanoid.entities;
 
 import java.awt.Graphics2D;
 import java.awt.geom.Point2D;
@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 import view.GameFieldView;
 import view.PublishingSprite;
+import arkanoid.Entity;
+import arkanoid.Speed2D;
 import arkanoid.interaction.GenericEventListener;
 import arkanoid.interaction.PositionChangeListener;
 import arkanoid.interaction.SpeedChangeListener;

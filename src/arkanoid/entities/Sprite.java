@@ -1,4 +1,4 @@
-package viewmodel;
+package arkanoid.entities;
 
 import java.awt.Dimension;
 import java.awt.geom.Point2D;

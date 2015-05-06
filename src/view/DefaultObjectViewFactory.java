@@ -2,10 +2,10 @@ package view;
 
 import java.awt.image.BufferedImage;
 
-import arkanoid.EntityView;
 import arkanoid.ball.BasicBall;
 import arkanoid.brick.BreakableBrick;
 import arkanoid.brick.UnbreakableBrick;
+import arkanoid.entities.EntityView;
 import arkanoid.paddle.BasicPaddle;
 
 /**

@@ -6,10 +6,10 @@ import java.util.Map;
 
 import view.collision.PublishingCollisionManager;
 import arkanoid.Entity;
-import arkanoid.EntityView;
 import arkanoid.ball.AbstractBall;
 import arkanoid.brick.AbstractBrick;
 import arkanoid.collision.CollidedObject;
+import arkanoid.entities.EntityView;
 import arkanoid.interaction.CollisionListener;
 import arkanoid.paddle.AbstractPaddle;
 
