@@ -34,6 +34,7 @@ public abstract class Entity implements Cloneable, PositionChangeListener, Speed
 	protected ArrayList<PositionChangeListener> _positionListeners = new ArrayList<>();
 	protected ArrayList<SpeedChangeListener> _speedListeners = new ArrayList<>();
 	protected ArrayList<GenericEventListener> _geneventListeners = new ArrayList<>();
+	protected arkanoid.entities.Sprite _sprite = null;
 
 	/**
 	 * Создает игровой объект, координаты (0, 0), нулевая скорость, нулевой размер.
@@ -416,5 +417,10 @@ public abstract class Entity implements Cloneable, PositionChangeListener, Speed
 		clone._speed = (Speed2D) this._speed.clone();
 		
 		return clone;
+	}
+
+	public arkanoid.entities.Sprite getSprite() {
+
+		return _sprite;
 	}
 }
