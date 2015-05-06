@@ -1,4 +1,4 @@
-﻿package view;
+﻿package arkanoid;
 
 import java.awt.Dimension;
 import com.golden.gamedev.GameLoader;

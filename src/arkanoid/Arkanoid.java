@@ -1,4 +1,4 @@
-package view;
+package arkanoid;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -9,10 +9,9 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Point2D.Float;
 import java.awt.image.BufferedImage;
 
-import arkanoid.GameField;
-import arkanoid.GameModel;
-import arkanoid.Player;
-import arkanoid.Speed2D;
+import view.DefaultObjectViewFactory;
+import view.GameFieldView;
+import view.IngameObjectView;
 import arkanoid.ball.BasicBall;
 import arkanoid.brick.BreakableBrick;
 import arkanoid.brick.UnbreakableBrick;
