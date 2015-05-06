@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 import javax.imageio.ImageIO;
 
-import model.Entity;
+import arkanoid.Entity;
 
 import com.golden.gamedev.object.PlayField;
 

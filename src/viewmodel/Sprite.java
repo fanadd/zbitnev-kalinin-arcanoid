@@ -3,7 +3,7 @@ package viewmodel;
 import java.awt.Dimension;
 import java.awt.geom.Point2D;
 
-import model.Speed2D;
+import arkanoid.Speed2D;
 
 /**
  * Спрайт игрового объекта

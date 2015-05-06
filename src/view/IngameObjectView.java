@@ -5,11 +5,11 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Point2D.Float;
 import java.util.ArrayList;
 
-import model.Entity;
-import model.Speed2D;
-import model.interaction.GenericEventListener;
-import model.interaction.PositionChangeListener;
-import model.interaction.SpeedChangeListener;
+import arkanoid.Entity;
+import arkanoid.Speed2D;
+import arkanoid.interaction.GenericEventListener;
+import arkanoid.interaction.PositionChangeListener;
+import arkanoid.interaction.SpeedChangeListener;
 
 /**
  * Представление отдельного игрового объекта

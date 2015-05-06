@@ -5,12 +5,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 import view.collision.PublishingCollisionManager;
-import model.Entity;
-import model.ball.AbstractBall;
-import model.brick.AbstractBrick;
-import model.collision.CollidedObject;
-import model.interaction.CollisionListener;
-import model.paddle.AbstractPaddle;
+import arkanoid.Entity;
+import arkanoid.ball.AbstractBall;
+import arkanoid.brick.AbstractBrick;
+import arkanoid.collision.CollidedObject;
+import arkanoid.interaction.CollisionListener;
+import arkanoid.paddle.AbstractPaddle;
 
 import com.golden.gamedev.object.CollisionManager;
 import com.golden.gamedev.object.PlayField;

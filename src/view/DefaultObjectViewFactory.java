@@ -2,10 +2,10 @@ package view;
 
 import java.awt.image.BufferedImage;
 
-import model.ball.BasicBall;
-import model.brick.BreakableBrick;
-import model.brick.UnbreakableBrick;
-import model.paddle.BasicPaddle;
+import arkanoid.ball.BasicBall;
+import arkanoid.brick.BreakableBrick;
+import arkanoid.brick.UnbreakableBrick;
+import arkanoid.paddle.BasicPaddle;
 
 /**
  * Фабрика для создания представлений стандартных игровых объектов:

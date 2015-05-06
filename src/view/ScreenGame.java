@@ -9,26 +9,25 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Point2D.Float;
 import java.awt.image.BufferedImage;
 
-import model.GameField;
-import model.GameModel;
-import model.Player;
-import model.Speed2D;
-import model.ball.BasicBall;
-import model.brick.BreakableBrick;
-import model.brick.UnbreakableBrick;
-import model.collision.BehaviourDestroy;
-import model.collision.BehaviourPaddleRebound;
-import model.collision.BehaviourRebound;
-import model.paddle.BasicPaddle;
-import model.paddle.AbstractPaddle;
+import arkanoid.GameField;
+import arkanoid.GameModel;
+import arkanoid.Player;
+import arkanoid.Speed2D;
+import arkanoid.ball.BasicBall;
+import arkanoid.brick.BreakableBrick;
+import arkanoid.brick.UnbreakableBrick;
+import arkanoid.collision.BehaviourDestroy;
+import arkanoid.collision.BehaviourPaddleRebound;
+import arkanoid.collision.BehaviourRebound;
+import arkanoid.controller.GameController;
+import arkanoid.paddle.AbstractPaddle;
+import arkanoid.paddle.BasicPaddle;
 
 import com.golden.gamedev.GameEngine;
 import com.golden.gamedev.GameObject;
 import com.golden.gamedev.object.Background;
 import com.golden.gamedev.object.SpriteGroup;
 import com.golden.gamedev.object.background.ImageBackground;
-
-import controller.GameController;
 
 /**
  * Режим игры
