@@ -5,7 +5,7 @@ import java.awt.geom.Point2D.Float;
 
 import arkanoid.Entity;
 import arkanoid.GameField;
-import arkanoid.Speed2D;
+import arkanoid.util.Speed2D;
 
 /**
  * Модель абстрактного кирпича.

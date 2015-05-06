@@ -4,10 +4,10 @@ import java.awt.Dimension;
 import java.awt.geom.Point2D;
 
 import arkanoid.Entity;
-import arkanoid.Speed2D;
 import arkanoid.ball.AbstractBall;
 import arkanoid.brick.AbstractBrick;
 import arkanoid.paddle.AbstractPaddle;
+import arkanoid.util.Speed2D;
 
 import com.golden.gamedev.object.collision.CollisionGroup;
 

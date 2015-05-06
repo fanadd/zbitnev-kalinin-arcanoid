@@ -5,6 +5,7 @@ import java.awt.geom.Point2D.Float;
 import java.util.ArrayList;
 
 import arkanoid.paddle.AbstractPaddle;
+import arkanoid.util.Direction;
 
 /**
  * Модель игрока, управляющего ракеткой.

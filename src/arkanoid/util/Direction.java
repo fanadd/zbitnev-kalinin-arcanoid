@@ -1,4 +1,4 @@
-package arkanoid;
+package arkanoid.util;
 
 /**
  * Предоставляет направление движения по игровому полю

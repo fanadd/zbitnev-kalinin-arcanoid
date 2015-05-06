@@ -5,10 +5,10 @@ import java.awt.geom.Point2D;
 
 import arkanoid.Entity;
 import arkanoid.GameField;
-import arkanoid.Speed2D;
 import arkanoid.collision.BehaviourPaddleRebound;
 import arkanoid.collision.BehaviourRebound;
 import arkanoid.paddle.AbstractPaddle;
+import arkanoid.util.Speed2D;
 
 /**
  * Модель абстрактного шарика

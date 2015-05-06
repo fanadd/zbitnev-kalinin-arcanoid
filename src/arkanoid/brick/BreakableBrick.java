@@ -5,8 +5,8 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Point2D.Float;
 
 import arkanoid.GameField;
-import arkanoid.Speed2D;
 import arkanoid.collision.BehaviourDestroy;
+import arkanoid.util.Speed2D;
 
 /**
  * Модель разрушаемого кирпича.

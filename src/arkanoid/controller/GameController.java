@@ -4,8 +4,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Point2D.Float;
 
-import arkanoid.Direction;
 import arkanoid.Player;
+import arkanoid.util.Direction;
 
 import com.golden.gamedev.engine.BaseInput;
 import com.golden.gamedev.engine.input.AWTInput;

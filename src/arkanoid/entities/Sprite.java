@@ -3,7 +3,7 @@ package arkanoid.entities;
 import java.awt.Dimension;
 import java.awt.geom.Point2D;
 
-import arkanoid.Speed2D;
+import arkanoid.util.Speed2D;
 
 /**
  * Спрайт игрового объекта

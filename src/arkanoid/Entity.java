@@ -14,6 +14,7 @@ import arkanoid.collision.SpecialBehaviours;
 import arkanoid.interaction.GenericEventListener;
 import arkanoid.interaction.PositionChangeListener;
 import arkanoid.interaction.SpeedChangeListener;
+import arkanoid.util.Speed2D;
 
 /**
  * Класс игрового объекта.

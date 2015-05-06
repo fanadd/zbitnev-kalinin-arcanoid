@@ -7,8 +7,8 @@ import java.util.ArrayList;
 
 import arkanoid.Entity;
 import arkanoid.GameField;
-import arkanoid.Speed2D;
 import arkanoid.ball.AbstractBall;
+import arkanoid.util.Speed2D;
 
 /**
  * Модель абстрактной ракетки.

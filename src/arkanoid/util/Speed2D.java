@@ -1,4 +1,4 @@
-package arkanoid;
+package arkanoid.util;
 
 /**
  * Вектор скорости в двумерном пространстве

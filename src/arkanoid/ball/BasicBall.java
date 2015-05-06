@@ -3,7 +3,7 @@ package arkanoid.ball;
 import java.awt.geom.Point2D;
 
 import arkanoid.GameField;
-import arkanoid.Speed2D;
+import arkanoid.util.Speed2D;
 
 /**
  * Модель обычного шарика

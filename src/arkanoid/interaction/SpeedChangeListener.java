@@ -1,6 +1,6 @@
 package arkanoid.interaction;
 
-import arkanoid.Speed2D;
+import arkanoid.util.Speed2D;
 
 /**
  * Интерфейс слушателя событий изменения скорости.

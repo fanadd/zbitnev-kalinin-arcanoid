@@ -9,10 +9,10 @@ import java.util.ArrayList;
 import arkanoid.Entity;
 import arkanoid.GameFieldView;
 import arkanoid.PublishingSprite;
-import arkanoid.Speed2D;
 import arkanoid.interaction.GenericEventListener;
 import arkanoid.interaction.PositionChangeListener;
 import arkanoid.interaction.SpeedChangeListener;
+import arkanoid.util.Speed2D;
 
 /**
  * Представление отдельного игрового объекта

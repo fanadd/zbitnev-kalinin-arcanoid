@@ -8,6 +8,7 @@ import arkanoid.brick.BreakableBrick;
 import arkanoid.brick.UnbreakableBrick;
 import arkanoid.collision.BehaviourRebound;
 import arkanoid.paddle.BasicPaddle;
+import arkanoid.util.Speed2D;
 
 /**
  * Фабрика игровых полей, способна конструировать игровое поле.
