@@ -10,7 +10,6 @@ import javax.imageio.ImageIO;
 
 import arkanoid.ArkanoidFieldView;
 import arkanoid.Entity;
-import arkanoid.PublishingSprite;
 import arkanoid.entities.ball.BasicBall;
 import arkanoid.entities.brick.BreakableBrick;
 import arkanoid.entities.brick.UnbreakableBrick;
@@ -40,9 +39,7 @@ public class EntityViewFactory {
 		
 		// TODO Убрать зависимость от игрового поля
 		// TODO Не использовать больше паблишинг спрайт
-		PublishingSprite pubSprite = new PublishingSprite();
-		pubSprite.setImage(img);
-		EntityView view = new EntityView(entity.getSprite()._sprite, entity, pubSprite, fieldView);
+		EntityView view = new EntityView(entity.getSprite()._sprite, entity, fieldView);
 		view._gtgeSprite.setImage(img);
 
 		return view;

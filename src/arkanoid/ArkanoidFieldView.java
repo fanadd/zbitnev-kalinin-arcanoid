@@ -8,6 +8,7 @@ import java.util.Map;
 
 import arkanoid.collision.CollidedObject;
 import arkanoid.entities.EntityView;
+import arkanoid.entities.PublishingCollisionManager;
 import arkanoid.entities.ball.AbstractBall;
 import arkanoid.entities.brick.AbstractBrick;
 import arkanoid.entities.paddle.AbstractPaddle;
@@ -47,17 +48,14 @@ public class ArkanoidFieldView {
 		_gtgeField.addGroup(paddles);
 		
 		// Добавить на поле менеджеры коллизий для обработки столкновений
-		_gtgeField.addCollisionGroup(balls, paddles, new PublishingCollisionManager());
-		_gtgeField.addCollisionGroup(balls, bricks, new PublishingCollisionManager());
-		_gtgeField.addCollisionGroup(balls, balls, new PublishingCollisionManager());
+		_gtgeField.addCollisionGroup(balls, paddles, new PublishingCollisionManager(_field));
+		_gtgeField.addCollisionGroup(balls, bricks, new PublishingCollisionManager(_field));
+		_gtgeField.addCollisionGroup(balls, balls, new PublishingCollisionManager(_field));
 	}
 
 	public void update(long timeElapsed) {
 	    
 		_gtgeField.update(timeElapsed);
-	    for (EntityView ov : _objectViews) {
-	        ov.update(timeElapsed);
-	    }
 	    
 	    // Формируем словарь столкновений
 	    CollisionManager[] mgrs = _gtgeField.getCollisionGroups();

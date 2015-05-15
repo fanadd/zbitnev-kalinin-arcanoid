@@ -1,10 +1,12 @@
-﻿package arkanoid;
+﻿package arkanoid.entities;
 
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import arkanoid.ArkanoidField;
+import arkanoid.Entity;
 import arkanoid.collision.CollidedObject;
 
 import com.golden.gamedev.object.Sprite;
@@ -19,7 +21,12 @@ import com.golden.gamedev.object.collision.CollisionShape;
  */
 public class PublishingCollisionManager extends AdvanceCollisionGroup {
 
+	private ArkanoidField _field = null;
 	protected HashMap<CollidedObject, ArrayList<CollidedObject>> _storage = new HashMap<>();
+	
+	public PublishingCollisionManager(ArkanoidField field) {
+		_field = field;
+	}
 	
 	@Override
 	public void collided(Sprite arg0, Sprite arg1) {
@@ -57,8 +64,16 @@ public class PublishingCollisionManager extends AdvanceCollisionGroup {
 				break;
 			}
 			
+			Entity ent1 = null;
+			Entity ent2 = null;
+			for (Entity e : _field.getEntities()) {
+				
+				if (ent1 == null) ent1 = (e.getSprite()._sprite == s1) ? e : null;
+				if (ent2 == null) ent2 = (e.getSprite()._sprite == s2) ? e : null;
+			}
+			
 			CollidedObject obj1 = new CollidedObject(
-					((PublishingSprite)s1).getObjectView().getIngameObject(), 
+					ent1, 
 					new Point2D.Double((float)s1.getOldX(), (float)s1.getOldY()),
 					obj1colside, new Rectangle2D.Double(shape1.getX(), 
 													    shape1.getY(), 
@@ -66,7 +81,7 @@ public class PublishingCollisionManager extends AdvanceCollisionGroup {
 													    shape1.getHeight()));
 			
 			CollidedObject obj2 = new CollidedObject(
-					((PublishingSprite)s2).getObjectView().getIngameObject(), 
+					ent2, 
 					new Point2D.Double((float)s2.getOldX(), (float)s2.getOldY()),
 					obj2colside, new Rectangle2D.Double(shape2.getX(), 
 						    							shape2.getY(), 

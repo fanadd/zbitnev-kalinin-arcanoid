@@ -10,7 +10,6 @@ import com.golden.gamedev.object.Sprite;
 
 import arkanoid.Entity;
 import arkanoid.ArkanoidFieldView;
-import arkanoid.PublishingSprite;
 import arkanoid.interaction.GenericEventListener;
 import arkanoid.interaction.PositionChangeListener;
 import arkanoid.interaction.SpeedChangeListener;
@@ -27,7 +26,6 @@ public class EntityView
     protected final Entity ingameObject;
     
     protected ArkanoidFieldView _fieldView = null;
-	protected PublishingSprite _sprite = null;
 	com.golden.gamedev.object.Sprite _gtgeSprite = null;
 	
 	public void setImage(BufferedImage image) {
@@ -41,9 +39,9 @@ public class EntityView
 	 * @param sprite Спрайт, которым он будет отображен.
 	 */
 	EntityView(com.golden.gamedev.object.Sprite gtgeSprite, 
-			Entity obj, PublishingSprite sprite, ArkanoidFieldView view) {
+			Entity obj, ArkanoidFieldView view) {
 	    
-	    if (sprite == null || obj == null) {
+	    if (obj == null) {
 	        throw new NullPointerException();
 	    }
 	    
@@ -52,54 +50,14 @@ public class EntityView
 		_gtgeSprite = gtgeSprite;
 		
 	    this.ingameObject = obj;
-	    this._sprite       = sprite;
 	    this._fieldView    = view;
-	    this._sprite.setLocation(_gtgeSprite.getX(), _gtgeSprite.getY());
-	    this._sprite.setSpeed(_gtgeSprite.getHorizontalSpeed(), _gtgeSprite.getVerticalSpeed());
-	    this._sprite.setObjectView(this);
 	    obj.addPositionChangeListener(this);
 	    obj.addSpeedChangeListener(this);
 	    obj.addGenericEventListener(this);
 	}
-	
-    /**
-     * Необходимо использовать вместо прямого обращения к спрайту.
-     * @param timeElapsed Прошедшее время.
-     */
-    public void update(long timeElapsed) {
-        
-    	_sprite.update(timeElapsed);
-    	
-    	if (_sprite.getX() != _gtgeSprite.getX() || _sprite.getY() != _gtgeSprite.getY()) {
-    	    _gtgeSprite.setX(_sprite.getX());
-    	    _gtgeSprite.setY(_sprite.getY());
-    	}
-    	
-    	if (_sprite.getHorizontalSpeed() != _gtgeSprite.getHorizontalSpeed() 
-    			|| _sprite.getVerticalSpeed() != _gtgeSprite.getVerticalSpeed()) {
-    	    _gtgeSprite.setSpeed(_sprite.getHorizontalSpeed(), _sprite.getVerticalSpeed());
-    	}
-    }
-    
-    public void renderDeprecated(Graphics2D g) {
-    	
-    	_sprite.render(g);
-    }
     
 	public void render(Graphics2D g) {
 		_gtgeSprite.render(g);
-	}
-    
-	@Override
-	public void positionChanged(Point2D.Double newpos) {
-		
-		_sprite.setLocation(newpos.x, newpos.y);
-	}
-
-	@Override
-	public void speedChanged(Speed2D newspeed) {
-		
-		_sprite.setSpeed(newspeed.x(), newspeed.y());
 	}
 	
 	/**
@@ -112,28 +70,23 @@ public class EntityView
 	}
 	
 	/**
-	 * Добавить спрайт, принадлежащий данному представлению объекта
-	 * @param sprite Добавляемый спрайт
-	 */
-	public void setSprite(PublishingSprite sprite) {
-		
-		if (sprite == null) {
-			throw new NullPointerException();
-		}
-		
-		this._sprite = sprite;
-	}
-	
-	/**
 	 * Возвращает спрайт, принадлежащий данному представлению объекта.
 	 * @return Спрайт.
 	 */
-	public PublishingSprite getSprite() {
-	    return _sprite;
+	public Sprite getSprite() {
+	    return _gtgeSprite;
 	}
 
 	@Override
 	public void destroyed() {
 		this._fieldView.removeObjectView(this);
+	}
+
+	@Override
+	public void speedChanged(Speed2D newspeed) {
+	}
+
+	@Override
+	public void positionChanged(Double newpos) {
 	}
 }
