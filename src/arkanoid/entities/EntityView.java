@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import arkanoid.Entity;
-import arkanoid.GameFieldView;
+import arkanoid.ArkanoidFieldView;
 import arkanoid.PublishingSprite;
 import arkanoid.interaction.GenericEventListener;
 import arkanoid.interaction.PositionChangeListener;
@@ -24,7 +24,7 @@ public class EntityView
 
     protected final Entity ingameObject;
     
-    protected GameFieldView _fieldView = null;
+    protected ArkanoidFieldView _fieldView = null;
 	protected PublishingSprite _sprite = null;
 	protected Point2D.Float _position = null;
 	protected Speed2D _speed = null;
@@ -54,7 +54,7 @@ public class EntityView
 	 * @param obj Модель игрового объекта.
 	 * @param sprite Спрайт, которым он будет отображен.
 	 */
-	public EntityView(Entity obj, PublishingSprite sprite, GameFieldView view) {
+	public EntityView(Entity obj, PublishingSprite sprite, ArkanoidFieldView view) {
 	    
 	    if (sprite == null || obj == null) {
 	        throw new NullPointerException();

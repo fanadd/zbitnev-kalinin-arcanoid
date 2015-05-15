@@ -4,7 +4,7 @@ import java.awt.Dimension;
 import java.awt.geom.Point2D.Float;
 
 import arkanoid.Entity;
-import arkanoid.GameField;
+import arkanoid.ArkanoidField;
 import arkanoid.util.Speed2D;
 
 /**
@@ -14,17 +14,17 @@ import arkanoid.util.Speed2D;
  */
 public abstract class AbstractBrick extends Entity {
 
-	public AbstractBrick(GameField field) {
+	public AbstractBrick(ArkanoidField field) {
 		
 	    super(field);
 	}
 
-    public AbstractBrick(GameField field, Float pos, Dimension dim, Speed2D speed) {
+    public AbstractBrick(ArkanoidField field, Float pos, Dimension dim, Speed2D speed) {
         
         super(field, pos, dim, speed);
     }
 
-    public AbstractBrick(GameField field, Float pos, Dimension dim) {
+    public AbstractBrick(ArkanoidField field, Float pos, Dimension dim) {
         
         super(field, pos, dim);
     }

@@ -15,8 +15,8 @@ import arkanoid.interaction.CollisionListener;
  */
 public class Arkanoid extends Game {
     
-	GameFieldView _fieldView;
-	GameField _field;
+	ArkanoidFieldView _fieldView;
+	ArkanoidField _field;
 	GameController _controller;
 
 	@Override

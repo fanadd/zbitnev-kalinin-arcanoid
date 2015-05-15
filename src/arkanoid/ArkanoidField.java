@@ -18,7 +18,7 @@ import arkanoid.interaction.CollisionListener;
  * @author Nikita Kalinin <nixorv@gmail.com>
  *
  */
-public class GameField implements BallPositionChangedListener, CollisionListener {
+public class ArkanoidField implements BallPositionChangedListener, CollisionListener {
 
 	private ArrayList<Entity> _objects;
 	private Dimension _dimensions;
@@ -27,7 +27,7 @@ public class GameField implements BallPositionChangedListener, CollisionListener
      * Инициализирует поле заданного размера.
      * @param size Размер поля.
      */
-    public GameField(Dimension size) {
+    public ArkanoidField(Dimension size) {
     	
     	_objects = new ArrayList<>();
     	_dimensions = size;

@@ -6,7 +6,7 @@ import java.awt.geom.Point2D.Float;
 import java.util.ArrayList;
 
 import arkanoid.Entity;
-import arkanoid.GameField;
+import arkanoid.ArkanoidField;
 import arkanoid.entities.ball.AbstractBall;
 import arkanoid.util.Speed2D;
 
@@ -19,12 +19,12 @@ public abstract class AbstractPaddle extends Entity {
 
     protected ArrayList<AbstractBall> _balls = new ArrayList<>();
 
-    public AbstractPaddle(GameField field, Float pos, Dimension dim) {
+    public AbstractPaddle(ArkanoidField field, Float pos, Dimension dim) {
         
         super(field, pos, dim);
     }
 
-    public AbstractPaddle(GameField field) {
+    public AbstractPaddle(ArkanoidField field) {
 		
         super(field);
 	}

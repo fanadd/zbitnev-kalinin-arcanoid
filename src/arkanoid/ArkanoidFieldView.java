@@ -22,12 +22,12 @@ import com.golden.gamedev.object.SpriteGroup;
  * @author Gregory Zbitnev <zbitnev@hotmail.com>
  *
  */
-public class GameFieldView extends PlayField {
+public class ArkanoidFieldView extends PlayField {
 	
 	private ArrayList<EntityView> _objectViews = new ArrayList<>();
 	private ArrayList<CollisionListener> _collisionListners;
 	
-	public GameFieldView() {
+	public ArkanoidFieldView() {
 		
     	_collisionListners = new ArrayList<>();
 		SpriteGroup balls = new SpriteGroup("balls");

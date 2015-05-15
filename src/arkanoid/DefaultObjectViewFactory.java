@@ -24,7 +24,7 @@ public class DefaultObjectViewFactory {
     protected BufferedImage _breakableBrickImage = null;
     protected BufferedImage _unbreakableBrickImage = null;
     protected BufferedImage _basicPaddleImage = null;
-    protected GameFieldView _view = null;
+    protected ArkanoidFieldView _view = null;
     
     public DefaultObjectViewFactory() {
         
@@ -39,7 +39,7 @@ public class DefaultObjectViewFactory {
      */
     public DefaultObjectViewFactory(BufferedImage basicBallImage, BufferedImage breakableBrickImage,
                                     BufferedImage unbreakableBrickImage, BufferedImage basicPaddleImage,
-                                    GameFieldView view) {
+                                    ArkanoidFieldView view) {
         
     	_view = view;
         _basicBallImage = basicBallImage;

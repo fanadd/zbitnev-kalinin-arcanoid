@@ -3,7 +3,7 @@ package arkanoid.entities.brick;
 import java.awt.Dimension;
 import java.awt.geom.Point2D.Float;
 
-import arkanoid.GameField;
+import arkanoid.ArkanoidField;
 import arkanoid.util.Speed2D;
 
 /**
@@ -13,17 +13,17 @@ import arkanoid.util.Speed2D;
  */
 public class UnbreakableBrick extends AbstractBrick {
 
-	public UnbreakableBrick(GameField field, Float pos, Dimension dim, Speed2D speed) {
+	public UnbreakableBrick(ArkanoidField field, Float pos, Dimension dim, Speed2D speed) {
         
 	    super(field, pos, dim, speed);
     }
 
-    public UnbreakableBrick(GameField field, Float pos, Dimension dim) {
+    public UnbreakableBrick(ArkanoidField field, Float pos, Dimension dim) {
         
         super(field, pos, dim);
     }
 
-    public UnbreakableBrick(GameField field) {
+    public UnbreakableBrick(ArkanoidField field) {
 		
         super(field);
 	}

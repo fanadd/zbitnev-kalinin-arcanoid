@@ -22,9 +22,9 @@ public class FieldViewFactory {
 	 * @param field Экземпляр игрового поля.
 	 * @param bsLoader Загрузщик изображений. TODO устранить.
 	 */
-	public GameFieldView instantiateFieldView(GameField field, BaseLoader bsLoader) {
+	public ArkanoidFieldView instantiateFieldView(ArkanoidField field, BaseLoader bsLoader) {
 		
-		GameFieldView newFieldView = new GameFieldView();
+		ArkanoidFieldView newFieldView = new ArkanoidFieldView();
 		
 		// Загрузка изображений для представлений игровых объектов
 		BufferedImage bgImage               = bsLoader.getImage("default/gfx/misc/bg-blue.png");

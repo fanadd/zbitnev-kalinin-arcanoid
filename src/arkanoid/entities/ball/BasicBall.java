@@ -2,7 +2,7 @@ package arkanoid.entities.ball;
 
 import java.awt.geom.Point2D;
 
-import arkanoid.GameField;
+import arkanoid.ArkanoidField;
 import arkanoid.util.Speed2D;
 
 /**
@@ -12,17 +12,17 @@ import arkanoid.util.Speed2D;
  */
 public class BasicBall extends AbstractBall {
 
-	public BasicBall(GameField field) {
+	public BasicBall(ArkanoidField field) {
 		
 	    super(field);
 	}
 
-	public BasicBall(GameField field, Point2D.Float pos, int radius) {
+	public BasicBall(ArkanoidField field, Point2D.Float pos, int radius) {
 	    
 	    super(field, pos, radius);
 	}
 	
-	public BasicBall(GameField field, Point2D.Float pos, int radius, Speed2D speed) {
+	public BasicBall(ArkanoidField field, Point2D.Float pos, int radius, Speed2D speed) {
 	    
 	    super(field, pos, radius, speed);
 	}

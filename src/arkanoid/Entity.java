@@ -31,7 +31,7 @@ public abstract class Entity implements Cloneable, PositionChangeListener, Speed
 	protected ArrayList<CollisionReaction> _defaultColBehaviour = new ArrayList<>();
 	protected HashMap<Class<?>, SpecialBehaviours> _specialColBehaviours 
 		= new HashMap<>();
-	protected GameField _field = null;
+	protected ArkanoidField _field = null;
 	protected ArrayList<PositionChangeListener> _positionListeners = new ArrayList<>();
 	protected ArrayList<SpeedChangeListener> _speedListeners = new ArrayList<>();
 	protected ArrayList<GenericEventListener> _geneventListeners = new ArrayList<>();
@@ -41,7 +41,7 @@ public abstract class Entity implements Cloneable, PositionChangeListener, Speed
 	 * Создает игровой объект, координаты (0, 0), нулевая скорость, нулевой размер.
 	 * @param field Игровое поле.
 	 */
-	public Entity(GameField field) {
+	public Entity(ArkanoidField field) {
 		
 	    this(field, new Point2D.Float(0, 0), new Dimension(0, 0));
 	}
@@ -52,7 +52,7 @@ public abstract class Entity implements Cloneable, PositionChangeListener, Speed
 	 * @param pos Позиция объекта.
 	 * @param dim Размеры объекта.
 	 */
-	public Entity(GameField field, Point2D.Float pos, Dimension dim) {
+	public Entity(ArkanoidField field, Point2D.Float pos, Dimension dim) {
 	    
 	    this(field, pos, dim, new Speed2D(0, 0));
 	}
@@ -64,7 +64,7 @@ public abstract class Entity implements Cloneable, PositionChangeListener, Speed
 	 * @param dim Размеры объекта.
 	 * @param speed Скорость объекта.
 	 */
-	public Entity(GameField field, Point2D.Float pos, Dimension dim, Speed2D speed) {
+	public Entity(ArkanoidField field, Point2D.Float pos, Dimension dim, Speed2D speed) {
 	    
 	    if (field == null || pos == null || dim == null || speed == null) {
 	        throw new NullPointerException();
@@ -80,7 +80,7 @@ public abstract class Entity implements Cloneable, PositionChangeListener, Speed
 	 * Возвращает поле, на котором находится объект.
 	 * @return Игровое поле.
 	 */
-	public GameField getField() {
+	public ArkanoidField getField() {
 	    
 	    return this._field;
 	}

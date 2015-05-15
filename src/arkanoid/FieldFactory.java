@@ -19,11 +19,11 @@ public class FieldFactory {
 	 * Создать тестовое игровое поле указанного размера.
 	 * @param size Размеры создаваемого поля.
 	 */
-	public GameField createTestField(Dimension size) {
+	public ArkanoidField createTestField(Dimension size) {
 		
 		// Построение уровня
 		// TODO: Загрузка уровня из файла (пока уровень захардкоден)
-		GameField newField = new GameField(size);
+		ArkanoidField newField = new ArkanoidField(size);
 		BasicBall newball = new BasicBall(newField, new Point2D.Float(40, 160), 8, new Speed2D(0.03, -0.01));
 		BreakableBrick newbrick = new BreakableBrick(newField, new Point2D.Float(180, 120), new Dimension(48, 24));
         BreakableBrick newbrick2 = new BreakableBrick(newField, new Point2D.Float(228, 120), new Dimension(48, 24));
