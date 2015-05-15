@@ -2,11 +2,9 @@ package arkanoid;
 
 import java.awt.Dimension;
 import java.awt.geom.Point2D;
-import java.awt.geom.Point2D.Double;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Set;
 
 import arkanoid.collision.CollidedObject;
 import arkanoid.entities.ball.AbstractBall;
@@ -148,5 +146,14 @@ public class ArkanoidField implements BallPositionChangedListener, CollisionList
 	public ArrayList<Entity> getEntities() {
 
 		return new ArrayList<Entity>(_objects);
+	}
+	
+	public void update(long timeElapsed) {
+		
+		for (Entity e : _objects) {
+			if (e instanceof AbstractBall) {
+				ballPositionChanged((AbstractBall)e);
+			}
+		}
 	}
 }

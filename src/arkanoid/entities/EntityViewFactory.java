@@ -29,7 +29,7 @@ public class EntityViewFactory {
 	
 	public EntityView instantiateEntityView(Entity entity) {
 		
-		EntityView view = new EntityView(entity.getSprite()._sprite);
+		EntityView view = new EntityView(entity.getSprite()._sprite, null, null, null);
 		
 		BufferedImage img = null;
 		try {

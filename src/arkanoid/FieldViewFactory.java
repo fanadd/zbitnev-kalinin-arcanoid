@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 import com.golden.gamedev.engine.BaseLoader;
 import com.golden.gamedev.object.background.ImageBackground;
 
+import arkanoid.entities.DefaultObjectViewFactory;
 import arkanoid.entities.ball.BasicBall;
 import arkanoid.entities.brick.BreakableBrick;
 import arkanoid.entities.brick.UnbreakableBrick;

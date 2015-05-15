@@ -1,8 +1,9 @@
-package arkanoid;
+package arkanoid.entities;
 
 import java.awt.image.BufferedImage;
 
-import arkanoid.entities.EntityView;
+import arkanoid.ArkanoidFieldView;
+import arkanoid.PublishingSprite;
 import arkanoid.entities.ball.BasicBall;
 import arkanoid.entities.brick.BreakableBrick;
 import arkanoid.entities.brick.UnbreakableBrick;
@@ -174,7 +175,7 @@ public class DefaultObjectViewFactory {
         ballSprite.setImage(_basicBallImage);
         
         // Напоминание: этот конструктор сам установит объекты слушателями друг друга.
-        EntityView ballView = new EntityView(ball, ballSprite, _view);
+        EntityView ballView = new EntityView(ball.getSprite()._sprite, ball, ballSprite, _view);
         
         return ballView;
     }
@@ -192,7 +193,7 @@ public class DefaultObjectViewFactory {
         brickSprite.setImage(_breakableBrickImage);
         
         // Напоминание: этот конструктор сам установит объекты слушателями друг друга.
-        EntityView brickView = new EntityView(brick, brickSprite, _view);
+        EntityView brickView = new EntityView(brick.getSprite()._sprite, brick, brickSprite, _view);
         
         return brickView;
     }
@@ -210,7 +211,7 @@ public class DefaultObjectViewFactory {
         brickSprite.setImage(_unbreakableBrickImage);
         
         // Напоминание: этот конструктор сам установит объекты слушателями друг друга.
-        EntityView brickView = new EntityView(brick, brickSprite, _view);
+        EntityView brickView = new EntityView(brick.getSprite()._sprite, brick, brickSprite, _view);
         
         return brickView;
     }
@@ -228,7 +229,7 @@ public class DefaultObjectViewFactory {
         paddleSprite.setImage(_basicPaddleImage);
         
         // Напоминание: этот конструктор сам установит объекты слушателями друг друга.
-        EntityView paddleView = new EntityView(paddle, paddleSprite, _view);
+        EntityView paddleView = new EntityView(paddle.getSprite()._sprite, paddle, paddleSprite, _view);
         
         return paddleView;
     }

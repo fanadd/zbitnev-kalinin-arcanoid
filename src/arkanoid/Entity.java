@@ -21,7 +21,7 @@ import arkanoid.entities.Sprite;
  * @author Nikita Kalinin <nixorv@gmail.com>
  *
  */
-public abstract class Entity implements Cloneable, PositionChangeListener, SpeedChangeListener {
+public abstract class Entity implements Cloneable {
     
     protected Boolean _isDestroyed = false;
     
@@ -340,18 +340,6 @@ public abstract class Entity implements Cloneable, PositionChangeListener, Speed
 	}
 	
 	//-------------------------------------------------------------------------------------------//
-	
-	@Override
-	public void positionChanged(Point2D.Double newpos) {
-		
-	    _sprite.setPosition(newpos);
-	}
-
-	@Override
-	public void speedChanged(Speed2D newspeed) {
-		
-		_sprite.setSpeed(newspeed);
-	}
 	
 	/**
 	 * Добавить слушателя изменения позиции объекта.

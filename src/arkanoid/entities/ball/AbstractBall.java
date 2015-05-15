@@ -81,13 +81,6 @@ public abstract class AbstractBall extends Entity {
 	    _field.ballPositionChanged(this);
 	}
 	
-	@Override
-	public void positionChanged(Point2D.Double newpos) {
-
-	    super.positionChanged(newpos);
-	    _field.ballPositionChanged(this);
-    }
-	
 	/**
 	 * Задать позицию шарика, указав координаты его середины
 	 * @param center Позиция центра шарика

@@ -6,6 +6,8 @@ import java.awt.geom.Point2D.Double;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
+import com.golden.gamedev.object.Sprite;
+
 import arkanoid.Entity;
 import arkanoid.ArkanoidFieldView;
 import arkanoid.PublishingSprite;
@@ -26,23 +28,7 @@ public class EntityView
     
     protected ArkanoidFieldView _fieldView = null;
 	protected PublishingSprite _sprite = null;
-	protected Point2D.Double _position = null;
-	protected Speed2D _speed = null;
-	protected ArrayList<PositionChangeListener> _positionListeners = new ArrayList<>();
-	protected ArrayList<SpeedChangeListener> _speedListeners = new ArrayList<>();
 	com.golden.gamedev.object.Sprite _gtgeSprite = null;
-	
-	private EntityView() {
-		ingameObject = null;
-	}
-	
-	EntityView(com.golden.gamedev.object.Sprite gtgeSprite) {
-		
-		this();
-		if (gtgeSprite == null)
-			throw new NullPointerException();
-		_gtgeSprite = gtgeSprite;
-	}
 	
 	public void setImage(BufferedImage image) {
 		_gtgeSprite.setImage(image);
@@ -54,22 +40,23 @@ public class EntityView
 	 * @param obj Модель игрового объекта.
 	 * @param sprite Спрайт, которым он будет отображен.
 	 */
-	public EntityView(Entity obj, PublishingSprite sprite, ArkanoidFieldView view) {
+	EntityView(com.golden.gamedev.object.Sprite gtgeSprite, 
+			Entity obj, PublishingSprite sprite, ArkanoidFieldView view) {
 	    
 	    if (sprite == null || obj == null) {
 	        throw new NullPointerException();
 	    }
 	    
+		if (gtgeSprite == null)
+			throw new NullPointerException();
+		_gtgeSprite = gtgeSprite;
+		
 	    this.ingameObject = obj;
 	    this._sprite       = sprite;
 	    this._fieldView    = view;
-	    this._position     = obj.getPosition();
-	    this._speed        = obj.getSpeed();
-	    this._sprite.setLocation(_position.x, _position.y);
-	    this._sprite.setSpeed(this._speed.x(), this._speed.y());
+	    this._sprite.setLocation(_gtgeSprite.getX(), _gtgeSprite.getY());
+	    this._sprite.setSpeed(_gtgeSprite.getHorizontalSpeed(), _gtgeSprite.getVerticalSpeed());
 	    this._sprite.setObjectView(this);
-	    addPositionChangeListener(obj);
-	    addSpeedChangeListener(obj);
 	    obj.addPositionChangeListener(this);
 	    obj.addSpeedChangeListener(this);
 	    obj.addGenericEventListener(this);
@@ -83,18 +70,14 @@ public class EntityView
         
     	_sprite.update(timeElapsed);
     	
-    	if (_sprite.getX() != this._position.x || _sprite.getY() != this._position.y) {
-    	    this._position = new Point2D.Double((float)_sprite.getX(), (float)_sprite.getY());
-    	    for (PositionChangeListener l : _positionListeners) {
-    	        l.positionChanged((Point2D.Double) this._position.clone());
-    	    }
+    	if (_sprite.getX() != _gtgeSprite.getX() || _sprite.getY() != _gtgeSprite.getY()) {
+    	    _gtgeSprite.setX(_sprite.getX());
+    	    _gtgeSprite.setY(_sprite.getY());
     	}
     	
-    	if (_sprite.getHorizontalSpeed() != this._speed.x() || _sprite.getVerticalSpeed() != this._speed.y()) {
-    	    this._speed = new Speed2D(_sprite.getHorizontalSpeed(), _sprite.getVerticalSpeed());
-    	    for (SpeedChangeListener l : _speedListeners) {
-    	        l.speedChanged((Speed2D) this._speed.clone());
-    	    }
+    	if (_sprite.getHorizontalSpeed() != _gtgeSprite.getHorizontalSpeed() 
+    			|| _sprite.getVerticalSpeed() != _gtgeSprite.getVerticalSpeed()) {
+    	    _gtgeSprite.setSpeed(_sprite.getHorizontalSpeed(), _sprite.getVerticalSpeed());
     	}
     }
     
@@ -147,38 +130,6 @@ public class EntityView
 	 */
 	public PublishingSprite getSprite() {
 	    return _sprite;
-	}
-	
-	/**
-	 * Добавить слушателя изменения позиции представления объекта
-	 * @param l Новый слушатель
-	 */
-	public void addPositionChangeListener(PositionChangeListener l) {
-		_positionListeners.add(l);
-	}
-	
-	/**
-	 * Удалить слушателя изменения позиции представления объекта
-	 * @param l Удаляемый слушатель
-	 */
-	public void removePositionChangeListener(PositionChangeListener l) {
-		_positionListeners.remove(l);
-	}
-	
-	/**
-	 * Добавить слушателя изменения скорости представления объекта
-	 * @param l Новый слушатель
-	 */
-	public void addSpeedChangeListener(SpeedChangeListener l) {
-		_speedListeners.add(l);
-	}
-	
-	/**
-	 * Удалить слушателя изменения скорости представления объекта
-	 * @param l Удаляемый слушатель
-	 */
-	public void removeSpeedChangeListener(SpeedChangeListener l) {
-		_speedListeners.remove(l);
 	}
 
 	@Override

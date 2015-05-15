@@ -58,6 +58,7 @@ public class Arkanoid extends Game {
 	public void update(long arg0) {
 		
 		// Апдейтим всё
+		_field.update(arg0);
 		_fieldView.update(arg0);
 		_controller.update();
 	}
