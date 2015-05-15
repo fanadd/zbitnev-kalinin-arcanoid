@@ -2,11 +2,11 @@ package arkanoid;
 
 import java.awt.image.BufferedImage;
 
-import arkanoid.ball.BasicBall;
-import arkanoid.brick.BreakableBrick;
-import arkanoid.brick.UnbreakableBrick;
 import arkanoid.entities.EntityView;
-import arkanoid.paddle.BasicPaddle;
+import arkanoid.entities.ball.BasicBall;
+import arkanoid.entities.brick.BreakableBrick;
+import arkanoid.entities.brick.UnbreakableBrick;
+import arkanoid.entities.paddle.BasicPaddle;
 
 /**
  * Фабрика для создания представлений стандартных игровых объектов:

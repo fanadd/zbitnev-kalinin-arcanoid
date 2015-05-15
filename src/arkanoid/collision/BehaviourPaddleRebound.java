@@ -3,8 +3,8 @@ package arkanoid.collision;
 import java.awt.geom.Point2D;
 
 import arkanoid.Entity;
-import arkanoid.ball.AbstractBall;
-import arkanoid.paddle.AbstractPaddle;
+import arkanoid.entities.ball.AbstractBall;
+import arkanoid.entities.paddle.AbstractPaddle;
 
 /**
  * Поведение отскока от ракетки при столкновении.

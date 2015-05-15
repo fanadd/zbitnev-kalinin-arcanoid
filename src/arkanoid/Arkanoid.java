@@ -5,8 +5,8 @@ import java.awt.Graphics2D;
 import com.golden.gamedev.Game;
 
 import arkanoid.controller.GameController;
+import arkanoid.entities.paddle.BasicPaddle;
 import arkanoid.interaction.CollisionListener;
-import arkanoid.paddle.BasicPaddle;
 
 /**
  * Режим игры

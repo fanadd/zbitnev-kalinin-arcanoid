@@ -8,9 +8,9 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 
-import arkanoid.ball.AbstractBall;
-import arkanoid.ball.BallPositionChangedListener;
 import arkanoid.collision.CollidedObject;
+import arkanoid.entities.ball.AbstractBall;
+import arkanoid.entities.ball.BallPositionChangedListener;
 import arkanoid.interaction.CollisionListener;
 
 /**

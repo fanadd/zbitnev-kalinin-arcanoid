@@ -4,7 +4,7 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Point2D.Float;
 import java.util.ArrayList;
 
-import arkanoid.paddle.AbstractPaddle;
+import arkanoid.entities.paddle.AbstractPaddle;
 import arkanoid.util.Direction;
 
 /**

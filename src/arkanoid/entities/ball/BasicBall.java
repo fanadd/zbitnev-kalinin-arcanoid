@@ -1,4 +1,4 @@
-package arkanoid.ball;
+package arkanoid.entities.ball;
 
 import java.awt.geom.Point2D;
 

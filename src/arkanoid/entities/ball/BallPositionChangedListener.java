@@ -1,4 +1,4 @@
-package arkanoid.ball;
+package arkanoid.entities.ball;
 
 /**
  * Внутренний интерфейс слушателя событий об изменении позиции мяча.

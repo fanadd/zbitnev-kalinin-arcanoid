@@ -1,4 +1,4 @@
-package arkanoid.paddle;
+package arkanoid.entities.paddle;
 
 import java.awt.Dimension;
 import java.awt.geom.Point2D.Float;

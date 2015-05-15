@@ -7,10 +7,10 @@ import java.awt.image.BufferedImage;
 import com.golden.gamedev.engine.BaseLoader;
 import com.golden.gamedev.object.background.ImageBackground;
 
-import arkanoid.ball.BasicBall;
-import arkanoid.brick.BreakableBrick;
-import arkanoid.brick.UnbreakableBrick;
-import arkanoid.paddle.BasicPaddle;
+import arkanoid.entities.ball.BasicBall;
+import arkanoid.entities.brick.BreakableBrick;
+import arkanoid.entities.brick.UnbreakableBrick;
+import arkanoid.entities.paddle.BasicPaddle;
 
 /**
  * Фабрика представлений игрового поля.

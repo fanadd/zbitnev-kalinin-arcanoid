@@ -3,11 +3,11 @@ package arkanoid;
 import java.awt.Dimension;
 import java.awt.geom.Point2D;
 
-import arkanoid.ball.BasicBall;
-import arkanoid.brick.BreakableBrick;
-import arkanoid.brick.UnbreakableBrick;
 import arkanoid.collision.BehaviourRebound;
-import arkanoid.paddle.BasicPaddle;
+import arkanoid.entities.ball.BasicBall;
+import arkanoid.entities.brick.BreakableBrick;
+import arkanoid.entities.brick.UnbreakableBrick;
+import arkanoid.entities.paddle.BasicPaddle;
 import arkanoid.util.Speed2D;
 
 /**

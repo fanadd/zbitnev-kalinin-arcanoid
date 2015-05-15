@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import arkanoid.ball.AbstractBall;
-import arkanoid.brick.AbstractBrick;
 import arkanoid.collision.CollidedObject;
 import arkanoid.entities.EntityView;
+import arkanoid.entities.ball.AbstractBall;
+import arkanoid.entities.brick.AbstractBrick;
+import arkanoid.entities.paddle.AbstractPaddle;
 import arkanoid.interaction.CollisionListener;
-import arkanoid.paddle.AbstractPaddle;
 
 import com.golden.gamedev.object.CollisionManager;
 import com.golden.gamedev.object.PlayField;

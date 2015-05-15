@@ -1,4 +1,4 @@
-package arkanoid.paddle;
+package arkanoid.entities.paddle;
 
 import java.awt.Dimension;
 import java.awt.geom.Point2D;
@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import arkanoid.Entity;
 import arkanoid.GameField;
-import arkanoid.ball.AbstractBall;
+import arkanoid.entities.ball.AbstractBall;
 import arkanoid.util.Speed2D;
 
 /**

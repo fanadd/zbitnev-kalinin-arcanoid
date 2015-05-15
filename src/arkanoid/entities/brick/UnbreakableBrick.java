@@ -1,4 +1,4 @@
-package arkanoid.brick;
+package arkanoid.entities.brick;
 
 import java.awt.Dimension;
 import java.awt.geom.Point2D.Float;
