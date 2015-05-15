@@ -11,8 +11,6 @@ import arkanoid.collision.CollidedObject;
 import arkanoid.collision.CollisionReaction;
 import arkanoid.collision.SpecialBehaviours;
 import arkanoid.interaction.GenericEventListener;
-import arkanoid.interaction.PositionChangeListener;
-import arkanoid.interaction.SpeedChangeListener;
 import arkanoid.util.Speed2D;
 import arkanoid.entities.Sprite;
 
@@ -30,8 +28,6 @@ public abstract class Entity implements Cloneable {
 	protected HashMap<Class<?>, SpecialBehaviours> _specialColBehaviours 
 		= new HashMap<>();
 	protected ArkanoidField _field = null;
-	protected ArrayList<PositionChangeListener> _positionListeners = new ArrayList<>();
-	protected ArrayList<SpeedChangeListener> _speedListeners = new ArrayList<>();
 	protected ArrayList<GenericEventListener> _geneventListeners = new ArrayList<>();
 	protected Sprite _sprite = null;
 
@@ -100,9 +96,6 @@ public abstract class Entity implements Cloneable {
 	public void setSpeed(Speed2D speed) {
 
 		_sprite.setSpeed(speed);
-		for (SpeedChangeListener l : _speedListeners) {
-			l.speedChanged(_sprite.getSpeed());
-		}
 	}
 	
 	/**
@@ -124,9 +117,6 @@ public abstract class Entity implements Cloneable {
 	        throw new NullPointerException();
 	    }
 		_sprite.setPosition(pos);
-		for (PositionChangeListener l : _positionListeners) {
-			l.positionChanged(_sprite.getPosition());
-		}
 	}
 	
 	/**
@@ -340,38 +330,6 @@ public abstract class Entity implements Cloneable {
 	}
 	
 	//-------------------------------------------------------------------------------------------//
-	
-	/**
-	 * Добавить слушателя изменения позиции объекта.
-	 * @param l Новый слушатель.
-	 */
-	public void addPositionChangeListener(PositionChangeListener l) {
-		_positionListeners.add(l);
-	}
-	
-	/**
-	 * Удалить слушателя изменения позиции объекта.
-	 * @param l Удаляемый слушатель.
-	 */
-	public void removePositionChangeListener(PositionChangeListener l) {
-		_positionListeners.remove(l);
-	}
-	
-	/**
-	 * Добавить слушателя изменения скорости объекта.
-	 * @param l Новый слушатель.
-	 */
-	public void addSpeedChangeListener(SpeedChangeListener l) {
-		_speedListeners.add(l);
-	}
-	
-	/**
-	 * Удалить слушателя изменения скорости объекта.
-	 * @param l Удаляемый слушатель.
-	 */
-	public void removeSpeedChangeListener(SpeedChangeListener l) {
-		_speedListeners.remove(l);
-	}
 	
 	/**
 	 * Добавить слушателя событий жизни объекта.

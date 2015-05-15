@@ -11,8 +11,6 @@ import com.golden.gamedev.object.Sprite;
 import arkanoid.Entity;
 import arkanoid.ArkanoidFieldView;
 import arkanoid.interaction.GenericEventListener;
-import arkanoid.interaction.PositionChangeListener;
-import arkanoid.interaction.SpeedChangeListener;
 import arkanoid.util.Speed2D;
 
 /**
@@ -20,8 +18,7 @@ import arkanoid.util.Speed2D;
  * @author Gregory Zbitnev <zbitnev@hotmail.com>
  *
  */
-public class EntityView
-		implements PositionChangeListener, SpeedChangeListener, GenericEventListener {
+public class EntityView implements GenericEventListener {
 
     protected final Entity ingameObject;
     
@@ -51,8 +48,6 @@ public class EntityView
 		
 	    this.ingameObject = obj;
 	    this._fieldView    = view;
-	    obj.addPositionChangeListener(this);
-	    obj.addSpeedChangeListener(this);
 	    obj.addGenericEventListener(this);
 	}
     
@@ -80,13 +75,5 @@ public class EntityView
 	@Override
 	public void destroyed() {
 		this._fieldView.removeObjectView(this);
-	}
-
-	@Override
-	public void speedChanged(Speed2D newspeed) {
-	}
-
-	@Override
-	public void positionChanged(Double newpos) {
 	}
 }
