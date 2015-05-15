@@ -4,19 +4,19 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 import arkanoid.collision.CollidedObject;
 import arkanoid.entities.EntityView;
+import arkanoid.entities.EntityViewFactory;
 import arkanoid.entities.PublishingCollisionManager;
 import arkanoid.entities.ball.AbstractBall;
 import arkanoid.entities.brick.AbstractBrick;
 import arkanoid.entities.paddle.AbstractPaddle;
 import arkanoid.interaction.CollisionListener;
+import arkanoid.interaction.GenericEventListener;
 
 import com.golden.gamedev.object.CollisionManager;
 import com.golden.gamedev.object.PlayField;
-import com.golden.gamedev.object.Sprite;
 import com.golden.gamedev.object.SpriteGroup;
 import com.golden.gamedev.object.background.ImageBackground;
 
@@ -28,10 +28,12 @@ import com.golden.gamedev.object.background.ImageBackground;
  */
 public class ArkanoidFieldView {
 	
+	private EntityViewFactory _viewFactory = new EntityViewFactory();
 	private PlayField _gtgeField = new PlayField();
 	private ArkanoidField _field = null;
 	private ArrayList<EntityView> _objectViews = new ArrayList<>();
 	private ArrayList<CollisionListener> _collisionListners;
+	private EntityEventHandler _entityEventHandler = new EntityEventHandler();
 	
 	public ArkanoidFieldView(ArkanoidField field) {
 		
@@ -39,6 +41,8 @@ public class ArkanoidFieldView {
 			throw new NullPointerException();
 		
 		_field = field;
+		_field.addEntityEventListener(_entityEventHandler);
+		
     	_collisionListners = new ArrayList<>();
 		SpriteGroup balls = new SpriteGroup("balls");
 		SpriteGroup bricks = new SpriteGroup("bricks");
@@ -51,6 +55,10 @@ public class ArkanoidFieldView {
 		_gtgeField.addCollisionGroup(balls, paddles, new PublishingCollisionManager(_field));
 		_gtgeField.addCollisionGroup(balls, bricks, new PublishingCollisionManager(_field));
 		_gtgeField.addCollisionGroup(balls, balls, new PublishingCollisionManager(_field));
+		
+		for (Entity e : _field.getEntities()) {
+			this.addObjectView(_viewFactory.instantiateEntityView(e, this));
+		}
 	}
 
 	public void update(long timeElapsed) {
@@ -110,10 +118,10 @@ public class ArkanoidFieldView {
 	}
 	
 	/**
-	 * Добавляет представление объекта на это поле. Этот метод добавляет объект в соответствующую группу спрайтов.
-	 * @param ov Представление.
+	 * Добавляет представление объекта на это поле.
+	 * Этот метод добавляет объект в соответствующую группу спрайтов.
 	 */
-	public void addObjectView(EntityView ov) {
+	private void addObjectView(EntityView ov) {
 	    
 	    _objectViews.add(ov);
 	    if (ov.getIngameObject() instanceof AbstractBall) {
@@ -127,9 +135,8 @@ public class ArkanoidFieldView {
 	
 	/**
 	 * Удаляет представление объекта с этого представления поля и из группы спрайтов.
-	 * @param ov Представление.
 	 */
-	public void removeObjectView(EntityView ov) {
+	private void removeObjectView(EntityView ov) {
 	    
 	    _objectViews.remove(ov);
 	    if (ov.getIngameObject() instanceof AbstractBall) {
@@ -229,5 +236,29 @@ public class ArkanoidFieldView {
 
 	public void render(Graphics2D g) {
 		_gtgeField.render(g);
+	}
+	
+	private class EntityEventHandler implements GenericEventListener {
+		
+		@Override
+		public void entityRemoved(Entity entity) {
+			
+			EntityView removed = null;
+			for (EntityView ev : _objectViews) {
+				if (ev.getIngameObject() == entity) {
+					removed = ev;
+				}
+			}
+			ArkanoidFieldView.this.removeObjectView(removed);
+		}
+
+		@Override
+		public void entityAdded(Entity entity) {
+			
+			ArkanoidFieldView.this.addObjectView(
+					_viewFactory.instantiateEntityView(entity, ArkanoidFieldView.this)
+					);
+		}
+		
 	}
 }

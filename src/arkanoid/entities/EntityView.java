@@ -18,7 +18,7 @@ import arkanoid.util.Speed2D;
  * @author Gregory Zbitnev <zbitnev@hotmail.com>
  *
  */
-public class EntityView implements GenericEventListener {
+public class EntityView {
 
     protected final Entity ingameObject;
     
@@ -48,7 +48,6 @@ public class EntityView implements GenericEventListener {
 		
 	    this.ingameObject = obj;
 	    this._fieldView    = view;
-	    obj.addGenericEventListener(this);
 	}
     
 	public void render(Graphics2D g) {
@@ -70,10 +69,5 @@ public class EntityView implements GenericEventListener {
 	 */
 	public Sprite getSprite() {
 	    return _gtgeSprite;
-	}
-
-	@Override
-	public void destroyed() {
-		this._fieldView.removeObjectView(this);
 	}
 }

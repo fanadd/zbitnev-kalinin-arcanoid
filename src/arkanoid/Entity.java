@@ -10,7 +10,6 @@ import java.util.Map;
 import arkanoid.collision.CollidedObject;
 import arkanoid.collision.CollisionReaction;
 import arkanoid.collision.SpecialBehaviours;
-import arkanoid.interaction.GenericEventListener;
 import arkanoid.util.Speed2D;
 import arkanoid.entities.Sprite;
 
@@ -22,13 +21,10 @@ import arkanoid.entities.Sprite;
 public abstract class Entity implements Cloneable {
     
     protected Boolean _isDestroyed = false;
-    
 	protected Dimension _size = null;
 	protected ArrayList<CollisionReaction> _defaultColBehaviour = new ArrayList<>();
-	protected HashMap<Class<?>, SpecialBehaviours> _specialColBehaviours 
-		= new HashMap<>();
+	protected HashMap<Class<?>, SpecialBehaviours> _specialColBehaviours = new HashMap<>();
 	protected ArkanoidField _field = null;
-	protected ArrayList<GenericEventListener> _geneventListeners = new ArrayList<>();
 	protected Sprite _sprite = null;
 
 	/**
@@ -315,9 +311,6 @@ public abstract class Entity implements Cloneable {
 		
 	    this._isDestroyed = true;
 	    this._field.removeObject(this);
-	    for (GenericEventListener l : _geneventListeners) {
-	    	l.destroyed();
-	    }
 	}
 	
 	/**
@@ -327,29 +320,6 @@ public abstract class Entity implements Cloneable {
 	public boolean isDestroyed() {
 	    
 	    return _isDestroyed;
-	}
-	
-	//-------------------------------------------------------------------------------------------//
-	
-	/**
-	 * Добавить слушателя событий жизни объекта.
-	 * @param l Добавляемый слушатель.
-	 */
-	public void addGenericEventListener(GenericEventListener l) {
-		
-		if (l == null) {
-			return;
-		}
-
-		_geneventListeners.add(l);
-	}
-	
-	/**
-	 * Удалить слушателя событий жизни объекта.
-	 * @param l Удаляемый слушатель.
-	 */
-	public void removeGenericEventListener(GenericEventListener l) {
-		_geneventListeners.remove(l);
 	}
 	
 	@Override

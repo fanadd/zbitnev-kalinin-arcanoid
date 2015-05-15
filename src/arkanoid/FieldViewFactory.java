@@ -23,10 +23,6 @@ public class FieldViewFactory {
 		
 		ArkanoidFieldView newFieldView = new ArkanoidFieldView(field);
 		
-		for (Entity e : field.getEntities()) {
-			newFieldView.addObjectView(_factory.instantiateEntityView(e, newFieldView));
-		}
-		
 		// Задать фон уровня.
 		BufferedImage fieldBg = new BufferedImage(field.getSize().width, field.getSize().height, 
 				BufferedImage.TYPE_INT_ARGB);

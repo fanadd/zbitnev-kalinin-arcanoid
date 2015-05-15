@@ -3,14 +3,20 @@ package arkanoid.interaction;
 import arkanoid.Entity;
 
 /**
- * Интерфейс слушателя событий создания, удаления.
+ * Интерфейс слушателя событий добавления и удаления игрового объекта с поля.
  * @author Gregory Zbitnev <zbitnev@hotmail.com>
- *
  */
 public interface GenericEventListener {
 	
 	/**
-	 * Объект был уничтожен.
+	 * Объект был удалён с поля.
+	 * @param entity
 	 */
-	void destroyed();
+	public void entityRemoved(Entity entity);
+	
+	/**
+	 * Объект был добавлен на поле.
+	 * @param entity
+	 */
+	public void entityAdded(Entity entity);
 }
