@@ -2,7 +2,7 @@
 
 import java.awt.Graphics2D;
 import java.awt.geom.Point2D;
-import java.awt.geom.Point2D.Float;
+import java.awt.geom.Point2D.Double;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
@@ -26,7 +26,7 @@ public class EntityView
     
     protected ArkanoidFieldView _fieldView = null;
 	protected PublishingSprite _sprite = null;
-	protected Point2D.Float _position = null;
+	protected Point2D.Double _position = null;
 	protected Speed2D _speed = null;
 	protected ArrayList<PositionChangeListener> _positionListeners = new ArrayList<>();
 	protected ArrayList<SpeedChangeListener> _speedListeners = new ArrayList<>();
@@ -84,9 +84,9 @@ public class EntityView
     	_sprite.update(timeElapsed);
     	
     	if (_sprite.getX() != this._position.x || _sprite.getY() != this._position.y) {
-    	    this._position = new Point2D.Float((float)_sprite.getX(), (float)_sprite.getY());
+    	    this._position = new Point2D.Double((float)_sprite.getX(), (float)_sprite.getY());
     	    for (PositionChangeListener l : _positionListeners) {
-    	        l.positionChanged((Float) this._position.clone());
+    	        l.positionChanged((Point2D.Double) this._position.clone());
     	    }
     	}
     	
@@ -108,7 +108,7 @@ public class EntityView
 	}
     
 	@Override
-	public void positionChanged(Point2D.Float newpos) {
+	public void positionChanged(Point2D.Double newpos) {
 		
 		_sprite.setLocation(newpos.x, newpos.y);
 	}

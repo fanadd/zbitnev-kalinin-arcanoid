@@ -17,12 +17,12 @@ public class BasicBall extends AbstractBall {
 	    super(field);
 	}
 
-	public BasicBall(ArkanoidField field, Point2D.Float pos, int radius) {
+	public BasicBall(ArkanoidField field, Point2D.Double pos, int radius) {
 	    
 	    super(field, pos, radius);
 	}
 	
-	public BasicBall(ArkanoidField field, Point2D.Float pos, int radius, Speed2D speed) {
+	public BasicBall(ArkanoidField field, Point2D.Double pos, int radius, Speed2D speed) {
 	    
 	    super(field, pos, radius, speed);
 	}

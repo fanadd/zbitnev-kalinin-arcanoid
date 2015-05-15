@@ -16,14 +16,14 @@ import org.junit.Test;
 public class PlayerTest {
 
     GameField fieldModel = new GameField(new Dimension(300, 100));
-    BasicPaddle paddle = new BasicPaddle(fieldModel, new Point2D.Float(0, 84), new Dimension(96, 16));
+    BasicPaddle paddle = new BasicPaddle(fieldModel, new Point2D.Double(0, 84), new Dimension(96, 16));
     Player player = new Player(paddle);
     
     @Test
     public void testFire() {
         
         // Размещаем мяч на ракетке, принадлежащей игроку, просим игрока запустить мячи со всех ракеток.
-        BasicBall ball = new BasicBall(fieldModel, new Point2D.Float(20, 20), 8);
+        BasicBall ball = new BasicBall(fieldModel, new Point2D.Double(20, 20), 8);
         paddle.addBall(ball);
         player.firePaddles();
         

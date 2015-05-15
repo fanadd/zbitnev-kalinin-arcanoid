@@ -28,12 +28,12 @@ public class BehaviourPaddleReboundTest {
         GameField field = new GameField(new Dimension(100, 100));
         model.setField(field);
         
-        BasicPaddle paddle = new BasicPaddle(field, new Point2D.Float(0, 80), new Dimension(96, 16));
+        BasicPaddle paddle = new BasicPaddle(field, new Point2D.Double(0, 80), new Dimension(96, 16));
         
         // Размещаем три мяча в три активные области ракетки.
-        BasicBall ballLeft = new BasicBall(field, new Point2D.Float(5, 64), 8, new Speed2D(0, -0.1));
-        BasicBall ballCenter = new BasicBall(field, new Point2D.Float(40, 64), 8, new Speed2D(0, -0.1));
-        BasicBall ballRight = new BasicBall(field, new Point2D.Float(80, 64), 8, new Speed2D(0, -0.1));
+        BasicBall ballLeft = new BasicBall(field, new Point2D.Double(5, 64), 8, new Speed2D(0, -0.1));
+        BasicBall ballCenter = new BasicBall(field, new Point2D.Double(40, 64), 8, new Speed2D(0, -0.1));
+        BasicBall ballRight = new BasicBall(field, new Point2D.Double(80, 64), 8, new Speed2D(0, -0.1));
         
         // Имитируем столкновение.
         
@@ -49,10 +49,10 @@ public class BehaviourPaddleReboundTest {
         CollisionRect paddleShape = new CollisionRect();
         paddleShape.setBounds(0, 80, 96, 16);
         
-        CollidedObject collidedBallLeft = new CollidedObject(ballLeft, new Point2D.Float(5, 64), CollidedObject.SIDE_BOTTOM, ballLeftShape);
-        CollidedObject collidedBallCenter = new CollidedObject(ballCenter, new Point2D.Float(40, 64), CollidedObject.SIDE_BOTTOM, ballCenterShape);
-        CollidedObject collidedBallRight = new CollidedObject(ballRight, new Point2D.Float(80, 64), CollidedObject.SIDE_BOTTOM, ballRightShape);
-        CollidedObject collidedPaddle = new CollidedObject(paddle, new Point2D.Float(0, 80), CollidedObject.SIDE_TOP, paddleShape);
+        CollidedObject collidedBallLeft = new CollidedObject(ballLeft, new Point2D.Double(5, 64), CollidedObject.SIDE_BOTTOM, ballLeftShape);
+        CollidedObject collidedBallCenter = new CollidedObject(ballCenter, new Point2D.Double(40, 64), CollidedObject.SIDE_BOTTOM, ballCenterShape);
+        CollidedObject collidedBallRight = new CollidedObject(ballRight, new Point2D.Double(80, 64), CollidedObject.SIDE_BOTTOM, ballRightShape);
+        CollidedObject collidedPaddle = new CollidedObject(paddle, new Point2D.Double(0, 80), CollidedObject.SIDE_TOP, paddleShape);
         
         ArrayList<CollidedObject> collidedToBallLeft = new ArrayList<>();
         collidedToBallLeft.add(collidedPaddle);

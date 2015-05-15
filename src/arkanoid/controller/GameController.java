@@ -2,7 +2,7 @@ package arkanoid.controller;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
-import java.awt.geom.Point2D.Float;
+import java.awt.geom.Point2D.Double;
 
 import arkanoid.Player;
 import arkanoid.util.Direction;

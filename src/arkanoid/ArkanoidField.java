@@ -2,7 +2,7 @@ package arkanoid;
 
 import java.awt.Dimension;
 import java.awt.geom.Point2D;
-import java.awt.geom.Point2D.Float;
+import java.awt.geom.Point2D.Double;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -67,15 +67,15 @@ public class ArkanoidField implements BallPositionChangedListener, CollisionList
     public void ballPositionChanged(AbstractBall ball) {
         
         if (ball.getPosition().y < 0) {
-            ball.setPosition(new Point2D.Float(ball.getPosition().x, 0));
+            ball.setPosition(new Point2D.Double(ball.getPosition().x, 0));
             ball.setSpeed(ball.getSpeed().flipVertical());
         }
         
         if (ball.getPosition().x < 0 || ball.getPosition().x + ball.getSize().width > _dimensions.width) {
             if (ball.getPosition().x < 0) {
-                ball.setPosition(new Point2D.Float(0, ball.getPosition().y));
+                ball.setPosition(new Point2D.Double(0, ball.getPosition().y));
             } else {
-                ball.setPosition(new Point2D.Float(_dimensions.width - ball.getSize().width, ball.getPosition().y));
+                ball.setPosition(new Point2D.Double(_dimensions.width - ball.getSize().width, ball.getPosition().y));
             }
             ball.setSpeed(ball.getSpeed().flipHorizontal());
         }

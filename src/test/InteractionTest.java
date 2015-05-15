@@ -47,10 +47,10 @@ public class InteractionTest {
         // Изменилась позиция спрайта.
         ballView.getSprite().setLocation(10, 15);
         ballView.update(0);
-        assertTrue(ballModel.getPosition().equals(new Point2D.Float(10, 15)));
+        assertTrue(ballModel.getPosition().equals(new Point2D.Double(10, 15)));
         
         // Изменилась позиция в модели.
-        ballModel.setPosition(new Point2D.Float(4, 7));
+        ballModel.setPosition(new Point2D.Double(4, 7));
         assertTrue(ballView.getSprite().getX() == 4
                 && ballView.getSprite().getY() == 7);
     }

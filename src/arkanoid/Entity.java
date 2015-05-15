@@ -2,7 +2,7 @@ package arkanoid;
 
 import java.awt.Dimension;
 import java.awt.geom.Point2D;
-import java.awt.geom.Point2D.Float;
+import java.awt.geom.Point2D.Double;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -25,7 +25,7 @@ public abstract class Entity implements Cloneable, PositionChangeListener, Speed
     
     protected Boolean _isDestroyed = false;
     
-	protected Point2D.Float _position = null;
+	protected Point2D.Double _position = null;
 	protected Dimension _size = null;
 	protected Speed2D _speed = null;
 	protected ArrayList<CollisionReaction> _defaultColBehaviour = new ArrayList<>();
@@ -43,7 +43,7 @@ public abstract class Entity implements Cloneable, PositionChangeListener, Speed
 	 */
 	public Entity(ArkanoidField field) {
 		
-	    this(field, new Point2D.Float(0, 0), new Dimension(0, 0));
+	    this(field, new Point2D.Double(0, 0), new Dimension(0, 0));
 	}
 	
 	/**
@@ -52,7 +52,7 @@ public abstract class Entity implements Cloneable, PositionChangeListener, Speed
 	 * @param pos Позиция объекта.
 	 * @param dim Размеры объекта.
 	 */
-	public Entity(ArkanoidField field, Point2D.Float pos, Dimension dim) {
+	public Entity(ArkanoidField field, Point2D.Double pos, Dimension dim) {
 	    
 	    this(field, pos, dim, new Speed2D(0, 0));
 	}
@@ -64,7 +64,7 @@ public abstract class Entity implements Cloneable, PositionChangeListener, Speed
 	 * @param dim Размеры объекта.
 	 * @param speed Скорость объекта.
 	 */
-	public Entity(ArkanoidField field, Point2D.Float pos, Dimension dim, Speed2D speed) {
+	public Entity(ArkanoidField field, Point2D.Double pos, Dimension dim, Speed2D speed) {
 	    
 	    if (field == null || pos == null || dim == null || speed == null) {
 	        throw new NullPointerException();
@@ -110,16 +110,16 @@ public abstract class Entity implements Cloneable, PositionChangeListener, Speed
 	 * Получить позицию.
 	 * @return Текущая позиция.
 	 */
-	public Point2D.Float getPosition() {
+	public Point2D.Double getPosition() {
 
-		return (Point2D.Float) _position.clone();
+		return (Point2D.Double) _position.clone();
 	}
 	
 	/**
 	 * Задать позицию.
 	 * @param pos Новая позиция.
 	 */
-	public void setPosition(Point2D.Float pos) {
+	public void setPosition(Point2D.Double pos) {
 
 	    if (pos == null) {
 	        throw new NullPointerException();
@@ -155,9 +155,9 @@ public abstract class Entity implements Cloneable, PositionChangeListener, Speed
 	 * Сдвинуть объект.
 	 * @param delta Величина изменения позиции
 	 */
-	public void move(Point2D.Float delta) {
+	public void move(Point2D.Double delta) {
 		
-		this.setPosition(new Point2D.Float(this.getPosition().x + delta.x, this.getPosition().y + delta.y));
+		this.setPosition(new Point2D.Double(this.getPosition().x + delta.x, this.getPosition().y + delta.y));
 	}
 	
 	/**
@@ -343,7 +343,7 @@ public abstract class Entity implements Cloneable, PositionChangeListener, Speed
 	//-------------------------------------------------------------------------------------------//
 	
 	@Override
-	public void positionChanged(Point2D.Float newpos) {
+	public void positionChanged(Point2D.Double newpos) {
 		
 	    this._position = newpos;
 	}
@@ -413,7 +413,7 @@ public abstract class Entity implements Cloneable, PositionChangeListener, Speed
 		Entity clone = (Entity)super.clone();
 		clone._isDestroyed = this._isDestroyed;
 		clone._field = this._field;    // ссылка на поле просто копируется, да
-		clone._position = (Point2D.Float) this._position.clone();
+		clone._position = (Point2D.Double) this._position.clone();
 		clone._size = (Dimension) this._size.clone();
 		clone._speed = (Speed2D) this._speed.clone();
 		

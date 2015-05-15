@@ -1,7 +1,8 @@
 package arkanoid.entities.paddle;
 
 import java.awt.Dimension;
-import java.awt.geom.Point2D.Float;
+import java.awt.geom.Point2D;
+import java.awt.geom.Point2D.Double;
 
 import arkanoid.ArkanoidField;
 import arkanoid.util.Speed2D;
@@ -13,7 +14,7 @@ import arkanoid.util.Speed2D;
  */
 public class BasicPaddle extends AbstractPaddle {
 
-    public BasicPaddle(ArkanoidField field, Float pos, Dimension dim) {
+    public BasicPaddle(ArkanoidField field, Point2D.Double pos, Dimension dim) {
         
         super(field, pos, dim);
     }

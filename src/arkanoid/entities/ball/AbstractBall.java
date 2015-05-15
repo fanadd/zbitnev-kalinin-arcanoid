@@ -18,15 +18,15 @@ import arkanoid.util.Speed2D;
 public abstract class AbstractBall extends Entity {
 
 	public AbstractBall(ArkanoidField field) {
-		this(field, new Point2D.Float(0, 0), 0);
+		this(field, new Point2D.Double(0, 0), 0);
 	}
 	
-	public AbstractBall(ArkanoidField field, Point2D.Float pos, int radius) {
+	public AbstractBall(ArkanoidField field, Point2D.Double pos, int radius) {
 	    
 	    this(field, pos, radius, new Speed2D(0, 0));
 	}
 	
-	public AbstractBall(ArkanoidField field, Point2D.Float pos, int radius, Speed2D speed) {
+	public AbstractBall(ArkanoidField field, Point2D.Double pos, int radius, Speed2D speed) {
         
         super(field, pos, new Dimension(2*radius, 2*radius), speed);
         this.addDefaultCollisionBehaviour(ReactionRebound.getInstance());
@@ -75,14 +75,14 @@ public abstract class AbstractBall extends Entity {
 	public abstract float getDefaultSpeedScalar();
 	
 	@Override
-	public void setPosition(Point2D.Float pos) {
+	public void setPosition(Point2D.Double pos) {
 	    
 	    super.setPosition(pos);
 	    _field.ballPositionChanged(this);
 	}
 	
 	@Override
-	public void positionChanged(Point2D.Float newpos) {
+	public void positionChanged(Point2D.Double newpos) {
 
 	    super.positionChanged(newpos);
 	    _field.ballPositionChanged(this);
@@ -92,18 +92,18 @@ public abstract class AbstractBall extends Entity {
 	 * Задать позицию шарика, указав координаты его середины
 	 * @param center Позиция центра шарика
 	 */
-	public void setCenter(Point2D.Float center) {
+	public void setCenter(Point2D.Double center) {
 		
-		setPosition(new Point2D.Float(center.x - _size.width/2, center.y - _size.height/2));
+		setPosition(new Point2D.Double(center.x - _size.width/2, center.y - _size.height/2));
 	}
 	
 	/**
 	 * Получить позицию центра шарика
 	 * @return Позиция центра шарика
 	 */
-	public Point2D.Float getCenter() {
+	public Point2D.Double getCenter() {
 		
-		return new Point2D.Float(this._position.x + _size.width/2, 
+		return new Point2D.Double(this._position.x + _size.width/2, 
 								 this._position.y + _size.height/2);
 	}
 	

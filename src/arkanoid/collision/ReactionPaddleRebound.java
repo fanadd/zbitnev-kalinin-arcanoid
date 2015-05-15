@@ -38,7 +38,7 @@ public class ReactionPaddleRebound extends CollisionReaction {
 		
 		if (from.object() instanceof AbstractPaddle && to.object() instanceof AbstractBall) {
 		
-			to.object().setPosition(new Point2D.Float(to.object().getPosition().x, 
+			to.object().setPosition(new Point2D.Double(to.object().getPosition().x, 
 									 		          from.object().getPosition().y 
 									 		          - to.object().getSize().height));
 			to.object().setSpeed(((AbstractPaddle)(from.object())).getFireSpeed((AbstractBall)to.object()));

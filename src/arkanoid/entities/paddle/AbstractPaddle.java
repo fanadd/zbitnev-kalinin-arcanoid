@@ -2,7 +2,7 @@ package arkanoid.entities.paddle;
 
 import java.awt.Dimension;
 import java.awt.geom.Point2D;
-import java.awt.geom.Point2D.Float;
+import java.awt.geom.Point2D.Double;
 import java.util.ArrayList;
 
 import arkanoid.Entity;
@@ -19,7 +19,7 @@ public abstract class AbstractPaddle extends Entity {
 
     protected ArrayList<AbstractBall> _balls = new ArrayList<>();
 
-    public AbstractPaddle(ArkanoidField field, Float pos, Dimension dim) {
+    public AbstractPaddle(ArkanoidField field, Point2D.Double pos, Dimension dim) {
         
         super(field, pos, dim);
     }
@@ -52,13 +52,13 @@ public abstract class AbstractPaddle extends Entity {
 	protected void fixBallsPosition() {
 	    
 	    for (AbstractBall b : _balls) {
-            b.setPosition(new Point2D.Float(b.getPosition().x, this._position.y - b.getSize().height));
+            b.setPosition(new Point2D.Double(b.getPosition().x, this._position.y - b.getSize().height));
             
             if (b.getPosition().x < this._position.x) {
-                b.setPosition(new Point2D.Float(this._position.x, b.getPosition().y));
+                b.setPosition(new Point2D.Double(this._position.x, b.getPosition().y));
             }
             if (b.getPosition().x > this._position.x + this._size.width) {
-                b.setPosition(new Point2D.Float(this._position.x + this._size.width - b.getSize().width, b.getPosition().y));
+                b.setPosition(new Point2D.Double(this._position.x + this._size.width - b.getSize().width, b.getPosition().y));
             }
 	    }
 	}
@@ -88,15 +88,15 @@ public abstract class AbstractPaddle extends Entity {
     public Speed2D getFireSpeed(AbstractBall ball) {
         
         // Найти два центра расчета вектора.
-        Point2D.Float paddleLeftCenter = new Point2D.Float(this._position.x + (this._size.width / 5) * 2, this._position.y);
-        Point2D.Float paddleRightCenter = new Point2D.Float(this._position.x + (this._size.width / 5) * 3, this._position.y);
+        Point2D.Double paddleLeftCenter = new Point2D.Double(this._position.x + (this._size.width / 5) * 2, this._position.y);
+        Point2D.Double paddleRightCenter = new Point2D.Double(this._position.x + (this._size.width / 5) * 3, this._position.y);
         
         // Центр ракетки
-        Point2D.Float paddleCenter = new Point2D.Float(this._position.x + this._size.width / 2, this._position.y);
+        Point2D.Double paddleCenter = new Point2D.Double(this._position.x + this._size.width / 2, this._position.y);
         
         // Относительные координаты центра мяча в декартовой системе координат (точка B).
         // Считаем, что paddleCenter - это точка A(0, 0).
-        Point2D.Float relBallCenter = new Point2D.Float(ball.getPosition().x + ball.getSize().width / 2 - paddleCenter.x,
+        Point2D.Double relBallCenter = new Point2D.Double(ball.getPosition().x + ball.getSize().width / 2 - paddleCenter.x,
                 paddleCenter.y - ball.getPosition().y - ball.getSize().height / 2);
         
         // Если мяч между двумя центрами, направляем вектор вверх.
@@ -105,10 +105,10 @@ public abstract class AbstractPaddle extends Entity {
         }
         
         // В зависимости от трети ракетки, в которой располагается мяч, выбираем центр расчета вектора скорости.
-        Point2D.Float paddleNewCenter = relBallCenter.x > this._size.width / 10 ? paddleRightCenter : paddleLeftCenter;
+        Point2D.Double paddleNewCenter = relBallCenter.x > this._size.width / 10 ? paddleRightCenter : paddleLeftCenter;
         
         // Рассчитываем относительное положение мяча от выбранного центра.
-        relBallCenter = new Point2D.Float(relBallCenter.x + paddleCenter.x - paddleNewCenter.x, relBallCenter.y);
+        relBallCenter = new Point2D.Double(relBallCenter.x + paddleCenter.x - paddleNewCenter.x, relBallCenter.y);
         
         // Коэффициенты уравнения точки пересечения прямой и окружности.
         double a = (Math.pow(relBallCenter.x, 2) + Math.pow(relBallCenter.y, 2)) / Math.pow(relBallCenter.x, 2);
@@ -119,15 +119,15 @@ public abstract class AbstractPaddle extends Entity {
         double D = Math.pow(b, 2) - 4*a*c;
         
         // Точки пересечения.
-        Point2D.Float p1 = new Point2D.Float((float) ((-b + Math.sqrt(D)) / (2*a)), 0);
-        Point2D.Float p2 = new Point2D.Float((float) ((-b - Math.sqrt(D)) / (2*a)), 0);
+        Point2D.Double p1 = new Point2D.Double((float) ((-b + Math.sqrt(D)) / (2*a)), 0);
+        Point2D.Double p2 = new Point2D.Double((float) ((-b - Math.sqrt(D)) / (2*a)), 0);
         
         // Находим y{1,2} у точек.
         p1.y = p1.x * relBallCenter.y / relBallCenter.x;
         p2.y = p2.x * relBallCenter.y / relBallCenter.x;
         
         // Нужная точка пересечения имеет положительную y-координату.
-        Point2D.Float p = p1.y > 0 ? p1 : p2;
+        Point2D.Double p = p1.y > 0 ? p1 : p2;
         
         // Находим горизонтальную и вертикальную сооставляющие вектора скорости.
         // y отрицательный, чтобы перейти в экранную систему координат.
@@ -147,19 +147,19 @@ public abstract class AbstractPaddle extends Entity {
     }
     
     @Override
-    public void setPosition(Point2D.Float pos) {
+    public void setPosition(Point2D.Double pos) {
         
         if (this._position == null) {
             super.setPosition(pos);
             
         } else {
-            float dx = pos.x - this._position.x;
-            float dy = pos.y - this._position.y;
+            double dx = pos.x - this._position.x;
+            double dy = pos.y - this._position.y;
             
             super.setPosition(pos);
             
             for (AbstractBall b : _balls) {
-                b.setPosition(new Point2D.Float(b.getPosition().x + dx, b.getPosition().y + dy));
+                b.setPosition(new Point2D.Double(b.getPosition().x + dx, b.getPosition().y + dy));
             }
         }
     }

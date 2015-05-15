@@ -26,8 +26,8 @@ public class BehaviourDestroyTest {
         GameField field = new GameField(new Dimension(100, 100));
         model.setField(field);
         
-        BreakableBrick brick = new BreakableBrick(field, new Point2D.Float(50, 50), new Dimension(48, 24));
-        BasicBall ball = new BasicBall(field, new Point2D.Float(50, 50), 8);
+        BreakableBrick brick = new BreakableBrick(field, new Point2D.Double(50, 50), new Dimension(48, 24));
+        BasicBall ball = new BasicBall(field, new Point2D.Double(50, 50), 8);
         
         // Имитируем столкновение.
         
@@ -37,8 +37,8 @@ public class BehaviourDestroyTest {
         CollisionRect brickShape = new CollisionRect();
         brickShape.setBounds(50, 50, 48, 24);
         
-        CollidedObject collidedBall = new CollidedObject(ball, new Point2D.Float(50, 33), CollidedObject.SIDE_BOTTOM, ballShape);
-        CollidedObject collidedBrick = new CollidedObject(brick, new Point2D.Float(50, 50), CollidedObject.SIDE_TOP, brickShape);
+        CollidedObject collidedBall = new CollidedObject(ball, new Point2D.Double(50, 33), CollidedObject.SIDE_BOTTOM, ballShape);
+        CollidedObject collidedBrick = new CollidedObject(brick, new Point2D.Double(50, 50), CollidedObject.SIDE_TOP, brickShape);
         
         ArrayList<CollidedObject> collidedToBall = new ArrayList<>();
         collidedToBall.add(collidedBrick);

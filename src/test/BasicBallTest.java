@@ -13,7 +13,7 @@ import org.junit.Test;
 public class BasicBallTest {
     
     GameField field = new GameField(new Dimension(100, 100));
-    BasicBall ball = new BasicBall(field, new Point2D.Float(50, 50), 8);
+    BasicBall ball = new BasicBall(field, new Point2D.Double(50, 50), 8);
     
     @Test
     public void testSetRadius() {
@@ -39,12 +39,12 @@ public class BasicBallTest {
         ball.setRadius(8);
         
         // Перемещаем мяч, задавая в качестве ориентира его центр.
-        ball.setCenter(new Point2D.Float(20, 30));
+        ball.setCenter(new Point2D.Double(20, 30));
         assertTrue(ball.getPosition().x == 12 && ball.getPosition().y == 22);
         
         // То же самое с различной шириной и высотой.
         ball.setSize(new Dimension(20, 14));
-        ball.setCenter(new Point2D.Float(40, 50));
+        ball.setCenter(new Point2D.Double(40, 50));
         assertTrue(ball.getPosition().x == 30 && ball.getPosition().y == 43);
     }
     
@@ -52,12 +52,12 @@ public class BasicBallTest {
     public void testGetCenter() {
         
         ball.setRadius(8);
-        ball.setPosition(new Point2D.Float(50, 60));
+        ball.setPosition(new Point2D.Double(50, 60));
         
         assertTrue(ball.getCenter().x == 58 && ball.getCenter().y == 68);
         
         ball.setSize(new Dimension(20, 14));
-        ball.setPosition(new Point2D.Float(60, 30));
+        ball.setPosition(new Point2D.Double(60, 30));
         
         assertTrue(ball.getCenter().x == 70 && ball.getCenter().y == 37);
     }

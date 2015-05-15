@@ -49,7 +49,7 @@ public class ReactionRebound extends CollisionReaction {
 		Entity fromobj = from.object();
 		if ((fromobj instanceof AbstractBrick || fromobj instanceof AbstractPaddle) && toobj instanceof AbstractBall) {
 			
-			Point2D.Float newpos = to.oldPosition();
+			Point2D.Double newpos = to.oldPosition();
 			if (to.collisionSide() == CollidedObject.SIDE_TOP) {
 				
 				newpos.y = fromobj.getPosition().y - toobj.getSize().height - 1;
@@ -81,18 +81,18 @@ public class ReactionRebound extends CollisionReaction {
 			AbstractBall pass = (AbstractBall)toobj;
 			
 			// Вычисляется точка столкновения
-			float colx = (act.getCenter().x * pass.getRadius() 
+			double colx = (act.getCenter().x * pass.getRadius() 
 					      + pass.getCenter().x * act.getRadius()) 
 					   / (act.getRadius() + pass.getRadius());
-			float coly = (act.getCenter().y * pass.getRadius() 
+			double coly = (act.getCenter().y * pass.getRadius() 
 				      + pass.getCenter().y * act.getRadius()) 
 				   / (act.getRadius() + pass.getRadius());
 			
 			// Пассивный объект "отодвигается" по линии столкновения (линия, соединяющая центры 
 			// шаров) во избежание повторной коллизии
-			Point2D.Float movevect = new Point2D.Float(pass.getCenter().x - colx,
+			Point2D.Double movevect = new Point2D.Double(pass.getCenter().x - colx,
 													   pass.getCenter().y - coly);
-			Point2D.Float newpos = new Point2D.Float(pass.getCenter().x + movevect.x,
+			Point2D.Double newpos = new Point2D.Double(pass.getCenter().x + movevect.x,
 													 pass.getCenter().y + movevect.y);
 			pass.setCenter(newpos);
 			

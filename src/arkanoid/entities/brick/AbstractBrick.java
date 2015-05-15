@@ -1,7 +1,8 @@
 package arkanoid.entities.brick;
 
 import java.awt.Dimension;
-import java.awt.geom.Point2D.Float;
+import java.awt.geom.Point2D;
+import java.awt.geom.Point2D.Double;
 
 import arkanoid.Entity;
 import arkanoid.ArkanoidField;
@@ -19,12 +20,12 @@ public abstract class AbstractBrick extends Entity {
 	    super(field);
 	}
 
-    public AbstractBrick(ArkanoidField field, Float pos, Dimension dim, Speed2D speed) {
+    public AbstractBrick(ArkanoidField field, Point2D.Double pos, Dimension dim, Speed2D speed) {
         
         super(field, pos, dim, speed);
     }
 
-    public AbstractBrick(ArkanoidField field, Float pos, Dimension dim) {
+    public AbstractBrick(ArkanoidField field, Point2D.Double pos, Dimension dim) {
         
         super(field, pos, dim);
     }

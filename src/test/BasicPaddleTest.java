@@ -15,25 +15,25 @@ import org.junit.Test;
 public class BasicPaddleTest {
 
     GameField field = new GameField(new Dimension(300, 200));
-    BasicPaddle paddle = new BasicPaddle(field, new Point2D.Float(100, 100), new Dimension(96, 16));
+    BasicPaddle paddle = new BasicPaddle(field, new Point2D.Double(100, 100), new Dimension(96, 16));
     
     @Test
     public void testAddBall() {
         
         // Размещаем мячи вокруг ракетки.
         
-        BasicBall ball1 = new BasicBall(field, new Point2D.Float(10, 0), 8);
-        BasicBall ball2 = new BasicBall(field, new Point2D.Float(110, 0), 8);
-        BasicBall ball3 = new BasicBall(field, new Point2D.Float(180, 0), 8);
-        BasicBall ball4 = new BasicBall(field, new Point2D.Float(220, 0), 8);
+        BasicBall ball1 = new BasicBall(field, new Point2D.Double(10, 0), 8);
+        BasicBall ball2 = new BasicBall(field, new Point2D.Double(110, 0), 8);
+        BasicBall ball3 = new BasicBall(field, new Point2D.Double(180, 0), 8);
+        BasicBall ball4 = new BasicBall(field, new Point2D.Double(220, 0), 8);
         
-        BasicBall ball5 = new BasicBall(field, new Point2D.Float(10, 100), 8);
-        BasicBall ball6 = new BasicBall(field, new Point2D.Float(220, 100), 8);
+        BasicBall ball5 = new BasicBall(field, new Point2D.Double(10, 100), 8);
+        BasicBall ball6 = new BasicBall(field, new Point2D.Double(220, 100), 8);
         
-        BasicBall ball7  = new BasicBall(field, new Point2D.Float(10, 150), 8);
-        BasicBall ball8  = new BasicBall(field, new Point2D.Float(110, 150), 8);
-        BasicBall ball9  = new BasicBall(field, new Point2D.Float(180, 150), 8);
-        BasicBall ball10 = new BasicBall(field, new Point2D.Float(220, 150), 8);
+        BasicBall ball7  = new BasicBall(field, new Point2D.Double(10, 150), 8);
+        BasicBall ball8  = new BasicBall(field, new Point2D.Double(110, 150), 8);
+        BasicBall ball9  = new BasicBall(field, new Point2D.Double(180, 150), 8);
+        BasicBall ball10 = new BasicBall(field, new Point2D.Double(220, 150), 8);
         
         // Добавляем их на ракетку. Мячи не должны вылазить за ракетку по горизонтали
         // и должны лежать на ней.
@@ -83,9 +83,9 @@ public class BasicPaddleTest {
     public void testGetFireSpeed() {
         
         // Размещаем мячи на ракетке в трех разных зонах.
-        BasicBall ball1 = new BasicBall(field, new Point2D.Float(110, 0), 8);
-        BasicBall ball2 = new BasicBall(field, new Point2D.Float(140, 0), 8);
-        BasicBall ball3 = new BasicBall(field, new Point2D.Float(180, 0), 8);
+        BasicBall ball1 = new BasicBall(field, new Point2D.Double(110, 0), 8);
+        BasicBall ball2 = new BasicBall(field, new Point2D.Double(140, 0), 8);
+        BasicBall ball3 = new BasicBall(field, new Point2D.Double(180, 0), 8);
         Speed2D speed = null;
         
         paddle.addBall(ball1);
@@ -111,9 +111,9 @@ public class BasicPaddleTest {
     public void fireBalls() {
         
         // Размещаем мячи на ракетке в трех разных зонах и запускаем их.
-        BasicBall ball1 = new BasicBall(field, new Point2D.Float(110, 0), 8);
-        BasicBall ball2 = new BasicBall(field, new Point2D.Float(140, 0), 8);
-        BasicBall ball3 = new BasicBall(field, new Point2D.Float(180, 0), 8);
+        BasicBall ball1 = new BasicBall(field, new Point2D.Double(110, 0), 8);
+        BasicBall ball2 = new BasicBall(field, new Point2D.Double(140, 0), 8);
+        BasicBall ball3 = new BasicBall(field, new Point2D.Double(180, 0), 8);
         
         paddle.addBall(ball1);
         paddle.addBall(ball2);
@@ -134,11 +134,11 @@ public class BasicPaddleTest {
     @Test
     public void testSetPosition() {
         
-        BasicBall ball = new BasicBall(field, new Point2D.Float(140, 0), 8);
+        BasicBall ball = new BasicBall(field, new Point2D.Double(140, 0), 8);
         paddle.addBall(ball);
         
         // Смещаем ракетку и убеждаемся, что мяч переместился вместе с ней.
-        paddle.setPosition(new Point2D.Float(10, 150));
+        paddle.setPosition(new Point2D.Double(10, 150));
         assertTrue(ball.getPosition().x == 50 && ball.getPosition().y == 134);
     }
 }

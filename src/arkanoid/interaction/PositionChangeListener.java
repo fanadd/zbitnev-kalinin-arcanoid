@@ -13,5 +13,5 @@ public interface PositionChangeListener {
 	 * Позиция изменилась.
 	 * @param newpos Новая позиция.
 	 */
-	public void positionChanged(Point2D.Float newpos);
+	public void positionChanged(Point2D.Double newpos);
 }

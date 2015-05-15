@@ -28,11 +28,11 @@ public class BehaviourReboundTest {
         GameField field = new GameField(new Dimension(120, 100));
         model.setField(field);
         
-        UnbreakableBrick brick = new UnbreakableBrick(field, new Point2D.Float(50, 50), new Dimension(48, 24));
-        BasicBall ballTop = new BasicBall(field, new Point2D.Float(70, 40), 8, new Speed2D(-0.1, 0.2));
-        BasicBall ballBottom = new BasicBall(field, new Point2D.Float(70, 70), 8, new Speed2D(0.1, -0.2));
-        BasicBall ballLeft = new BasicBall(field, new Point2D.Float(40, 50), 8, new Speed2D(0.1, 0.2));
-        BasicBall ballRight = new BasicBall(field, new Point2D.Float(84, 50), 8, new Speed2D(-0.1, -0.2));
+        UnbreakableBrick brick = new UnbreakableBrick(field, new Point2D.Double(50, 50), new Dimension(48, 24));
+        BasicBall ballTop = new BasicBall(field, new Point2D.Double(70, 40), 8, new Speed2D(-0.1, 0.2));
+        BasicBall ballBottom = new BasicBall(field, new Point2D.Double(70, 70), 8, new Speed2D(0.1, -0.2));
+        BasicBall ballLeft = new BasicBall(field, new Point2D.Double(40, 50), 8, new Speed2D(0.1, 0.2));
+        BasicBall ballRight = new BasicBall(field, new Point2D.Double(84, 50), 8, new Speed2D(-0.1, -0.2));
         
         // Имитируем столкновение.
         
@@ -51,15 +51,15 @@ public class BehaviourReboundTest {
         CollisionRect brickShape = new CollisionRect();
         brickShape.setBounds(50, 50, 48, 24);
         
-        CollidedObject collidedBallTop = new CollidedObject(ballTop, new Point2D.Float(70, 30), CollidedObject.SIDE_BOTTOM, ballTopShape);
-        CollidedObject collidedBallBottom = new CollidedObject(ballBottom, new Point2D.Float(70, 75), CollidedObject.SIDE_TOP, ballBottomShape);
-        CollidedObject collidedBallLeft = new CollidedObject(ballLeft, new Point2D.Float(30, 50), CollidedObject.SIDE_RIGHT, ballLeftShape);
-        CollidedObject collidedBallRight = new CollidedObject(ballRight, new Point2D.Float(100, 50), CollidedObject.SIDE_LEFT, ballRightShape);
+        CollidedObject collidedBallTop = new CollidedObject(ballTop, new Point2D.Double(70, 30), CollidedObject.SIDE_BOTTOM, ballTopShape);
+        CollidedObject collidedBallBottom = new CollidedObject(ballBottom, new Point2D.Double(70, 75), CollidedObject.SIDE_TOP, ballBottomShape);
+        CollidedObject collidedBallLeft = new CollidedObject(ballLeft, new Point2D.Double(30, 50), CollidedObject.SIDE_RIGHT, ballLeftShape);
+        CollidedObject collidedBallRight = new CollidedObject(ballRight, new Point2D.Double(100, 50), CollidedObject.SIDE_LEFT, ballRightShape);
         
-        CollidedObject collidedBrickTop = new CollidedObject(brick, new Point2D.Float(50, 50), CollidedObject.SIDE_TOP, brickShape);
-        CollidedObject collidedBrickBottom = new CollidedObject(brick, new Point2D.Float(50, 50), CollidedObject.SIDE_BOTTOM, brickShape);
-        CollidedObject collidedBrickLeft = new CollidedObject(brick, new Point2D.Float(50, 50), CollidedObject.SIDE_LEFT, brickShape);
-        CollidedObject collidedBrickRight = new CollidedObject(brick, new Point2D.Float(50, 50), CollidedObject.SIDE_RIGHT, brickShape);
+        CollidedObject collidedBrickTop = new CollidedObject(brick, new Point2D.Double(50, 50), CollidedObject.SIDE_TOP, brickShape);
+        CollidedObject collidedBrickBottom = new CollidedObject(brick, new Point2D.Double(50, 50), CollidedObject.SIDE_BOTTOM, brickShape);
+        CollidedObject collidedBrickLeft = new CollidedObject(brick, new Point2D.Double(50, 50), CollidedObject.SIDE_LEFT, brickShape);
+        CollidedObject collidedBrickRight = new CollidedObject(brick, new Point2D.Double(50, 50), CollidedObject.SIDE_RIGHT, brickShape);
         
         ArrayList<CollidedObject> collidedToBallTop = new ArrayList<>();
         collidedToBallTop.add(collidedBrickTop);
