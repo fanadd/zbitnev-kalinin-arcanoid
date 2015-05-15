@@ -17,7 +17,7 @@ import arkanoid.util.Speed2D;
  */
 public abstract class AbstractPaddle extends Entity {
 
-    protected ArrayList<AbstractBall> _balls = new ArrayList<>();
+    protected ArrayList<AbstractBall> _balls = new ArrayList<AbstractBall>();
 
     public AbstractPaddle(ArkanoidField field, Point2D.Double pos, Dimension dim) {
         
@@ -52,13 +52,13 @@ public abstract class AbstractPaddle extends Entity {
 	protected void fixBallsPosition() {
 	    
 	    for (AbstractBall b : _balls) {
-            b.setPosition(new Point2D.Double(b.getPosition().x, this._position.y - b.getSize().height));
+            b.setPosition(new Point2D.Double(b.getPosition().x, this.getPosition().y - b.getSize().height));
             
-            if (b.getPosition().x < this._position.x) {
-                b.setPosition(new Point2D.Double(this._position.x, b.getPosition().y));
+            if (b.getPosition().x < this.getPosition().x) {
+                b.setPosition(new Point2D.Double(this.getPosition().x, b.getPosition().y));
             }
-            if (b.getPosition().x > this._position.x + this._size.width) {
-                b.setPosition(new Point2D.Double(this._position.x + this._size.width - b.getSize().width, b.getPosition().y));
+            if (b.getPosition().x > this.getPosition().x + this._size.width) {
+                b.setPosition(new Point2D.Double(this.getPosition().x + this._size.width - b.getSize().width, b.getPosition().y));
             }
 	    }
 	}
@@ -88,11 +88,11 @@ public abstract class AbstractPaddle extends Entity {
     public Speed2D getFireSpeed(AbstractBall ball) {
         
         // Найти два центра расчета вектора.
-        Point2D.Double paddleLeftCenter = new Point2D.Double(this._position.x + (this._size.width / 5) * 2, this._position.y);
-        Point2D.Double paddleRightCenter = new Point2D.Double(this._position.x + (this._size.width / 5) * 3, this._position.y);
+        Point2D.Double paddleLeftCenter = new Point2D.Double(this.getPosition().x + (this._size.width / 5) * 2, this.getPosition().y);
+        Point2D.Double paddleRightCenter = new Point2D.Double(this.getPosition().x + (this._size.width / 5) * 3, this.getPosition().y);
         
         // Центр ракетки
-        Point2D.Double paddleCenter = new Point2D.Double(this._position.x + this._size.width / 2, this._position.y);
+        Point2D.Double paddleCenter = new Point2D.Double(this.getPosition().x + this._size.width / 2, this.getPosition().y);
         
         // Относительные координаты центра мяча в декартовой системе координат (точка B).
         // Считаем, что paddleCenter - это точка A(0, 0).
@@ -149,12 +149,13 @@ public abstract class AbstractPaddle extends Entity {
     @Override
     public void setPosition(Point2D.Double pos) {
         
-        if (this._position == null) {
-            super.setPosition(pos);
-            
-        } else {
-            double dx = pos.x - this._position.x;
-            double dy = pos.y - this._position.y;
+    	if (_balls == null) {
+    		super.setPosition(pos);	
+    	}
+    	else {
+        	
+            double dx = pos.x - this.getPosition().x;
+            double dy = pos.y - this.getPosition().y;
             
             super.setPosition(pos);
             

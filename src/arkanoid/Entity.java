@@ -2,7 +2,6 @@ package arkanoid;
 
 import java.awt.Dimension;
 import java.awt.geom.Point2D;
-import java.awt.geom.Point2D.Double;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -15,6 +14,7 @@ import arkanoid.interaction.GenericEventListener;
 import arkanoid.interaction.PositionChangeListener;
 import arkanoid.interaction.SpeedChangeListener;
 import arkanoid.util.Speed2D;
+import arkanoid.entities.Sprite;
 
 /**
  * Класс игрового объекта.
@@ -25,9 +25,7 @@ public abstract class Entity implements Cloneable, PositionChangeListener, Speed
     
     protected Boolean _isDestroyed = false;
     
-	protected Point2D.Double _position = null;
 	protected Dimension _size = null;
-	protected Speed2D _speed = null;
 	protected ArrayList<CollisionReaction> _defaultColBehaviour = new ArrayList<>();
 	protected HashMap<Class<?>, SpecialBehaviours> _specialColBehaviours 
 		= new HashMap<>();
@@ -35,7 +33,7 @@ public abstract class Entity implements Cloneable, PositionChangeListener, Speed
 	protected ArrayList<PositionChangeListener> _positionListeners = new ArrayList<>();
 	protected ArrayList<SpeedChangeListener> _speedListeners = new ArrayList<>();
 	protected ArrayList<GenericEventListener> _geneventListeners = new ArrayList<>();
-	protected arkanoid.entities.Sprite _sprite = null;
+	protected Sprite _sprite = null;
 
 	/**
 	 * Создает игровой объект, координаты (0, 0), нулевая скорость, нулевой размер.
@@ -70,6 +68,7 @@ public abstract class Entity implements Cloneable, PositionChangeListener, Speed
 	        throw new NullPointerException();
 	    }
 	    
+	    this._sprite = new Sprite(dim);
 	    this._field = field;
 	    this.setSize(dim);
         this.setPosition(pos);
@@ -91,7 +90,7 @@ public abstract class Entity implements Cloneable, PositionChangeListener, Speed
 	 */
 	public Speed2D getSpeed() {
 
-		return (Speed2D) _speed.clone();
+		return _sprite.getSpeed();
 	}
 	
 	/**
@@ -100,9 +99,9 @@ public abstract class Entity implements Cloneable, PositionChangeListener, Speed
 	 */
 	public void setSpeed(Speed2D speed) {
 
-		this._speed = speed;
+		_sprite.setSpeed(speed);
 		for (SpeedChangeListener l : _speedListeners) {
-			l.speedChanged(this._speed);
+			l.speedChanged(_sprite.getSpeed());
 		}
 	}
 	
@@ -112,7 +111,7 @@ public abstract class Entity implements Cloneable, PositionChangeListener, Speed
 	 */
 	public Point2D.Double getPosition() {
 
-		return (Point2D.Double) _position.clone();
+		return _sprite.getPosition();
 	}
 	
 	/**
@@ -124,9 +123,9 @@ public abstract class Entity implements Cloneable, PositionChangeListener, Speed
 	    if (pos == null) {
 	        throw new NullPointerException();
 	    }
-		_position = pos;
+		_sprite.setPosition(pos);
 		for (PositionChangeListener l : _positionListeners) {
-			l.positionChanged(this._position);
+			l.positionChanged(_sprite.getPosition());
 		}
 	}
 	
@@ -345,13 +344,13 @@ public abstract class Entity implements Cloneable, PositionChangeListener, Speed
 	@Override
 	public void positionChanged(Point2D.Double newpos) {
 		
-	    this._position = newpos;
+	    _sprite.setPosition(newpos);
 	}
 
 	@Override
 	public void speedChanged(Speed2D newspeed) {
 		
-		this._speed = newspeed;
+		_sprite.setSpeed(newspeed);
 	}
 	
 	/**
@@ -413,14 +412,13 @@ public abstract class Entity implements Cloneable, PositionChangeListener, Speed
 		Entity clone = (Entity)super.clone();
 		clone._isDestroyed = this._isDestroyed;
 		clone._field = this._field;    // ссылка на поле просто копируется, да
-		clone._position = (Point2D.Double) this._position.clone();
+		clone._sprite = (Sprite)this._sprite.clone();
 		clone._size = (Dimension) this._size.clone();
-		clone._speed = (Speed2D) this._speed.clone();
 		
 		return clone;
 	}
 
-	public arkanoid.entities.Sprite getSprite() {
+	public Sprite getSprite() {
 
 		return _sprite;
 	}

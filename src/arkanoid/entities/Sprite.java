@@ -8,12 +8,16 @@ import arkanoid.util.Speed2D;
 /**
  * Спрайт игрового объекта
  */
-public class Sprite {
+public class Sprite implements Cloneable {
 
 	com.golden.gamedev.object.Sprite _sprite;
 	
 	Sprite(com.golden.gamedev.object.Sprite gtgeSprite) {
 		_sprite = gtgeSprite;
+	}
+	
+	public Sprite(Dimension dim) {
+		_sprite = new com.golden.gamedev.object.Sprite(dim.height, dim.width);
 	}
 	
 	public void update(long timeElapsed) {
@@ -46,5 +50,17 @@ public class Sprite {
 	
 	public Dimension getSize() {
 		return new Dimension(_sprite.getWidth(), _sprite.getHeight());
+	}
+	
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		
+		Sprite clone = (Sprite)super.clone();
+		clone._sprite = new com.golden.gamedev.object.Sprite(_sprite.getImage());
+		clone._sprite.setSpeed(_sprite.getHorizontalSpeed(), _sprite.getVerticalSpeed());
+		clone._sprite.setX(_sprite.getX());
+		clone._sprite.setY(_sprite.getY());
+		
+		return clone;
 	}
 }
