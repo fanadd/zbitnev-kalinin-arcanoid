@@ -5,7 +5,7 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Point2D.Float;
 
 import arkanoid.GameField;
-import arkanoid.collision.BehaviourDestroy;
+import arkanoid.collision.ReactionDestroy;
 import arkanoid.util.Speed2D;
 
 /**
@@ -24,7 +24,7 @@ public class BreakableBrick extends AbstractBrick {
 	public BreakableBrick(GameField field, Float pos, Dimension dim, Speed2D speed) {
         
 	    super(field, pos, dim, speed);
-	    this.addDefaultCollisionBehaviour(BehaviourDestroy.getInstance());
+	    this.addDefaultCollisionBehaviour(ReactionDestroy.getInstance());
     }
 
 

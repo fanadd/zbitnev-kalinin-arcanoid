@@ -9,7 +9,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 import arkanoid.collision.CollidedObject;
-import arkanoid.collision.CollisionBehaviour;
+import arkanoid.collision.CollisionReaction;
 import arkanoid.collision.SpecialBehaviours;
 import arkanoid.interaction.GenericEventListener;
 import arkanoid.interaction.PositionChangeListener;
@@ -28,7 +28,7 @@ public abstract class Entity implements Cloneable, PositionChangeListener, Speed
 	protected Point2D.Float _position = null;
 	protected Dimension _size = null;
 	protected Speed2D _speed = null;
-	protected ArrayList<CollisionBehaviour> _defaultColBehaviour = new ArrayList<>();
+	protected ArrayList<CollisionReaction> _defaultColBehaviour = new ArrayList<>();
 	protected HashMap<Class<?>, SpecialBehaviours> _specialColBehaviours 
 		= new HashMap<>();
 	protected GameField _field = null;
@@ -176,13 +176,13 @@ public abstract class Entity implements Cloneable, PositionChangeListener, Speed
 	        if (entry.getValue()._flagCheckDerived) {
 	            if (entry.getKey().isInstance(other.object())) {
 	                foundSpecial = true;
-	                for (CollisionBehaviour cb : entry.getValue()._behaviours) {
+	                for (CollisionReaction cb : entry.getValue()._behaviours) {
 	                    cb.invoke(other, curr);
 	                }
 	            }
 	        } else if (entry.getKey().equals(other.object().getClass())) {
                 foundSpecial = true;
-                for (CollisionBehaviour cb : entry.getValue()._behaviours) {
+                for (CollisionReaction cb : entry.getValue()._behaviours) {
                     cb.invoke(other, curr);
                 }
             }
@@ -191,7 +191,7 @@ public abstract class Entity implements Cloneable, PositionChangeListener, Speed
 		// Если их нет, тогда вызываем коллизию по умолчанию
 		// Если и она не определена, то ничего не происходит
 	    if (!foundSpecial) {
-    		for (CollisionBehaviour cb : _defaultColBehaviour) {
+    		for (CollisionReaction cb : _defaultColBehaviour) {
     			cb.invoke(other, curr);
     		}
 	    }
@@ -201,7 +201,7 @@ public abstract class Entity implements Cloneable, PositionChangeListener, Speed
 	 * Получить список поведений по умолчанию при столкновении
 	 * @return Список объектов поведения
 	 */
-	public ArrayList<CollisionBehaviour> getDefaultCollisionBehaviours() {
+	public ArrayList<CollisionReaction> getDefaultCollisionBehaviours() {
 		
 		return _defaultColBehaviour;
 	}
@@ -210,7 +210,7 @@ public abstract class Entity implements Cloneable, PositionChangeListener, Speed
 	 * Добавить поведение по умолчанию при столкновении
 	 * @param behaviour Добавляемое поведение
 	 */
-	public void addDefaultCollisionBehaviour(CollisionBehaviour behaviour) {
+	public void addDefaultCollisionBehaviour(CollisionReaction behaviour) {
 	
 		_defaultColBehaviour.add(behaviour);
 	}
@@ -219,7 +219,7 @@ public abstract class Entity implements Cloneable, PositionChangeListener, Speed
 	 * Удалить поведение по умолчанию при столкновении
 	 * @param behaviour Поведение для удаления
 	 */
-	public void removeDafaultCollisionBehavior(CollisionBehaviour behaviour) {
+	public void removeDafaultCollisionBehavior(CollisionReaction behaviour) {
 		
 		// TODO Method stub
 	}
@@ -241,7 +241,7 @@ public abstract class Entity implements Cloneable, PositionChangeListener, Speed
 	 * @param checkDerived Если true, то будут также проверяться наследники класса объектов.
 	 *                     Игнорируется, если для класса уже задано какое-либо поведение.
 	 */
-	public void addSpecificCollisionBehaviour(Class<?> c, CollisionBehaviour cb, boolean checkDerived) {
+	public void addSpecificCollisionBehaviour(Class<?> c, CollisionReaction cb, boolean checkDerived) {
 		
 		if (!c.isInstance(Entity.class)) {
 			// TODO: Выброс исключения, ибо нечего
@@ -263,7 +263,7 @@ public abstract class Entity implements Cloneable, PositionChangeListener, Speed
      * @param c Класс объектов
      * @param cb Поведение, определяемое при столкновении с этим классом объектов
      */
-	public void addSpecificCollisionBehaviour(Class<?> c, CollisionBehaviour cb) {
+	public void addSpecificCollisionBehaviour(Class<?> c, CollisionReaction cb) {
 	    
 	    this.addSpecificCollisionBehaviour(c, cb, false);
 	}
@@ -273,7 +273,7 @@ public abstract class Entity implements Cloneable, PositionChangeListener, Speed
 	 * @param c Класс объектов
 	 * @param cb Поведение, определённое при столкновении с этим классом объектов
 	 */
-	public void removeSpecificCollisionBehaviour(Class<?> c, CollisionBehaviour cb) {
+	public void removeSpecificCollisionBehaviour(Class<?> c, CollisionReaction cb) {
 		
 		if (!c.isInstance(Entity.class)) {
 			// TODO: Выброс исключения, ибо нечего

@@ -7,24 +7,24 @@ import arkanoid.Entity;
  * @author Gregory Zbitnev <zbitnev@hotmail.com>
  *
  */
-public class BehaviourDestroy extends CollisionBehaviour {
+public class ReactionDestroy extends CollisionReaction {
 
 	/**
 	 * Экзмепляр синглтона.
 	 */
-	private static BehaviourDestroy _instance = null;
+	private static ReactionDestroy _instance = null;
 	
-	protected BehaviourDestroy() {
+	protected ReactionDestroy() {
 	}
 	
 	/**
 	 * Возвращает экземпляр поведения разрушения
 	 * @return
 	 */
-	public static BehaviourDestroy getInstance() {
+	public static ReactionDestroy getInstance() {
 		
 		if (_instance == null) {
-			_instance = new BehaviourDestroy();
+			_instance = new ReactionDestroy();
 		}
 		
 		return _instance;

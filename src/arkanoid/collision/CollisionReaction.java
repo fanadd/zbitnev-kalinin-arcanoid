@@ -7,24 +7,24 @@ import arkanoid.Entity;
  * @author Gregory Zbitnev <zbitnev@hotmail.com>
  *
  */
-public class CollisionBehaviour {
+public class CollisionReaction {
 
 	/**
 	 * Экзмепляр синглтона.
 	 */
-	private static CollisionBehaviour _instance = null;
+	private static CollisionReaction _instance = null;
 	
-	protected CollisionBehaviour() {
+	protected CollisionReaction() {
 	}
 	
 	/**
 	 * Возвращает экзмепляр поведения объектов. Обязательно переопределяется в классах-наследниках.
 	 * @return Экземпляр поведения.
 	 */
-	public static CollisionBehaviour getInstance() {
+	public static CollisionReaction getInstance() {
 		
 		if (_instance == null) {
-			_instance = new CollisionBehaviour();
+			_instance = new CollisionReaction();
 		}
 		
 		return _instance;

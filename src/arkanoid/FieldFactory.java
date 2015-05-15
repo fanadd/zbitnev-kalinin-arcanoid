@@ -3,7 +3,7 @@ package arkanoid;
 import java.awt.Dimension;
 import java.awt.geom.Point2D;
 
-import arkanoid.collision.BehaviourRebound;
+import arkanoid.collision.ReactionRebound;
 import arkanoid.entities.ball.BasicBall;
 import arkanoid.entities.brick.BreakableBrick;
 import arkanoid.entities.brick.UnbreakableBrick;
@@ -33,8 +33,8 @@ public class FieldFactory {
         // Тестирование столкновения множества шаров
         BasicBall ball01 = new BasicBall(newField, new Point2D.Float((float) 213.3975, 250), 16, new Speed2D(0.043, -0.025));
         BasicBall ball02 = new BasicBall(newField, new Point2D.Float(400, 200), 16, new Speed2D(-0.05, 0));
-        ball01.addDefaultCollisionBehaviour(BehaviourRebound.getInstance());
-        ball02.addDefaultCollisionBehaviour(BehaviourRebound.getInstance());
+        ball01.addDefaultCollisionBehaviour(ReactionRebound.getInstance());
+        ball02.addDefaultCollisionBehaviour(ReactionRebound.getInstance());
         
         paddle.addBall(newball);
         

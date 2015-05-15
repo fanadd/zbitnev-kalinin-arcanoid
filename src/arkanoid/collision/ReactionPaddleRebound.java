@@ -11,23 +11,23 @@ import arkanoid.entities.paddle.AbstractPaddle;
  * @author Nikita Kalinin <nixorv@gmail.com>
  *
  */
-public class BehaviourPaddleRebound extends CollisionBehaviour {
+public class ReactionPaddleRebound extends CollisionReaction {
 	/**
 	 * Экзмепляр синглтона.
 	 */
-	private static BehaviourPaddleRebound _instance = null;
+	private static ReactionPaddleRebound _instance = null;
 	
-	protected BehaviourPaddleRebound() {
+	protected ReactionPaddleRebound() {
 	}
 	
 	/**
 	 * Возвращает экземпляр поведения отражения от ракетки.
 	 * @return
 	 */
-	public static BehaviourPaddleRebound getInstance() {
+	public static ReactionPaddleRebound getInstance() {
 		
 		if (_instance == null) {
-			_instance = new BehaviourPaddleRebound();
+			_instance = new ReactionPaddleRebound();
 		}
 		
 		return _instance;

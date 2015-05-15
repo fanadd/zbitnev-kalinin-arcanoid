@@ -9,13 +9,13 @@ public class SpecialBehaviours {
      */
     public boolean _flagCheckDerived = false;
     
-    public ArrayList<CollisionBehaviour> _behaviours = new ArrayList<>();
+    public ArrayList<CollisionReaction> _behaviours = new ArrayList<>();
     
     public SpecialBehaviours() {
         
     }
     
-    public SpecialBehaviours(CollisionBehaviour b) {
+    public SpecialBehaviours(CollisionReaction b) {
         
         if (b == null) {
             throw new NullPointerException();

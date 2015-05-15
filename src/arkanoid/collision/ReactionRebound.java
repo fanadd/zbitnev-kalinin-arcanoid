@@ -18,23 +18,23 @@ import math.geom2d.Vector2D;
  * @author Nikita Kalinin <nixorv@gmail.com>
  *
  */
-public class BehaviourRebound extends CollisionBehaviour {
+public class ReactionRebound extends CollisionReaction {
 	/**
 	 * Экзмепляр синглтона.
 	 */
-	private static BehaviourRebound _instance = null;
+	private static ReactionRebound _instance = null;
 	
-	protected BehaviourRebound() {
+	protected ReactionRebound() {
 	}
 	
 	/**
 	 * Возвращает экземпляр поведения упрогого отскока.
 	 * @return
 	 */
-	public static BehaviourRebound getInstance() {
+	public static ReactionRebound getInstance() {
 		
 		if (_instance == null) {
-			_instance = new BehaviourRebound();
+			_instance = new ReactionRebound();
 		}
 		
 		return _instance;

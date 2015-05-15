@@ -5,8 +5,8 @@ import java.awt.geom.Point2D;
 
 import arkanoid.Entity;
 import arkanoid.GameField;
-import arkanoid.collision.BehaviourPaddleRebound;
-import arkanoid.collision.BehaviourRebound;
+import arkanoid.collision.ReactionPaddleRebound;
+import arkanoid.collision.ReactionRebound;
 import arkanoid.entities.paddle.AbstractPaddle;
 import arkanoid.util.Speed2D;
 
@@ -29,8 +29,8 @@ public abstract class AbstractBall extends Entity {
 	public AbstractBall(GameField field, Point2D.Float pos, int radius, Speed2D speed) {
         
         super(field, pos, new Dimension(2*radius, 2*radius), speed);
-        this.addDefaultCollisionBehaviour(BehaviourRebound.getInstance());
-        this.addSpecificCollisionBehaviour(AbstractPaddle.class, BehaviourPaddleRebound.getInstance(), true);
+        this.addDefaultCollisionBehaviour(ReactionRebound.getInstance());
+        this.addSpecificCollisionBehaviour(AbstractPaddle.class, ReactionPaddleRebound.getInstance(), true);
     }
 
 	/**
