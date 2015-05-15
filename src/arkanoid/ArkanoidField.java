@@ -10,7 +10,7 @@ import arkanoid.collision.CollidedObject;
 import arkanoid.entities.ball.AbstractBall;
 import arkanoid.entities.ball.BallPositionChangedListener;
 import arkanoid.interaction.CollisionListener;
-import arkanoid.interaction.GenericEventListener;
+import arkanoid.interaction.EntityEventListener;
 
 /**
  * Модель игрового поля.
@@ -20,7 +20,7 @@ import arkanoid.interaction.GenericEventListener;
 public class ArkanoidField implements BallPositionChangedListener, CollisionListener {
 
 	private ArrayList<Entity> _objects = new ArrayList<>();;
-	private ArrayList<GenericEventListener> _entityEventListeners = new ArrayList<>();
+	private ArrayList<EntityEventListener> _entityEventListeners = new ArrayList<>();
 	private Dimension _dimensions;
 	
     /**
@@ -39,7 +39,7 @@ public class ArkanoidField implements BallPositionChangedListener, CollisionList
 	public void addObject(Entity object) {
 		
 		_objects.add(object);
-		for (GenericEventListener l : _entityEventListeners) {
+		for (EntityEventListener l : _entityEventListeners) {
 			l.entityAdded(object);
 		}
 	}
@@ -51,7 +51,7 @@ public class ArkanoidField implements BallPositionChangedListener, CollisionList
 	public void removeObject(Entity object) {
 		
 		_objects.remove(object);
-		for (GenericEventListener l : _entityEventListeners) {
+		for (EntityEventListener l : _entityEventListeners) {
 			l.entityRemoved(object);
 		}
 	}
@@ -168,7 +168,7 @@ public class ArkanoidField implements BallPositionChangedListener, CollisionList
 	 * Добавить слушателя событий добавления/удаления игровых объектов.
 	 * @param listener Добавляемый слушатель.
 	 */
-	public void addEntityEventListener(GenericEventListener listener) {
+	public void addEntityEventListener(EntityEventListener listener) {
 		
 		if (listener == null) {
 			throw new NullPointerException();
@@ -180,7 +180,7 @@ public class ArkanoidField implements BallPositionChangedListener, CollisionList
 	 * Удалить слушателя с событий добавления/удаления игровых объектов.
 	 * @param listener Удаляемый слушатель.
 	 */
-	public void removeEntityEventListener(GenericEventListener listener) {
+	public void removeEntityEventListener(EntityEventListener listener) {
 		
 		_entityEventListeners.remove(listener);
 	}

@@ -13,7 +13,7 @@ import arkanoid.entities.ball.AbstractBall;
 import arkanoid.entities.brick.AbstractBrick;
 import arkanoid.entities.paddle.AbstractPaddle;
 import arkanoid.interaction.CollisionListener;
-import arkanoid.interaction.GenericEventListener;
+import arkanoid.interaction.EntityEventListener;
 
 import com.golden.gamedev.object.CollisionManager;
 import com.golden.gamedev.object.PlayField;
@@ -238,7 +238,7 @@ public class ArkanoidFieldView {
 		_gtgeField.render(g);
 	}
 	
-	private class EntityEventHandler implements GenericEventListener {
+	private class EntityEventHandler implements EntityEventListener {
 		
 		@Override
 		public void entityRemoved(Entity entity) {

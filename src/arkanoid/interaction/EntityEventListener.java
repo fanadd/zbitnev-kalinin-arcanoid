@@ -6,7 +6,7 @@ import arkanoid.Entity;
  * Интерфейс слушателя событий добавления и удаления игрового объекта с поля.
  * @author Gregory Zbitnev <zbitnev@hotmail.com>
  */
-public interface GenericEventListener {
+public interface EntityEventListener {
 	
 	/**
 	 * Объект был удалён с поля.

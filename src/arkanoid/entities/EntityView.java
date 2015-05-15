@@ -10,7 +10,7 @@ import com.golden.gamedev.object.Sprite;
 
 import arkanoid.Entity;
 import arkanoid.ArkanoidFieldView;
-import arkanoid.interaction.GenericEventListener;
+import arkanoid.interaction.EntityEventListener;
 import arkanoid.util.Speed2D;
 
 /**
