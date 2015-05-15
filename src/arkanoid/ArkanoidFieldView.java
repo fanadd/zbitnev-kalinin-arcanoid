@@ -27,35 +27,40 @@ import com.golden.gamedev.object.background.ImageBackground;
  */
 public class ArkanoidFieldView {
 	
-	private PlayField _field = new PlayField();
+	private PlayField _gtgeField = new PlayField();
+	private ArkanoidField _field = null;
 	private ArrayList<EntityView> _objectViews = new ArrayList<>();
 	private ArrayList<CollisionListener> _collisionListners;
 	
-	public ArkanoidFieldView() {
+	public ArkanoidFieldView(ArkanoidField field) {
 		
+		if (field == null)
+			throw new NullPointerException();
+		
+		_field = field;
     	_collisionListners = new ArrayList<>();
 		SpriteGroup balls = new SpriteGroup("balls");
 		SpriteGroup bricks = new SpriteGroup("bricks");
 		SpriteGroup paddles = new SpriteGroup("paddles");
-		_field.addGroup(balls);
-		_field.addGroup(bricks);
-		_field.addGroup(paddles);
+		_gtgeField.addGroup(balls);
+		_gtgeField.addGroup(bricks);
+		_gtgeField.addGroup(paddles);
 		
 		// Добавить на поле менеджеры коллизий для обработки столкновений
-		_field.addCollisionGroup(balls, paddles, new PublishingCollisionManager());
-		_field.addCollisionGroup(balls, bricks, new PublishingCollisionManager());
-		_field.addCollisionGroup(balls, balls, new PublishingCollisionManager());
+		_gtgeField.addCollisionGroup(balls, paddles, new PublishingCollisionManager());
+		_gtgeField.addCollisionGroup(balls, bricks, new PublishingCollisionManager());
+		_gtgeField.addCollisionGroup(balls, balls, new PublishingCollisionManager());
 	}
 
 	public void update(long timeElapsed) {
 	    
-		_field.update(timeElapsed);
+		_gtgeField.update(timeElapsed);
 	    for (EntityView ov : _objectViews) {
 	        ov.update(timeElapsed);
 	    }
 	    
 	    // Формируем словарь столкновений
-	    CollisionManager[] mgrs = _field.getCollisionGroups();
+	    CollisionManager[] mgrs = _gtgeField.getCollisionGroups();
 	    HashMap<CollidedObject, ArrayList<CollidedObject>> collisions = new HashMap<>();
 	    for (int i = 0; i < mgrs.length; i++) {
 	    	
@@ -85,7 +90,7 @@ public class ArkanoidFieldView {
 	 */
 	public SpriteGroup getBallsGroup() {
 	    
-	    return _field.getGroup("balls");
+	    return _gtgeField.getGroup("balls");
 	}
 	
 	/**
@@ -94,7 +99,7 @@ public class ArkanoidFieldView {
 	 */
 	public SpriteGroup getBricksGroup() {
 	    
-	    return _field.getGroup("bricks");
+	    return _gtgeField.getGroup("bricks");
 	}
 	
 	/**
@@ -103,7 +108,7 @@ public class ArkanoidFieldView {
 	 */
 	public SpriteGroup getPaddlesGroup() {
 	    
-	    return _field.getGroup("paddles");
+	    return _gtgeField.getGroup("paddles");
 	}
 	
 	/**
@@ -221,10 +226,10 @@ public class ArkanoidFieldView {
      * @param img Фоновое изображение.
      */
     public void setBackground(BufferedImage img) {
-    	_field.setBackground(new ImageBackground(img));
+    	_gtgeField.setBackground(new ImageBackground(img));
     }
 
 	public void render(Graphics2D g) {
-		_field.render(g);
+		_gtgeField.render(g);
 	}
 }

@@ -21,7 +21,7 @@ public class FieldViewFactory {
 	 */
 	public ArkanoidFieldView instantiateFieldView(ArkanoidField field, BaseLoader bsLoader) {
 		
-		ArkanoidFieldView newFieldView = new ArkanoidFieldView();
+		ArkanoidFieldView newFieldView = new ArkanoidFieldView(field);
 		
 		for (Entity e : field.getEntities()) {
 			newFieldView.addObjectView(_factory.instantiateEntityView(e, newFieldView));
