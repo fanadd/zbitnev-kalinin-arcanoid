@@ -57,7 +57,7 @@ public class FieldViewFactory {
 		Graphics g = fieldBg.getGraphics();
 		g.setColor(Color.black);
 		g.fillRect(0, 0, field.getSize().width, field.getSize().height);
-		newFieldView.setBackground(new ImageBackground(fieldBg));
+		newFieldView.setBackground(fieldBg);
 		
 		return newFieldView;
 	}

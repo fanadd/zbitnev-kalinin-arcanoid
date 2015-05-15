@@ -1,5 +1,7 @@
 ﻿package arkanoid;
 
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,6 +17,7 @@ import com.golden.gamedev.object.CollisionManager;
 import com.golden.gamedev.object.PlayField;
 import com.golden.gamedev.object.Sprite;
 import com.golden.gamedev.object.SpriteGroup;
+import com.golden.gamedev.object.background.ImageBackground;
 
 /**
  * Игровое поле арканоида. Содержит все обекты игры, ответственнен за обновление, рендеринг и
@@ -22,8 +25,9 @@ import com.golden.gamedev.object.SpriteGroup;
  * @author Gregory Zbitnev <zbitnev@hotmail.com>
  *
  */
-public class ArkanoidFieldView extends PlayField {
+public class ArkanoidFieldView {
 	
+	private PlayField _field = new PlayField();
 	private ArrayList<EntityView> _objectViews = new ArrayList<>();
 	private ArrayList<CollisionListener> _collisionListners;
 	
@@ -33,26 +37,25 @@ public class ArkanoidFieldView extends PlayField {
 		SpriteGroup balls = new SpriteGroup("balls");
 		SpriteGroup bricks = new SpriteGroup("bricks");
 		SpriteGroup paddles = new SpriteGroup("paddles");
-		this.addGroup(balls);
-		this.addGroup(bricks);
-		this.addGroup(paddles);
+		_field.addGroup(balls);
+		_field.addGroup(bricks);
+		_field.addGroup(paddles);
 		
 		// Добавить на поле менеджеры коллизий для обработки столкновений
-		this.addCollisionGroup(balls, paddles, new PublishingCollisionManager());
-		this.addCollisionGroup(balls, bricks, new PublishingCollisionManager());
-		this.addCollisionGroup(balls, balls, new PublishingCollisionManager());
+		_field.addCollisionGroup(balls, paddles, new PublishingCollisionManager());
+		_field.addCollisionGroup(balls, bricks, new PublishingCollisionManager());
+		_field.addCollisionGroup(balls, balls, new PublishingCollisionManager());
 	}
 
-	@Override
 	public void update(long timeElapsed) {
 	    
-	    super.update(timeElapsed);
+		_field.update(timeElapsed);
 	    for (EntityView ov : _objectViews) {
 	        ov.update(timeElapsed);
 	    }
 	    
 	    // Формируем словарь столкновений
-	    CollisionManager[] mgrs = this.getCollisionGroups();
+	    CollisionManager[] mgrs = _field.getCollisionGroups();
 	    HashMap<CollidedObject, ArrayList<CollidedObject>> collisions = new HashMap<>();
 	    for (int i = 0; i < mgrs.length; i++) {
 	    	
@@ -82,7 +85,7 @@ public class ArkanoidFieldView extends PlayField {
 	 */
 	public SpriteGroup getBallsGroup() {
 	    
-	    return this.getGroup("balls");
+	    return _field.getGroup("balls");
 	}
 	
 	/**
@@ -91,7 +94,7 @@ public class ArkanoidFieldView extends PlayField {
 	 */
 	public SpriteGroup getBricksGroup() {
 	    
-	    return this.getGroup("bricks");
+	    return _field.getGroup("bricks");
 	}
 	
 	/**
@@ -100,7 +103,7 @@ public class ArkanoidFieldView extends PlayField {
 	 */
 	public SpriteGroup getPaddlesGroup() {
 	    
-	    return this.getGroup("paddles");
+	    return _field.getGroup("paddles");
 	}
 	
 	/**
@@ -212,4 +215,16 @@ public class ArkanoidFieldView extends PlayField {
     	
     	return newst;
     }
+    
+    /**
+     * Задать фоновое изображение для игрового поля.
+     * @param img Фоновое изображение.
+     */
+    public void setBackground(BufferedImage img) {
+    	_field.setBackground(new ImageBackground(img));
+    }
+
+	public void render(Graphics2D g) {
+		_field.render(g);
+	}
 }
