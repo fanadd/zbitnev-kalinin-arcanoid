@@ -78,7 +78,6 @@ public abstract class AbstractBall extends Entity {
 	public void setPosition(Point2D.Double pos) {
 	    
 	    super.setPosition(pos);
-	    _field.ballPositionChanged(this);
 	}
 	
 	/**

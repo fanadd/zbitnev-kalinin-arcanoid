@@ -14,6 +14,7 @@ import arkanoid.interaction.EntityEventListener;
 import com.golden.gamedev.object.Sprite;
 import com.golden.gamedev.object.SpriteGroup;
 import com.golden.gamedev.object.collision.AdvanceCollisionGroup;
+import com.golden.gamedev.object.collision.CollisionBounds;
 import com.golden.gamedev.object.collision.CollisionGroup;
 import com.golden.gamedev.object.collision.CollisionShape;
 
@@ -24,9 +25,12 @@ import com.golden.gamedev.object.collision.CollisionShape;
  */
 public class CollisionDetector {
     
-    ArkanoidField _field;
+    private ArkanoidField _field = null;
     private HashMap<Class<?>, SpriteGroup> _spriteGroups = new HashMap<>();
     private ArrayList<CollisionManager> _managers = new ArrayList<>();
+    private Class<?> _boundaryCollidableClass = null;
+    private SpriteGroup _boundaryCollidableGroup = null;
+    private CollisionBoundsManager _fieldBoundsManager = null; // Без _field нельзя создавать.
     
     public CollisionDetector(ArkanoidField field) {
         
@@ -34,6 +38,7 @@ public class CollisionDetector {
             throw new NullPointerException();
         }
         _field = field;
+        _fieldBoundsManager = new CollisionBoundsManager();
         _field.addEntityEventListener(new AddRemoveListener());
     }
     
@@ -43,6 +48,10 @@ public class CollisionDetector {
      * @param c2
      */
     public void addCollidableSuperclasses(Class<?> c1, Class<?> c2) {
+        
+        if (c1 == null || c2 == null) {
+            throw new NullPointerException();
+        }
         
         for (AdvanceCollisionGroup mgr : _managers) {
             if (mgr.getGroup1().getName().equals(c1.getName()) && mgr.getGroup2().getName().equals(c2.getName())) {
@@ -57,13 +66,22 @@ public class CollisionDetector {
         _managers.add(mgr);
     }
     
+    public void setBoundaryCollidableSuperclass(Class<?> c) {
+        
+        if (c == null) {
+            throw new NullPointerException();
+        }
+        _boundaryCollidableClass = c;
+        _boundaryCollidableGroup = new SpriteGroup(c.getName());
+        _fieldBoundsManager.setCollisionGroup(_boundaryCollidableGroup, null);
+    }
+    
     private SpriteGroup getOrCreateSpriteGroup(Class<?> c) {
         
         if (_spriteGroups.containsKey(c)) {
             return _spriteGroups.get(c);
         }
         SpriteGroup grp = new SpriteGroup(c.getName());
-        grp.setActive(true);
         _spriteGroups.put(c, grp);
         return grp;
     }
@@ -82,6 +100,7 @@ public class CollisionDetector {
                 mgr.clearCollidedStorage();
             }
         }
+        _fieldBoundsManager.checkCollision();
         
         // Если столкновения произошли -- сообщаем объектам об этом.
         if (!collisions.isEmpty()) {
@@ -198,6 +217,16 @@ public class CollisionDetector {
         return deepcopy;
     }
     
+    private Entity entityFor(Sprite s) {
+        
+        for (Entity e : _field.getEntities()) {
+            if (e.getSprite()._sprite == s) {
+                return e;
+            }
+        }
+        return null;
+    }
+    
     /**
      * Обработчик столкновений GTGE.
      * @author Nikita Kalinin <nixorv@gmail.com>
@@ -284,16 +313,25 @@ public class CollisionDetector {
         @Override
         public void collided(Sprite s1, Sprite s2) {
         }
-        
-        private Entity entityFor(Sprite s) {
-            
-            for (Entity e : _field.getEntities()) {
-                if (e.getSprite()._sprite == s) {
-                    return e;
-                }
-            }
-            return null;
+    }
+    
+    private class CollisionBoundsManager extends CollisionBounds {
+
+        public CollisionBoundsManager() {
+            super(0, 0, _field.getSize().width, _field.getSize().height);
         }
+        
+        @Override
+        public void collided(Sprite s) {
+            
+            Entity collidedEntity = entityFor(s);
+            if (isCollisionSide(LEFT_COLLISION) || isCollisionSide(RIGHT_COLLISION)) {
+                collidedEntity.setSpeed(collidedEntity.getSpeed().flipHorizontal());
+            } else {
+                collidedEntity.setSpeed(collidedEntity.getSpeed().flipVertical());
+            }
+        }
+        
     }
     
     /**
@@ -311,6 +349,10 @@ public class CollisionDetector {
                     _spriteGroups.get(c).remove(entity.getSprite()._sprite);
                 }
             }
+            
+            if (_boundaryCollidableClass != null && _boundaryCollidableClass.isInstance(entity)) {
+                _boundaryCollidableGroup.remove(entity.getSprite()._sprite);
+            }
         }
 
         @Override
@@ -321,6 +363,10 @@ public class CollisionDetector {
                     _spriteGroups.get(c).add(entity.getSprite()._sprite);
                     entity.getSprite()._sprite.setActive(true);
                 }
+            }
+            
+            if (_boundaryCollidableClass != null && _boundaryCollidableClass.isInstance(entity)) {
+                _boundaryCollidableGroup.add(entity.getSprite()._sprite);
             }
         }
         
