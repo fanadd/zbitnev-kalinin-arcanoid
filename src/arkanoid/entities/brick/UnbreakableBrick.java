@@ -2,7 +2,6 @@ package arkanoid.entities.brick;
 
 import java.awt.Dimension;
 import java.awt.geom.Point2D;
-import java.awt.geom.Point2D.Double;
 
 import arkanoid.ArkanoidField;
 import arkanoid.util.Speed2D;

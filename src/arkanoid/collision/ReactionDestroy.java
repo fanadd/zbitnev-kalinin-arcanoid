@@ -1,6 +1,5 @@
 package arkanoid.collision;
 
-import arkanoid.Entity;
 
 /**
  * Поведение разрушения при столкновении.

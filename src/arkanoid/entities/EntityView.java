@@ -1,17 +1,12 @@
 ﻿package arkanoid.entities;
 
 import java.awt.Graphics2D;
-import java.awt.geom.Point2D;
-import java.awt.geom.Point2D.Double;
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
+
+import arkanoid.ArkanoidFieldView;
+import arkanoid.Entity;
 
 import com.golden.gamedev.object.Sprite;
-
-import arkanoid.Entity;
-import arkanoid.ArkanoidFieldView;
-import arkanoid.interaction.EntityEventListener;
-import arkanoid.util.Speed2D;
 
 /**
  * Представление отдельного игрового объекта

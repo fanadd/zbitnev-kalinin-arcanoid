@@ -1,17 +1,13 @@
 package arkanoid.collision;
 
-import java.awt.Dimension;
 import java.awt.geom.Point2D;
 
+import math.geom2d.Vector2D;
 import arkanoid.Entity;
 import arkanoid.entities.ball.AbstractBall;
 import arkanoid.entities.brick.AbstractBrick;
 import arkanoid.entities.paddle.AbstractPaddle;
 import arkanoid.util.Speed2D;
-
-import com.golden.gamedev.object.collision.CollisionGroup;
-
-import math.geom2d.Vector2D;
 
 /**
  * Поведение упрогого отскока при столкновении.

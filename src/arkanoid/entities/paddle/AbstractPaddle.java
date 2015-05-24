@@ -2,11 +2,10 @@ package arkanoid.entities.paddle;
 
 import java.awt.Dimension;
 import java.awt.geom.Point2D;
-import java.awt.geom.Point2D.Double;
 import java.util.ArrayList;
 
-import arkanoid.Entity;
 import arkanoid.ArkanoidField;
+import arkanoid.Entity;
 import arkanoid.entities.ball.AbstractBall;
 import arkanoid.util.Speed2D;
 

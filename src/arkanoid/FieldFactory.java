@@ -3,7 +3,6 @@ package arkanoid;
 import java.awt.Dimension;
 import java.awt.geom.Point2D;
 
-import arkanoid.collision.ReactionRebound;
 import arkanoid.entities.ball.BasicBall;
 import arkanoid.entities.brick.BreakableBrick;
 import arkanoid.entities.brick.UnbreakableBrick;

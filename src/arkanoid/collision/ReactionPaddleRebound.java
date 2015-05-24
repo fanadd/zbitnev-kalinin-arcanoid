@@ -2,7 +2,6 @@ package arkanoid.collision;
 
 import java.awt.geom.Point2D;
 
-import arkanoid.Entity;
 import arkanoid.entities.ball.AbstractBall;
 import arkanoid.entities.paddle.AbstractPaddle;
 

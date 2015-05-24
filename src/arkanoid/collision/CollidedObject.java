@@ -2,12 +2,8 @@ package arkanoid.collision;
 
 import java.awt.Shape;
 import java.awt.geom.Point2D;
-import java.awt.geom.Point2D.Double;
 
 import arkanoid.Entity;
-
-import com.golden.gamedev.object.collision.CollisionGroup;
-import com.golden.gamedev.object.collision.CollisionShape;
 
 /**
  * Столкнувшийся игровой объект. Содержит ссылку на игровой объект и дополнительные сведения
