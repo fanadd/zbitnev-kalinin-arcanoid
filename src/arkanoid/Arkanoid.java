@@ -2,11 +2,10 @@ package arkanoid;
 
 import java.awt.Graphics2D;
 
-import com.golden.gamedev.Game;
-
 import arkanoid.controller.GameController;
 import arkanoid.entities.paddle.BasicPaddle;
-import arkanoid.interaction.CollisionListener;
+
+import com.golden.gamedev.Game;
 
 /**
  * Режим игры
@@ -29,9 +28,6 @@ public class Arkanoid extends Game {
         // Инициализация представления уровня
 	    FieldViewFactory fvFactory = new FieldViewFactory();
 		_fieldView = fvFactory.instantiateFieldView(_field, bsLoader);
-		
-		// Модель слушает сообщения о коллизиях
-		_fieldView.addCollisionListener(_field);
         
         // Контроллер и игрок.
 		BasicPaddle paddle = null;

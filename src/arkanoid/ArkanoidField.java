@@ -3,13 +3,12 @@ package arkanoid;
 import java.awt.Dimension;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 
-import arkanoid.collision.CollidedObject;
+import arkanoid.entities.CollisionDetector;
 import arkanoid.entities.ball.AbstractBall;
 import arkanoid.entities.ball.BallPositionChangedListener;
-import arkanoid.interaction.CollisionListener;
+import arkanoid.entities.brick.AbstractBrick;
+import arkanoid.entities.paddle.AbstractPaddle;
 import arkanoid.interaction.EntityEventListener;
 
 /**
@@ -17,11 +16,12 @@ import arkanoid.interaction.EntityEventListener;
  * @author Nikita Kalinin <nixorv@gmail.com>
  *
  */
-public class ArkanoidField implements BallPositionChangedListener, CollisionListener {
+public class ArkanoidField implements BallPositionChangedListener {
 
 	private ArrayList<Entity> _objects = new ArrayList<>();;
 	private ArrayList<EntityEventListener> _entityEventListeners = new ArrayList<>();
 	private Dimension _dimensions;
+	private CollisionDetector _collisionDetector = null;
 	
     /**
      * Инициализирует поле заданного размера.
@@ -30,6 +30,10 @@ public class ArkanoidField implements BallPositionChangedListener, CollisionList
     public ArkanoidField(Dimension size) {
     	
     	_dimensions = size;
+    	_collisionDetector = new CollisionDetector(this);
+    	_collisionDetector.addCollidableSuperclasses(AbstractBall.class, AbstractBrick.class);
+        _collisionDetector.addCollidableSuperclasses(AbstractBall.class, AbstractPaddle.class);
+    	_collisionDetector.addCollidableSuperclasses(AbstractBall.class, AbstractBall.class);
     }
     
 	/**
@@ -85,70 +89,6 @@ public class ArkanoidField implements BallPositionChangedListener, CollisionList
             ball.setSpeed(ball.getSpeed().flipHorizontal());
         }
     }
-    
-    /**
-     * Обработать столкновения
-     * @param storage Словарь столкновений, где ключ - столкнувшийся объект, значение - 
-     * список объектов, с которыми он столкнулся
-     */
-    @Override
-    public void collisionOccured(
-			HashMap<CollidedObject, ArrayList<CollidedObject>> storage) {
-		
-    	// Вместо объектов, от которых принимается эффект (активные)
-    	// передаётся их копия до начала обработки вообще всех столкновений
-    	HashMap<CollidedObject, ArrayList<CollidedObject>> storage_copy = deepCopyStorage(storage);
-    	
-    	Iterator<CollidedObject> i, copyi, j, copyj;
-    	i = storage.keySet().iterator();
-    	copyi = storage_copy.keySet().iterator();
-    	
-    	while (i.hasNext() && copyi.hasNext()) {
-    		
-    		CollidedObject obj1 = i.next();
-    		CollidedObject obj1copy = copyi.next();
-    		j = storage.get(obj1).iterator();
-    		copyj = storage_copy.get(obj1copy).iterator();
-    		
-    		while (j.hasNext() && copyj.hasNext()) {
-    			
-    			CollidedObject obj2 = j.next();
-    			CollidedObject obj2copy = copyj.next();
-    			obj1.object().processCollision(obj1, obj2copy);
-    			obj2.object().processCollision(obj2, obj1copy);
-    		}
-    	}
-	}
-    
-    /**
-     * Порождает копию словаря коллизии вместе со всеми хранимыми объектами
-     * @param storage Словарь коллизии
-     * @return Копия словаря коллизии
-     */
-    private HashMap<CollidedObject, ArrayList<CollidedObject>> deepCopyStorage(
-    		HashMap<CollidedObject, ArrayList<CollidedObject>> storage) {
-    	
-    	HashMap<CollidedObject, ArrayList<CollidedObject>> deepcopy = new HashMap<>();
-    	
-    	try {
-    		
-    		for (CollidedObject key : storage.keySet()) {
-        		
-        		CollidedObject key_copy = (CollidedObject) key.clone();
-        		ArrayList<CollidedObject> values_copy = new ArrayList<>();
-        		for (CollidedObject obj : storage.get(key)) {
-        			values_copy.add((CollidedObject)obj.clone());
-        		}
-        		
-        		deepcopy.put(key_copy, values_copy);
-        	}
-    	}
-    	catch (CloneNotSupportedException exc) {
-    		exc.printStackTrace();
-    	}
-    	
-    	return deepcopy;
-    }
 
 	public ArrayList<Entity> getEntities() {
 
@@ -162,6 +102,7 @@ public class ArkanoidField implements BallPositionChangedListener, CollisionList
 				ballPositionChanged((AbstractBall)e);
 			}
 		}
+		_collisionDetector.update(timeElapsed);
 	}
 	
 	/**
