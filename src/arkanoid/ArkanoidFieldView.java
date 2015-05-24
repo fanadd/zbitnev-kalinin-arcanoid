@@ -218,7 +218,9 @@ public class ArkanoidFieldView {
     				if (!newst.containsKey(key)) {
     					newst.put(key, new ArrayList<CollidedObject>());
     				}
-    				newst.get(key).add(val);
+    				if (!newst.get(key).contains(val)) {
+    				    newst.get(key).add(val);
+    				}
     			}
     		}
     	}
