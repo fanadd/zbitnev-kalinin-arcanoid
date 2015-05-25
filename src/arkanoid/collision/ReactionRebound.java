@@ -41,30 +41,30 @@ public class ReactionRebound extends CollisionReaction {
 		
 		// Вектор скорости отражается по-разному в зависимости от геометрической формы
 		// активного объекта и пассивного объекта
-		Entity toObj = to.object();
-		Entity fromObj = from.object();
+		Entity toObj = to.getObject();
+		Entity fromObj = from.getObject();
 		if ((fromObj instanceof AbstractBrick || fromObj instanceof AbstractPaddle) && toObj instanceof AbstractBall) {
 			
-			Point2D.Double newpos = to.oldPosition();
-			if (to.collisionSide() == CollidedObject.SIDE_TOP) {
+			Point2D.Double newpos = to.getOldPosition();
+			if (to.getCollisionSide() == CollidedObject.SIDE_TOP) {
 				
 				newpos.y = fromObj.getPosition().y - toObj.getDimension().height - 1;
 				toObj.setPosition(newpos);
 				toObj.setSpeed(toObj.getSpeed().flipVertical());
 			}
-			else if (to.collisionSide()  == CollidedObject.SIDE_BOTTOM) {
+			else if (to.getCollisionSide()  == CollidedObject.SIDE_BOTTOM) {
 				
 				newpos.y = fromObj.getPosition().y + fromObj.getDimension().height + 1;
 				toObj.setPosition(newpos);
 				toObj.setSpeed(toObj.getSpeed().flipVertical());
 			}
-			else if (to.collisionSide() == CollidedObject.SIDE_RIGHT) {
+			else if (to.getCollisionSide() == CollidedObject.SIDE_RIGHT) {
 				
 				newpos.x = fromObj.getPosition().x + fromObj.getDimension().width + 1;
 				toObj.setPosition(newpos);
 				toObj.setSpeed(toObj.getSpeed().flipHorizontal());
 			}
-			else if (to.collisionSide() == CollidedObject.SIDE_LEFT) {
+			else if (to.getCollisionSide() == CollidedObject.SIDE_LEFT) {
 				
 				newpos.x = fromObj.getPosition().x - toObj.getDimension().width;
 				toObj.setPosition(newpos);

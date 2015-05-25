@@ -56,19 +56,19 @@ public class CollidedObject implements Cloneable {
 		this._colShape = shape;
 	}
 	
-	public Entity object() {
+	public Entity getObject() {
 		return _object;
 	}
 	
-	public Point2D.Double oldPosition() {
+	public Point2D.Double getOldPosition() {
 		return _oldPosition;
 	}
 	
-	public int collisionSide() {
+	public int getCollisionSide() {
 		return _colSide;
 	}
 	
-	public Shape collisionShape() {
+	public Shape getCollisionShape() {
 		return _colShape;
 	}
 	

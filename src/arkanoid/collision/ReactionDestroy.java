@@ -32,6 +32,6 @@ public class ReactionDestroy extends CollisionReaction {
 	@Override
 	public void invoke(CollidedObject from, CollidedObject to) {
 		
-		to.object().destroy();
+		to.getObject().destroy();
 	}
 }

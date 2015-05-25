@@ -124,8 +124,8 @@ public class CollisionDetector {
                     
                     CollidedObject obj2 = j.next();
                     CollidedObject obj2copy = copyj.next();
-                    obj1.object().processCollision(obj1, obj2copy);
-                    obj2.object().processCollision(obj2, obj1copy);
+                    obj1.getObject().processCollision(obj1, obj2copy);
+                    obj2.getObject().processCollision(obj2, obj1copy);
                 }
             }
         }

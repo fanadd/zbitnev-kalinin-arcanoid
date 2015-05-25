@@ -159,13 +159,13 @@ public abstract class Entity implements Cloneable {
 	    while (i.hasNext()) {
 	        Map.Entry<Class<?>, SpecialBehaviours> entry = (Map.Entry)i.next();
 	        if (entry.getValue()._flagCheckDerived) {
-	            if (entry.getKey().isInstance(other.object())) {
+	            if (entry.getKey().isInstance(other.getObject())) {
 	                foundSpecial = true;
 	                for (CollisionReaction cb : entry.getValue()._behaviours) {
 	                    cb.invoke(other, curr);
 	                }
 	            }
-	        } else if (entry.getKey().equals(other.object().getClass())) {
+	        } else if (entry.getKey().equals(other.getObject().getClass())) {
                 foundSpecial = true;
                 for (CollisionReaction cb : entry.getValue()._behaviours) {
                     cb.invoke(other, curr);

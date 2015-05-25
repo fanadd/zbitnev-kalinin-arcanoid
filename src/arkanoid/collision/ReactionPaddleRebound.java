@@ -35,12 +35,12 @@ public class ReactionPaddleRebound extends CollisionReaction {
 	@Override
 	public void invoke(CollidedObject from, CollidedObject to) {
 		
-		if (from.object() instanceof AbstractPaddle && to.object() instanceof AbstractBall) {
+		if (from.getObject() instanceof AbstractPaddle && to.getObject() instanceof AbstractBall) {
 		
-			to.object().setPosition(new Point2D.Double(to.object().getPosition().x, 
-									 		          from.object().getPosition().y 
-									 		          - to.object().getDimension().height));
-			to.object().setSpeed(((AbstractPaddle)(from.object())).getFireSpeed((AbstractBall)to.object()));
+			to.getObject().setPosition(new Point2D.Double(to.getObject().getPosition().x, 
+									 		          from.getObject().getPosition().y 
+									 		          - to.getObject().getDimension().height));
+			to.getObject().setSpeed(((AbstractPaddle)(from.getObject())).getFireSpeed((AbstractBall)to.getObject()));
 		}
 	}
 }
