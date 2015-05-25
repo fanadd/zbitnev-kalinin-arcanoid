@@ -92,7 +92,7 @@ public class Player {
             } else if (p.getPosition().x + delta < 0) {
                 p.setPosition(new Point2D.Double(0, p.getPosition().y));
             } else {
-                p.move(new Point2D.Double(delta, 0));
+                p.move(delta, 0);
             }
         }
 	}

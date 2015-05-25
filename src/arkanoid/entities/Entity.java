@@ -140,9 +140,9 @@ public abstract class Entity implements Cloneable {
 	 * Сдвинуть объект.
 	 * @param delta Величина изменения позиции
 	 */
-	public void move(Point2D.Double delta) {
+	public void move(double deltaX, double deltaY) {
 		
-		this.setPosition(new Point2D.Double(this.getPosition().x + delta.x, this.getPosition().y + delta.y));
+		this.setPosition(new Point2D.Double(this.getPosition().x + deltaX, this.getPosition().y + deltaY));
 	}
 	
 	/**
