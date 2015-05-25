@@ -42,9 +42,7 @@ public class ArkanoidField {
 	public void addObject(Entity object) {
 		
 		_objects.add(object);
-		for (EntityEventListener l : _entityEventListeners) {
-			l.entityAdded(object);
-		}
+		fireEntityAdded(object);
 	}
 	
 	/**
@@ -54,9 +52,7 @@ public class ArkanoidField {
 	public void removeObject(Entity object) {
 		
 		_objects.remove(object);
-		for (EntityEventListener l : _entityEventListeners) {
-			l.entityRemoved(object);
-		}
+		fireEntityRemoved(object);
 	}
 	
 	/** 
@@ -97,5 +93,19 @@ public class ArkanoidField {
 	public void removeEntityEventListener(EntityEventListener listener) {
 		
 		_entityEventListeners.remove(listener);
+	}
+	
+	private void fireEntityAdded(Entity e) {
+	    
+	    for (EntityEventListener l : _entityEventListeners) {
+            l.entityAdded(e);
+        }
+	}
+	
+	private void fireEntityRemoved(Entity e) {
+	    
+	    for (EntityEventListener l : _entityEventListeners) {
+            l.entityRemoved(e);
+        }
 	}
 }
