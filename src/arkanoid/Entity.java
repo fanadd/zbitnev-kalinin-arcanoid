@@ -186,7 +186,7 @@ public abstract class Entity implements Cloneable {
 	 * Получить список поведений по умолчанию при столкновении
 	 * @return Список объектов поведения
 	 */
-	public ArrayList<CollisionReaction> getDefaultCollisionBehaviours() {
+	protected ArrayList<CollisionReaction> getDefaultCollisionBehaviours() {
 		
 		return _defaultColBehaviour;
 	}
@@ -195,7 +195,7 @@ public abstract class Entity implements Cloneable {
 	 * Добавить поведение по умолчанию при столкновении
 	 * @param behaviour Добавляемое поведение
 	 */
-	public void addDefaultCollisionBehaviour(CollisionReaction behaviour) {
+	protected void addDefaultCollisionBehaviour(CollisionReaction behaviour) {
 	
 		_defaultColBehaviour.add(behaviour);
 	}
@@ -204,7 +204,7 @@ public abstract class Entity implements Cloneable {
 	 * Удалить поведение по умолчанию при столкновении
 	 * @param behaviour Поведение для удаления
 	 */
-	public void removeDafaultCollisionBehavior(CollisionReaction behaviour) {
+	protected void removeDafaultCollisionBehavior(CollisionReaction behaviour) {
 		
 		// TODO Method stub
 	}
@@ -214,7 +214,7 @@ public abstract class Entity implements Cloneable {
 	 * @return Ключ -- класс объектов, значение -- флаги и список поведений, определённых при столкновении 
 	 *         с этим объектом
 	 */
-	public HashMap<Class<?>, SpecialBehaviours> getSpecificCollisionBehaviours() {
+	protected HashMap<Class<?>, SpecialBehaviours> getSpecificCollisionBehaviours() {
 		
 		return _specialColBehaviours;
 	}
@@ -226,7 +226,7 @@ public abstract class Entity implements Cloneable {
 	 * @param checkDerived Если true, то будут также проверяться наследники класса объектов.
 	 *                     Игнорируется, если для класса уже задано какое-либо поведение.
 	 */
-	public void addSpecificCollisionBehaviour(Class<?> c, CollisionReaction cb, boolean checkDerived) {
+	protected void addSpecificCollisionBehaviour(Class<?> c, CollisionReaction cb, boolean checkDerived) {
 		
 		if (!c.isInstance(Entity.class)) {
 			// TODO: Выброс исключения, ибо нечего
@@ -248,7 +248,7 @@ public abstract class Entity implements Cloneable {
      * @param c Класс объектов
      * @param cb Поведение, определяемое при столкновении с этим классом объектов
      */
-	public void addSpecificCollisionBehaviour(Class<?> c, CollisionReaction cb) {
+	protected void addSpecificCollisionBehaviour(Class<?> c, CollisionReaction cb) {
 	    
 	    this.addSpecificCollisionBehaviour(c, cb, false);
 	}
@@ -258,7 +258,7 @@ public abstract class Entity implements Cloneable {
 	 * @param c Класс объектов
 	 * @param cb Поведение, определённое при столкновении с этим классом объектов
 	 */
-	public void removeSpecificCollisionBehaviour(Class<?> c, CollisionReaction cb) {
+	protected void removeSpecificCollisionBehaviour(Class<?> c, CollisionReaction cb) {
 		
 		if (!c.isInstance(Entity.class)) {
 			// TODO: Выброс исключения, ибо нечего
@@ -275,7 +275,7 @@ public abstract class Entity implements Cloneable {
 	/**
 	 * Очистить список поведений при столкновении по умолчанию
 	 */
-	public void cleanDefaultCollisionBehaviours() {
+	protected void cleanDefaultCollisionBehaviours() {
 		
 		_defaultColBehaviour.clear();
 	}
@@ -283,7 +283,7 @@ public abstract class Entity implements Cloneable {
 	/**
 	 * Очистить списки специальных поведений при столкновении для всех классов объектов
 	 */
-	public void cleanAllSpecificCollisionBehaviours() {
+	protected void cleanAllSpecificCollisionBehaviours() {
 		
 		_specialColBehaviours.clear();
 	}
@@ -292,7 +292,7 @@ public abstract class Entity implements Cloneable {
 	 * Очистить список специальных поведений при столкновений для класса объектов
 	 * @param cl Класс объектов, для которых очищается список поведений
 	 */
-	public void cleanSpecificCollisionBehaviours(Class<?> cl) {
+	protected void cleanSpecificCollisionBehaviours(Class<?> cl) {
 		
 		if (!cl.isInstance(Entity.class)) {
 			// TODO: Выброс исключения, ибо нечего
