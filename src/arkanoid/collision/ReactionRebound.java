@@ -41,40 +41,40 @@ public class ReactionRebound extends CollisionReaction {
 		
 		// Вектор скорости отражается по-разному в зависимости от геометрической формы
 		// активного объекта и пассивного объекта
-		Entity toobj = to.object();
-		Entity fromobj = from.object();
-		if ((fromobj instanceof AbstractBrick || fromobj instanceof AbstractPaddle) && toobj instanceof AbstractBall) {
+		Entity toObj = to.object();
+		Entity fromObj = from.object();
+		if ((fromObj instanceof AbstractBrick || fromObj instanceof AbstractPaddle) && toObj instanceof AbstractBall) {
 			
 			Point2D.Double newpos = to.oldPosition();
 			if (to.collisionSide() == CollidedObject.SIDE_TOP) {
 				
-				newpos.y = fromobj.getPosition().y - toobj.getDimension().height - 1;
-				toobj.setPosition(newpos);
-				toobj.setSpeed(toobj.getSpeed().flipVertical());
+				newpos.y = fromObj.getPosition().y - toObj.getDimension().height - 1;
+				toObj.setPosition(newpos);
+				toObj.setSpeed(toObj.getSpeed().flipVertical());
 			}
 			else if (to.collisionSide()  == CollidedObject.SIDE_BOTTOM) {
 				
-				newpos.y = fromobj.getPosition().y + fromobj.getDimension().height + 1;
-				toobj.setPosition(newpos);
-				toobj.setSpeed(toobj.getSpeed().flipVertical());
+				newpos.y = fromObj.getPosition().y + fromObj.getDimension().height + 1;
+				toObj.setPosition(newpos);
+				toObj.setSpeed(toObj.getSpeed().flipVertical());
 			}
 			else if (to.collisionSide() == CollidedObject.SIDE_RIGHT) {
 				
-				newpos.x = fromobj.getPosition().x + fromobj.getDimension().width + 1;
-				toobj.setPosition(newpos);
-				toobj.setSpeed(toobj.getSpeed().flipHorizontal());
+				newpos.x = fromObj.getPosition().x + fromObj.getDimension().width + 1;
+				toObj.setPosition(newpos);
+				toObj.setSpeed(toObj.getSpeed().flipHorizontal());
 			}
 			else if (to.collisionSide() == CollidedObject.SIDE_LEFT) {
 				
-				newpos.x = fromobj.getPosition().x - toobj.getDimension().width;
-				toobj.setPosition(newpos);
-				toobj.setSpeed(toobj.getSpeed().flipHorizontal());
+				newpos.x = fromObj.getPosition().x - toObj.getDimension().width;
+				toObj.setPosition(newpos);
+				toObj.setSpeed(toObj.getSpeed().flipHorizontal());
 			}
 		}
-		else if (fromobj instanceof AbstractBall && toobj instanceof AbstractBall) {
+		else if (fromObj instanceof AbstractBall && toObj instanceof AbstractBall) {
 			
-			AbstractBall act = (AbstractBall)fromobj;
-			AbstractBall pass = (AbstractBall)toobj;
+			AbstractBall act = (AbstractBall)fromObj;
+			AbstractBall pass = (AbstractBall)toObj;
 			
 			// Вычисляется точка столкновения
 			double colx = (act.getCenter().x * pass.getRadius() 
@@ -86,24 +86,24 @@ public class ReactionRebound extends CollisionReaction {
 			
 			// Пассивный объект "отодвигается" по линии столкновения (линия, соединяющая центры 
 			// шаров) во избежание повторной коллизии
-			Point2D.Double movevect = new Point2D.Double(pass.getCenter().x - colx,
+			Point2D.Double moveVector = new Point2D.Double(pass.getCenter().x - colx,
 													   pass.getCenter().y - coly);
-			Point2D.Double newpos = new Point2D.Double(pass.getCenter().x + movevect.x,
-													 pass.getCenter().y + movevect.y);
-			pass.setCenter(newpos);
+			Point2D.Double newPos = new Point2D.Double(pass.getCenter().x + moveVector.x,
+													 pass.getCenter().y + moveVector.y);
+			pass.setCenter(newPos);
 			
 			// Вычисляется новая скорость для пассивного объекта
-			Vector2D aspeed = new Vector2D(act.getSpeed().x(), act.getSpeed().y());
-			Vector2D pspeed = new Vector2D(pass.getSpeed().x(), pass.getSpeed().y());
-			Vector2D acenter = new Vector2D(act.getCenter().x, act.getCenter().y);
-			Vector2D pcenter = new Vector2D(pass.getCenter().x, pass.getCenter().y);
-			Vector2D newPSpeed = pspeed;
-			Vector2D pminusa = pcenter.minus(acenter);
-			newPSpeed = newPSpeed.minus(pminusa.times(
-					pspeed.minus(aspeed).dot(pminusa) / Math.pow(pminusa.norm(), 2.0)));
+			Vector2D actSpeed = new Vector2D(act.getSpeed().x(), act.getSpeed().y());
+			Vector2D passSpeed = new Vector2D(pass.getSpeed().x(), pass.getSpeed().y());
+			Vector2D actCenter = new Vector2D(act.getCenter().x, act.getCenter().y);
+			Vector2D passCenter = new Vector2D(pass.getCenter().x, pass.getCenter().y);
+			Vector2D newPassSpeed = passSpeed;
+			Vector2D passMinusAct = passCenter.minus(actCenter);
+			newPassSpeed = newPassSpeed.minus(passMinusAct.times(
+					passSpeed.minus(actSpeed).dot(passMinusAct) / Math.pow(passMinusAct.norm(), 2.0)));
 			
 			// Новая скорость назначается пассивному объекту
-			pass.setSpeed(new Speed2D(newPSpeed.x(), newPSpeed.y()));
+			pass.setSpeed(new Speed2D(newPassSpeed.x(), newPassSpeed.y()));
 		}
 	}
 }
