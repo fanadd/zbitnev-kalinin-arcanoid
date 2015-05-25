@@ -107,18 +107,18 @@ public class CollisionDetector {
             collisions = removeCouplingFromStorage(collisions);
             // Вместо объектов, от которых принимается эффект (активные)
             // передаётся их копия до начала обработки вообще всех столкновений
-            HashMap<CollidedObject, ArrayList<CollidedObject>> storage_copy = deepCopyStorage(collisions);
+            HashMap<CollidedObject, ArrayList<CollidedObject>> storageCopy = deepCopyStorage(collisions);
             
             Iterator<CollidedObject> i, copyi, j, copyj;
             i = collisions.keySet().iterator();
-            copyi = storage_copy.keySet().iterator();
+            copyi = storageCopy.keySet().iterator();
             
             while (i.hasNext() && copyi.hasNext()) {
                 
                 CollidedObject obj1 = i.next();
                 CollidedObject obj1copy = copyi.next();
                 j = collisions.get(obj1).iterator();
-                copyj = storage_copy.get(obj1copy).iterator();
+                copyj = storageCopy.get(obj1copy).iterator();
                 
                 while (j.hasNext() && copyj.hasNext()) {
                     
