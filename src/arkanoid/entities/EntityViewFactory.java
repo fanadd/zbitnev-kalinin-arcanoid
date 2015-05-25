@@ -37,7 +37,7 @@ public class EntityViewFactory {
 		
 		// TODO Убрать зависимость от игрового поля
 		// TODO Не использовать больше паблишинг спрайт
-		EntityView view = new EntityView(entity.getSprite()._sprite, entity, fieldView);
+		EntityView view = new EntityView(entity, fieldView);
 		view._gtgeSprite.setImage(img);
 
 		return view;

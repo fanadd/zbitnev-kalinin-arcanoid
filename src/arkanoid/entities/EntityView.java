@@ -29,16 +29,13 @@ public class EntityView {
 	 * @param obj Модель игрового объекта.
 	 * @param sprite Спрайт, которым он будет отображен.
 	 */
-	EntityView(com.golden.gamedev.object.Sprite gtgeSprite, 
-			Entity obj, ArkanoidFieldView view) {
+	EntityView(Entity obj, ArkanoidFieldView view) {
 	    
 	    if (obj == null) {
 	        throw new NullPointerException();
 	    }
 	    
-		if (gtgeSprite == null)
-			throw new NullPointerException();
-		_gtgeSprite = gtgeSprite;
+		_gtgeSprite = obj.getSprite()._sprite;
 		
 	    this.ingameObject = obj;
 	    this._fieldView    = view;
