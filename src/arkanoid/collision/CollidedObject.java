@@ -15,27 +15,27 @@ public class CollidedObject implements Cloneable {
 	private Entity _object = null;
 	private Point2D.Double _oldPosition = null;
 	private int _colSide = -1;
-	private Shape _colShape = null; // TODO Беспредел! Заменить на независимый от представления класс! ~~~ Nikita Kalinin <nixorv@gmail.com>
+	private Shape _colShape = null;
 	
 	/** 
 	 * С объектом столкнулись сверху
 	 */
-	public static final int SIDE_TOP		= 0;
+	public static final int SIDE_TOP    = 0;
 	
 	/** 
 	 * С объектом столкнулись снизу
 	 */
-	public static final int SIDE_BOTTOM	= 1;
+	public static final int SIDE_BOTTOM = 1;
 	
 	/** 
 	 * С объектом столкнулись слева
 	 */
-	public static final int SIDE_LEFT		= 2;
+	public static final int SIDE_LEFT   = 2;
 	
 	/** 
 	 * С объектом столкнулись справа
 	 */
-	public static final int SIDE_RIGHT		= 3;
+	public static final int SIDE_RIGHT  = 3;
 	
 	/**
 	 * Создать информацию о столкнувшемся игровом объекте
