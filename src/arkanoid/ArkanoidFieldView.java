@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
+import arkanoid.entities.Entity;
 import arkanoid.entities.EntityView;
 import arkanoid.entities.EntityViewFactory;
 import arkanoid.interaction.EntityEventListener;

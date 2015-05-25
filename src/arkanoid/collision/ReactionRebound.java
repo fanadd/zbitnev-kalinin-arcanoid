@@ -3,7 +3,7 @@ package arkanoid.collision;
 import java.awt.geom.Point2D;
 
 import math.geom2d.Vector2D;
-import arkanoid.Entity;
+import arkanoid.entities.Entity;
 import arkanoid.entities.ball.AbstractBall;
 import arkanoid.entities.brick.AbstractBrick;
 import arkanoid.entities.paddle.AbstractPaddle;

@@ -3,6 +3,7 @@ package arkanoid;
 import java.awt.Graphics2D;
 
 import arkanoid.controller.GameController;
+import arkanoid.entities.Entity;
 import arkanoid.entities.paddle.BasicPaddle;
 
 import com.golden.gamedev.Game;

@@ -3,7 +3,7 @@ package arkanoid.collision;
 import java.awt.Shape;
 import java.awt.geom.Point2D;
 
-import arkanoid.Entity;
+import arkanoid.entities.Entity;
 
 /**
  * Столкнувшийся игровой объект. Содержит ссылку на игровой объект и дополнительные сведения

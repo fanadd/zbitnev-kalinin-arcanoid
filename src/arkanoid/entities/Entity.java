@@ -1,4 +1,4 @@
-package arkanoid;
+package arkanoid.entities;
 
 import java.awt.Dimension;
 import java.awt.geom.Point2D;
@@ -7,11 +7,11 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import arkanoid.ArkanoidField;
 import arkanoid.collision.CollidedObject;
 import arkanoid.collision.CollisionReaction;
 import arkanoid.collision.SpecialBehaviours;
 import arkanoid.util.Speed2D;
-import arkanoid.entities.Sprite;
 
 /**
  * Класс игрового объекта.
@@ -150,7 +150,7 @@ public abstract class Entity implements Cloneable {
 	 * @param curr Текущий объект
 	 * @param other Объект, столкнувшийся с данным.
 	 */
-	public void processCollision(CollidedObject curr, CollidedObject other) {
+	void processCollision(CollidedObject curr, CollidedObject other) {
 
 		// Вызываем специализированные коллизии, если таковые имеются
 	    boolean foundSpecial = false;

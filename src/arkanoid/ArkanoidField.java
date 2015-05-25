@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.util.ArrayList;
 
 import arkanoid.entities.CollisionDetector;
+import arkanoid.entities.Entity;
 import arkanoid.entities.ball.AbstractBall;
 import arkanoid.entities.brick.AbstractBrick;
 import arkanoid.entities.paddle.AbstractPaddle;

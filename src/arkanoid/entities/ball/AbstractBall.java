@@ -3,10 +3,10 @@ package arkanoid.entities.ball;
 import java.awt.Dimension;
 import java.awt.geom.Point2D;
 
-import arkanoid.Entity;
 import arkanoid.ArkanoidField;
 import arkanoid.collision.ReactionPaddleRebound;
 import arkanoid.collision.ReactionRebound;
+import arkanoid.entities.Entity;
 import arkanoid.entities.paddle.AbstractPaddle;
 import arkanoid.util.Speed2D;
 

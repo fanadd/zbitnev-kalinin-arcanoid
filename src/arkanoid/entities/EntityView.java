@@ -4,7 +4,6 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 import arkanoid.ArkanoidFieldView;
-import arkanoid.Entity;
 
 import com.golden.gamedev.object.Sprite;
 

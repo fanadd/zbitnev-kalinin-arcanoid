@@ -1,6 +1,6 @@
 package arkanoid.interaction;
 
-import arkanoid.Entity;
+import arkanoid.entities.Entity;
 
 /**
  * Интерфейс слушателя событий добавления и удаления игрового объекта с поля.

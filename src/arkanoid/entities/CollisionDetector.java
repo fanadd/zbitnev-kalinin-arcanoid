@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 import arkanoid.ArkanoidField;
-import arkanoid.Entity;
 import arkanoid.collision.CollidedObject;
 import arkanoid.interaction.EntityEventListener;
 

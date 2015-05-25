@@ -5,7 +5,7 @@ import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
 import arkanoid.ArkanoidField;
-import arkanoid.Entity;
+import arkanoid.entities.Entity;
 import arkanoid.entities.ball.AbstractBall;
 import arkanoid.util.Speed2D;
 

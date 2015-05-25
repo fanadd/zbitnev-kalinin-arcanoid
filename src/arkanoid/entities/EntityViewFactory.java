@@ -8,7 +8,6 @@ import java.util.HashMap;
 import javax.imageio.ImageIO;
 
 import arkanoid.ArkanoidFieldView;
-import arkanoid.Entity;
 import arkanoid.entities.ball.BasicBall;
 import arkanoid.entities.brick.BreakableBrick;
 import arkanoid.entities.brick.UnbreakableBrick;
