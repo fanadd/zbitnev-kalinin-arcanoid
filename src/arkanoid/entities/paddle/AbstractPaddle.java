@@ -51,13 +51,13 @@ public abstract class AbstractPaddle extends Entity {
 	protected void fixBallsPosition() {
 	    
 	    for (AbstractBall b : _balls) {
-            b.setPosition(new Point2D.Double(b.getPosition().x, this.getPosition().y - b.getSize().height));
+            b.setPosition(new Point2D.Double(b.getPosition().x, this.getPosition().y - b.getDimension().height));
             
             if (b.getPosition().x < this.getPosition().x) {
                 b.setPosition(new Point2D.Double(this.getPosition().x, b.getPosition().y));
             }
             if (b.getPosition().x > this.getPosition().x + this._size.width) {
-                b.setPosition(new Point2D.Double(this.getPosition().x + this._size.width - b.getSize().width, b.getPosition().y));
+                b.setPosition(new Point2D.Double(this.getPosition().x + this._size.width - b.getDimension().width, b.getPosition().y));
             }
 	    }
 	}
@@ -95,8 +95,8 @@ public abstract class AbstractPaddle extends Entity {
         
         // Относительные координаты центра мяча в декартовой системе координат (точка B).
         // Считаем, что paddleCenter - это точка A(0, 0).
-        Point2D.Double relBallCenter = new Point2D.Double(ball.getPosition().x + ball.getSize().width / 2 - paddleCenter.x,
-                paddleCenter.y - ball.getPosition().y - ball.getSize().height / 2);
+        Point2D.Double relBallCenter = new Point2D.Double(ball.getPosition().x + ball.getDimension().width / 2 - paddleCenter.x,
+                paddleCenter.y - ball.getPosition().y - ball.getDimension().height / 2);
         
         // Если мяч между двумя центрами, направляем вектор вверх.
         if (relBallCenter.x <= this._size.width / 10 && relBallCenter.x >= -this._size.width / 10) {

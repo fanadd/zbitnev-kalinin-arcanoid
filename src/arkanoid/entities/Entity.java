@@ -131,7 +131,7 @@ public abstract class Entity implements Cloneable {
 	 * Возвращает размер объекта в пикселях.
 	 * @return
 	 */
-	public Dimension getSize() {
+	public Dimension getDimension() {
 	    
 	    return (Dimension) _size.clone();
 	}

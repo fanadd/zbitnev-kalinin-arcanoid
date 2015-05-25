@@ -39,7 +39,7 @@ public class ReactionPaddleRebound extends CollisionReaction {
 		
 			to.object().setPosition(new Point2D.Double(to.object().getPosition().x, 
 									 		          from.object().getPosition().y 
-									 		          - to.object().getSize().height));
+									 		          - to.object().getDimension().height));
 			to.object().setSpeed(((AbstractPaddle)(from.object())).getFireSpeed((AbstractBall)to.object()));
 		}
 	}
